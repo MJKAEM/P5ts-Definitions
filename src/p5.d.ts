@@ -71,6 +71,22 @@ declare const P2D: string;
 declare const WEBGL: string;
 
 //
+// Constants -> Environment
+//
+
+declare const ARROW: string;
+
+declare const CROSS: string;
+
+declare const HAND: string;
+
+declare const MOVE: string;
+
+declare const TEXT: string;
+
+declare const WAIT: string;
+
+//
 // Constants -> Trigonometry
 //
 
@@ -108,6 +124,75 @@ declare const TAU: number;
  * in combination with the trigonometric functions sin() and cos().
  */
 declare const TWO_PI: number;
+
+declare const DEGREES: string;
+
+declare const RADIANS: string;
+
+//
+// Constants -> Shape
+//
+
+declare const CORNER: string;
+declare const CORNERS: string;
+declare const RADIUS: string;
+declare const RIGHT: string;
+declare const LEFT: string;
+declare const CENTER: string;
+declare const TOP: string;
+declare const BOTTOM: string;
+declare const BASELINE: string;
+declare const POINTS: number;
+declare const LINES: number;
+declare const LINE_STRIP: number;
+declare const LINE_LOOP: number;
+declare const TRIANGLES: number;
+declare const TRIANGLE_FAN: number;
+declare const TRIANGLE_STRIP: number;
+declare const QUADS: string;
+declare const QUAD_STRIP: string;
+declare const CLOSE: string;
+declare const OPEN: string;
+declare const CHORD: string;
+declare const PIE: string;
+declare const PROJECT: string; // PEND: careful this is counterintuitive
+declare const SQUARE: string;
+declare const ROUND: string;
+declare const BEVEL: string;
+declare const MITER: string;
+
+//
+// Constants -> Color
+//
+
+declare const RGB: string;
+declare const HSB: string;
+declare const HSL: string;
+
+//
+// Constants -> DOM Extension
+//
+
+declare const AUTO: string;
+
+//
+// Constants -> Input
+//
+
+declare const ALT: number;
+declare const BACKSPACE: number;
+declare const CONTROL: number;
+declare const DELETE: number;
+declare const DOWN_ARROW: number;
+declare const ENTER: number;
+declare const ESCAPE: number;
+declare const LEFT_ARROW: number;
+declare const OPTION: number;
+declare const RETURN: number;
+declare const RIGHT_ARROW: number;
+declare const SHIFT: number;
+declare const TAB: number;
+declare const UP_ARROW: number;
 
 //
 // Structure Functions
