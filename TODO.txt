@@ -1,0 +1,7 @@
+Everything listed in this TODO is in alphabetical order.
+
+Test the following functions for implementation errors:
+- background
+
+The following functions are clean and do not require testing:
+- All structure functions
