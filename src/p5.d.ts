@@ -3,6 +3,26 @@
 //
 
 declare class p5 {
+
+	/**
+	 * This is the p5 instance constructor.
+	 *
+	 * A p5 instance holds all the properties and methods related to
+	 * a p5 sketch.  It expects an incoming sketch closure and it can also
+	 * take an optional node parameter for attaching the generated p5 canvas
+	 * to a node.  The sketch closure takes the newly created p5 instance as
+	 * its sole argument and may optionally set preload(), setup(), and/or
+	 * draw() properties on it for running a sketch.
+	 *
+	 * A p5 sketch can run in "global" or "instance" mode:
+	 * "global"   - all properties and methods are attached to the window
+	 * "instance" - all properties and methods are bound to this p5 object
+	 *
+	 * @param {Function} sketch A closure that can set optional preload(), setup(), and/or draw() properties on the given p5 instance
+	 * @param {HTMLElement|boolean} node Element to attach canvas to, if a boolean is passed in use it as sync
+	 * @param {boolean} sync Start synchronously (optional)
+	 */
+	constructor(sketch: p5, node?: (HTMLElement | boolean), sync?: boolean);
 }
 
 declare namespace p5 {
@@ -41,6 +61,53 @@ declare function background(v1: (number | string | p5.Color | p5.Image), a?: num
  * @param {number} a Opacity of the background relative to current color range (default is 0-100)
  */
 declare function background(v1: number, v2: number, v3: number, a?: number): void;
+
+//
+// Constants -> Graphics Renderer
+//
+
+declare const P2D: string;
+
+declare const WEBGL: string;
+
+//
+// Constants -> Trigonometry
+//
+
+/**
+ * HALF_PI is a mathematical constant with the value 1.57079632679489661923. It is
+ * half the ratio of the circumference of a circle to its diameter. It is useful in
+ * combination with the trigonometric functions sin() and cos().
+ */
+declare const HALF_PI: number;
+
+/**
+ * PI is a mathematical constant with the value 3.14159265358979323846. It is the ratio
+ * of the circumference of a circle to its diameter. It is useful in combination with the
+ * trigonometric functions sin() and cos().
+ */
+declare const PI: number;
+
+/**
+ * QUARTER_PI is a mathematical constant with the value 0.7853982. It is one quarter
+ * the ratio of the circumference of a circle to its diameter. It is useful in combination
+ * with the trigonometric functions sin() and cos().
+ */
+declare const QUARTER_PI: number;
+
+/**
+ * TAU is an alias for TWO_PI, a mathematical constant with the value
+ * 6.28318530717958647693. It is twice the ratio of the circumference of a circle to its
+ * diameter. It is useful in combination with the trigonometric functions sin() and cos().
+ */
+declare const TAU: number;
+
+/**
+ * TWO_PI is a mathematical constant with the value 6.28318530717958647693. It is
+ * twice the ratio of the circumference of a circle to its diameter. It is useful
+ * in combination with the trigonometric functions sin() and cos().
+ */
+declare const TWO_PI: number;
 
 //
 // Structure Functions
