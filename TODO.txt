@@ -2,6 +2,8 @@ Everything listed in this TODO is in alphabetical order.
 
 Test the following functions for implementation errors:
 - background
+- color
+- lerpColor
 
 The following are missing documentation:
 - Most constants

@@ -63,6 +63,33 @@ declare var width: number;
  */
 declare var height: number;
 
+//
+// Image -> Pixels
+//
+
+/**
+ * Uint8ClampedArray containing the values for all the pixels in the display
+ * window. These values are numbers. This array is the size (include an
+ * appropriate factor for pixelDensity) of the display window x4, representing
+ * the R, G, B, A values in order for each pixel, moving from left to right
+ * across each row, then down each column. Retina and other high denisty
+ * displays will have more pixels[] (by a factor of pixelDensity^2). For
+ * example, if the image is 100x100 pixels, there will be 40,000. On a retina
+ * display, there will be 160,000.
+ * 
+ * The first four values (indices 0-3) in the array will be the R, G, B, A
+ * values of the pixel at (0, 0). The second four values (indices 4-7) will
+ * contain the R, G, B, A values of the pixel at (1, 0).
+ * 
+ * Before accessing this array, the data must loaded with the loadPixels()
+ * function. After the array data has been modified, the updatePixels()
+ * function must be run to update the changes.
+ * 
+ * Note that this is not a standard javascript array. This means that standard
+ * javascript functions such as slice() or arrayCopy() do not work.
+ */
+declare var pixels: Uint8ClampedArray;
+
 ///////////////////////////////////////////////////////////////////////////////
 // Constants
 ///////////////////////////////////////////////////////////////////////////////
@@ -263,6 +290,140 @@ declare const _DEFAULT_FILL: string;
 //
 // Color -> Creating & Reading
 //
+
+/**
+ * Extracts the alpha value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} obj p5.Color object or pixel array
+ */
+declare function alpha(obj: p5.Color | number[]): number;
+
+/**
+ * Extracts the blue value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} obj p5.Color object or pixel array
+ */
+declare function blue(obj: p5.Color | number[]): number;
+
+/**
+ * Extracts the HSB brightness value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} obj p5.Color object or pixel array
+ */
+declare function brightness(obj: p5.Color | number[]): number;
+
+/**
+ * Creates colors for storing in variables of the color datatype. The
+ * parameters are interpreted as RGB or HSB values depending on the current
+ * colorMode(). The default mode is RGB values from 0 to 255 and, therefore,
+ * the function call color(255, 204, 0) will return a bright yellow color.
+ * 
+ * Note that if only one value is provided to color(), it will be interpreted
+ * as a grayscale value. Add a second value, and it will be used for alpha
+ * transparency. When three values are specified, they are interpreted as
+ * either RGB or HSB values. Adding a fourth value applies alpha transparency.
+ * If a single string parameter is provided it will be interpreted as a
+ * CSS-compatible color string.
+ * 
+ * Colors are stored as Numbers or Arrays.
+ * 
+ * @param {(string | number | p5.Color | number[])} v1 number specifying value
+ * 		between white and black, a color string, or a color
+ * @param {number} alpha alpha value relative to current color range (default
+ * 		is 0-100)
+ */
+declare function color(v1: string | number | p5.Color | number[],
+	alpha?: number): p5.Color;
+
+/**
+ * Creates colors for storing in variables of the color datatype. The
+ * parameters are interpreted as RGB or HSB values depending on the current
+ * colorMode(). The default mode is RGB values from 0 to 255 and, therefore,
+ * the function call color(255, 204, 0) will return a bright yellow color.
+ * 
+ * Note that if only one value is provided to color(), it will be interpreted
+ * as a grayscale value. Add a second value, and it will be used for alpha
+ * transparency. When three values are specified, they are interpreted as
+ * either RGB or HSB values. Adding a fourth value applies alpha transparency.
+ * If a single string parameter is provided it will be interpreted as a
+ * CSS-compatible color string.
+ * 
+ * Colors are stored as Numbers or Arrays.
+ * 
+ * @param {number} v1 red or hue value relative to the current color
+ * 		range
+ * @param {number} v2 green or saturation value relative to the current color
+ * 		range
+ * @param {number} v3 blue or brightness value relative to the current color
+ * 		range
+ * @param {number} alpha alpha value relative to current color range (default
+ * 		is 0-100)
+ */
+declare function color(v1: number, v2: number, v3: number,
+	alpha?: number): p5.Color;
+
+/**
+ * Extracts the green value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} color p5.Color object or pixel array
+ */
+declare function green(color: p5.Color | number[]): number;
+
+/**
+ * Extracts the hue value from a color or pixel array.
+ * 
+ * Hue exists in both HSB and HSL. This function will return the HSB-normalized
+ * hue when supplied with an HSB color object (or when supplied with a pixel
+ * array while the color mode is HSB), but will default to the HSL-normalized
+ * hue otherwise. (The values will only be different if the maximum hue setting
+ * for each system is different.)
+ * 
+ * @param {(p5.Color | number[])} color p5.Color object or pixel array
+ */
+declare function hue(color: p5.Color | number[]): number;
+
+/**
+ * Blends two colors to find a third color somewhere between them. The amt
+ * parameter is the amount to interpolate between the two values where 0.0
+ * equal to the first color, 0.1 is very near the first color, 0.5 is halfway
+ * in between, etc. An amount below 0 will be treated as 0. Likewise, amounts
+ * above 1 will be capped at 1. This is different from the behavior of lerp(),
+ * but necessary because otherwise numbers outside the range will produce
+ * strange and unexpected colors.
+ * 
+ * The way that colours are interpolated depends on the current color mode.
+ * 
+ * @param {p5.Color} c1 interpolate from this color
+ * @param {p5.Color} c2 interpolate to this color
+ * @param {number} amt number between 0 and 1
+ */
+declare function lerpColor(c1: p5.Color, c2: p5.Color, amt: number): p5.Color;
+
+/**
+ * Extracts the HSL lightness value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} color p5.Color object or pixel array
+ */
+declare function lightness(color: p5.Color | number[]): number;
+
+/**
+ * Extracts the red value from a color or pixel array.
+ * 
+ * @param {(p5.Color | number[])} obj p5.Color object or pixel array
+ */
+declare function red(obj: p5.Color | number[]): number;
+
+/**
+ * Extracts the saturation value from a color or pixel array.
+ * 
+ * Saturation is scaled differently in HSB and HSL. This function will return
+ * the HSB saturation when supplied with an HSB color object (or when supplied
+ * with a pixel array while the color mode is HSB), but will default to the HSL
+ * saturation otherwise.
+ * 
+ * @param {(p5.Color | number[])} color p5.Color object or pixel array
+ */
+declare function saturation(color: p5.Color | number[]): number
 
 //
 // Color -> Setting
