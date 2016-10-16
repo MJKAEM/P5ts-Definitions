@@ -4,9 +4,11 @@ Test the following functions for implementation errors:
 - background
 - color
 - lerpColor
+- p5.Color._parseInputs + p5.Color.constructor
 
 The following are missing documentation:
 - Most constants
+- p5.Color class
 
 The following functions are clean and do not require testing:
 - All structure functions
