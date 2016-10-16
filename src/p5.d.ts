@@ -195,6 +195,70 @@ declare const TAB: number;
 declare const UP_ARROW: number;
 
 //
+// Constants -> Rendering
+//
+
+declare const BLEND: string;
+declare const ADD: string;
+declare const DARKEST: string;
+declare const LIGHTEST: string;
+declare const DIFFERENCE: string;
+declare const EXCLUSION: string;
+declare const MULTIPLY: string;
+declare const SCREEN: string;
+declare const REPLACE: string;
+declare const OVERLAY: string;
+declare const HARD_LIGHT: string;
+declare const SOFT_LIGHT: string;
+declare const DODGE: string;
+declare const BURN: string;
+
+//
+// Constants -> Filters
+//
+
+declare const THRESHOLD: string;
+declare const GRAY: string;
+declare const OPAQUE: string;
+declare const INVERT: string;
+declare const POSTERIZE: string;
+declare const DILATE: string;
+declare const ERODE: string;
+declare const BLUR: string;
+
+//
+// Constants -> Typography
+//
+
+declare const NORMAL: string;
+declare const ITALIC: string;
+declare const BOLD: string;
+
+//
+// Constants -> Typography-Internal
+//
+
+declare const _DEFAULT_TEXT_FILL: string;
+declare const _DEFAULT_LEADMULT: number;
+declare const _CTX_MIDDLE: string;
+
+//
+// Constants -> Vertices
+//
+
+declare const LINEAR: string;
+declare const QUADRATIC: string;
+declare const BEZIER: string;
+declare const CURVE: string;
+
+//
+// Constants ->  Defaults
+//
+
+declare const _DEFAULT_STROKE: string;
+declare const _DEFAULT_FILL: string;
+
+//
 // Structure Functions
 //
 
@@ -340,8 +404,8 @@ declare function redraw(n?: number): void;
  * this function. If createCanvas() is not used, the window will be given a
  * default size of 100x100 pixels.
  *
- * @param w Width of the canvas
- * @param h Height of the canvas
- * @param renderer P2D or WEBGL
+ * @param {number} w Width of the canvas
+ * @param {number} h Height of the canvas
+ * @param {string} renderer P2D or WEBGL
  */
 declare function createCanvas(w: number, h: number, renderer?: string): any;
