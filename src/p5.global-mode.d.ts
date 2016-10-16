@@ -10,26 +10,26 @@
 
 /**
  * The system variable frameCount contains the number of frames that have been
- * displayed since the program started. Inside setup() the value is 0, after the first
- * iteration of draw it is 1, etc.
+ * displayed since the program started. Inside setup() the value is 0, after
+ * the first iteration of draw it is 1, etc.
  */
 declare var frameCount: number;
 
 /**
- * Confirms if the window a p5.js program is in is "focused," meaning that the sketch
- * will accept mouse or keyboard input. This variable is "true" if the window is focused
- * and "false" if not.
+ * Confirms if the window a p5.js program is in is "focused," meaning that the
+ * sketch will accept mouse or keyboard input. This variable is "true" if the
+ * window is focused and "false" if not.
  */
 declare var focused: boolean;
 /**
- * System variable that stores the width of the entire screen display. This is used to run
- * a full-screen program on any display size.
+ * System variable that stores the width of the entire screen display. This is
+ * used to run a full-screen program on any display size.
  */
 declare var displayWidth: number;
 
 /**
- * System variable that stores the height of the entire screen display. This is used to run
- * a full-screen program on any display size.
+ * System variable that stores the height of the entire screen display. This is
+ * used to run a full-screen program on any display size.
  */
 declare var displayHeight: number;
 
@@ -46,18 +46,20 @@ declare var windowWidth: number;
 declare var windowHeight: number;
 
 /**
- * System variable that stores the width of the drawing canvas. This value is set by the
- * first parameter of the createCanvas() function. For example, the function call
- * createCanvas(320, 240) sets the width variable to the value 320. The value of width
- * defaults to 100 if createCanvas() is not used in a program.
+ * System variable that stores the width of the drawing canvas. This value is
+ * set by the first parameter of the createCanvas() function. For example, the
+ * function call createCanvas(320, 240) sets the width variable to the value
+ * 320. The value of width defaults to 100 if createCanvas() is not used in a
+ * program.
  */
 declare var width: number;
 
 /**
- * System variable that stores the height of the drawing canvas. This value is set by the
- * second parameter of the createCanvas() function. For example, the function call
- * createCanvas(320, 240) sets the height variable to the value 240. The value of height
- * defaults to 100 if createCanvas() is not used in a program.
+ * System variable that stores the height of the drawing canvas. This value is
+ * set by the second parameter of the createCanvas() function. For example, the
+ * function call createCanvas(320, 240) sets the height variable to the value
+ * 240. The value of height defaults to 100 if createCanvas() is not used in a
+ * program.
  */
 declare var height: number;
 
@@ -88,37 +90,38 @@ declare const WAIT: string;
 //
 
 /**
- * HALF_PI is a mathematical constant with the value 1.57079632679489661923. It is
- * half the ratio of the circumference of a circle to its diameter. It is useful in
- * combination with the trigonometric functions sin() and cos().
+ * HALF_PI is a mathematical constant with the value 1.57079632679489661923. It
+ * is half the ratio of the circumference of a circle to its diameter. It is
+ * useful in combination with the trigonometric functions sin() and cos().
  */
 declare const HALF_PI: number;
 
 /**
- * PI is a mathematical constant with the value 3.14159265358979323846. It is the ratio
- * of the circumference of a circle to its diameter. It is useful in combination with the
- * trigonometric functions sin() and cos().
+ * PI is a mathematical constant with the value 3.14159265358979323846. It is
+ * the ratio of the circumference of a circle to its diameter. It is useful in
+ * combination with the trigonometric functions sin() and cos().
  */
 declare const PI: number;
 
 /**
- * QUARTER_PI is a mathematical constant with the value 0.7853982. It is one quarter
- * the ratio of the circumference of a circle to its diameter. It is useful in combination
- * with the trigonometric functions sin() and cos().
+ * QUARTER_PI is a mathematical constant with the value 0.7853982. It is one
+ * quarter the ratio of the circumference of a circle to its diameter. It is
+ * useful in combination with the trigonometric functions sin() and cos().
  */
 declare const QUARTER_PI: number;
 
 /**
  * TAU is an alias for TWO_PI, a mathematical constant with the value
- * 6.28318530717958647693. It is twice the ratio of the circumference of a circle to its
- * diameter. It is useful in combination with the trigonometric functions sin() and cos().
+ * 6.28318530717958647693. It is twice the ratio of the circumference of a
+ * circle to its diameter. It is useful in combination with the trigonometric
+ * functions sin() and cos().
  */
 declare const TAU: number;
 
 /**
- * TWO_PI is a mathematical constant with the value 6.28318530717958647693. It is
- * twice the ratio of the circumference of a circle to its diameter. It is useful
- * in combination with the trigonometric functions sin() and cos().
+ * TWO_PI is a mathematical constant with the value 6.28318530717958647693. It
+ * is twice the ratio of the circumference of a circle to its diameter. It is
+ * useful in combination with the trigonometric functions sin() and cos().
  */
 declare const TWO_PI: number;
 declare const DEGREES: string;
@@ -266,27 +269,33 @@ declare const _DEFAULT_FILL: string;
 //
 
 /**
- * The background() function sets the color used for the background of the p5.js canvas. The
- * default background is light gray. This function is typically used within draw() to clear the
- * display window at the beginning of each frame, but it can be used inside setup() to set the
- * background on the first frame of animation or if the background need only be set once.
+ * The background() function sets the color used for the background of the
+ * p5.js canvas. The default background is light gray. This function is
+ * typically used within draw() to clear the display window at the beginning of
+ * each frame, but it can be used inside setup() to set the background on the
+ * first frame of animation or if the background need only be set once.
  * 
  * @param {(p5.Color | string | number | p5.Image)} v1
- * @param {number} a opacity of the background relative to current color range (default is 0-100)
+ * @param {number} a opacity of the background relative to current color range
+ * 		(default is 0-100)
  */
 declare function background(v1: (number | string | p5.Color | p5.Image),
 	a?: number): void;
 
 /**
- * The background() function sets the color used for the background of the p5.js canvas. The
- * default background is light gray. This function is typically used within draw() to clear the
- * display window at the beginning of each frame, but it can be used inside setup() to set the
- * background on the first frame of animation or if the background need only be set once.
+ * The background() function sets the color used for the background of the
+ * p5.js canvas. The default background is light gray. This function is
+ * typically used within draw() to clear the display window at the beginning of
+ * each frame, but it can be used inside setup() to set the background on the
+ * first frame of animation or if the background need only be set once.
  *
  * @param {number} v1 red or hue value (depending on the current color mode)
- * @param {number} v2 green or saturation value (depending on the current color mode)
- * @param {number} v3 blue or brightness value (depending on the current color mode)
- * @param {number} a opacity of the background relative to current color range (default is 0-100)
+ * @param {number} v2 green or saturation value (depending on the current color
+ * 		mode)
+ * @param {number} v3 blue or brightness value (depending on the current color
+ * 		mode)
+ * @param {number} a opacity of the background relative to current color range
+ * 		(default is 0-100)
  */
 declare function background(v1: number, v2: number, v3: number, a?: number):
 	void;
@@ -296,15 +305,15 @@ declare function background(v1: number, v2: number, v3: number, a?: number):
 //
 
 /**
- * Draw an arc to the screen. If called with only a, b, c, d, start, and stop, the arc will be
- * drawn as an open pie. If mode is provided, the arc will be drawn either open, as a
- * chord, or as a pie as specified. The origin may be changed with the ellipseMode()
- * function.
+ * Draw an arc to the screen. If called with only a, b, c, d, start, and stop,
+ * the arc will be drawn as an open pie. If mode is provided, the arc will be
+ * drawn either open, as a chord, or as a pie as specified. The origin may be
+ * changed with the ellipseMode() function.
  * 
- * Note that drawing a full circle (ex: 0 to TWO_PI) will appear blank because 0 and
- * TWO_PI are the same position on the unit circle. The best way to handle this is by
- * using the ellipse() function instead to create a closed ellipse, and to use the arc()
- * function only to draw parts of an ellipse.
+ * Note that drawing a full circle (ex: 0 to TWO_PI) will appear blank because
+ * 0 and TWO_PI are the same position on the unit circle. The best way to
+ * handle this is by using the ellipse() function instead to create a closed
+ * ellipse, and to use the arc() function only to draw parts of an ellipse.
  * 
  * @param {number} a x-coordinate of the arc's ellipse
  * @param {number} b y-coordinate of the arc's ellipse
@@ -312,17 +321,18 @@ declare function background(v1: number, v2: number, v3: number, a?: number):
  * @param {number} d height of the arc's ellipse by default
  * @param {number} start angle to start the arc, specified in radians
  * @param {number} stop angle to stop the arc, specified in radians
- * @param {string} mode optional parameter to determine the way of drawing the arc
+ * @param {string} mode optional parameter to determine the way of drawing the
+ * 		arc
  */
 declare function arc(a: number, b: number, c: number, d: number, start: number,
 	stop: number, mode?: string): p5;
 
 /**
- * Draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
- * By default, the first two parameters set the location, and the third and fourth
- * parameters set the shape's width and height. If no height is specified, the value of
- * width is used for both the width and height. The origin may be changed with the
- * ellipseMode() function.
+ * Draws an ellipse (oval) to the screen. An ellipse with equal width and
+ * height is a circle. By default, the first two parameters set the location,
+ * and the third and fourth parameters set the shape's width and height. If no
+ * height is specified, the value of width is used for both the width and
+ * height. The origin may be changed with the ellipseMode() function.
  * 
  * @param {number} x x-coordinate of the ellipse.
  * @param {number} y y-coordinate of the ellipse.
@@ -332,10 +342,11 @@ declare function arc(a: number, b: number, c: number, d: number, start: number,
 declare function ellipse(x: number, y: number, w: number, h?: number): p5;
 
 /**
- * Draws a line (a direct path between two points) to the screen. The version of line()
- * with four parameters draws the line in 2D. To color a line, use the stroke() function. A
- * line cannot be filled, therefore the fill() function will not affect the color of a line. 2D
- * lines are drawn with a width of one pixel by default, but this can be changed with the
+ * Draws a line (a direct path between two points) to the screen. The version
+ * of line() with four parameters draws the line in 2D. To color a line, use
+ * the stroke() function. A line cannot be filled, therefore the fill()
+ * function will not affect the color of a line. 2D lines are drawn with a
+ * width of one pixel by default, but this can be changed with the
  * strokeWeight() function.
  * 
  * @param {number} x1 the x-coordinate of the first point
@@ -346,9 +357,10 @@ declare function ellipse(x: number, y: number, w: number, h?: number): p5;
 declare function line(x1: number, y1: number, x2: number, y2: number): p5;
 
 /**
- * Draws a point, a coordinate in space at the dimension of one pixel. The first
- * parameter is the horizontal value for the point, the second value is the vertical value
- * for the point. The color of the point is determined by the current stroke.
+ * Draws a point, a coordinate in space at the dimension of one pixel. The
+ * first parameter is the horizontal value for the point, the second value is
+ * the vertical value for the point. The color of the point is determined by
+ * the current stroke.
  * 
  * @param {number} x the x-coordinate
  * @param {number} y the y-coordinate
@@ -356,10 +368,11 @@ declare function line(x1: number, y1: number, x2: number, y2: number): p5;
 declare function point(x: number, y: number): p5;
 
 /**
- * Draw a quad. A quad is a quadrilateral, a four sided polygon. It is similar to a
- * rectangle, but the angles between its edges are not constrained to ninety degrees.
- * The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs
- * should proceed clockwise or counter-clockwise around the defined shape.
+ * Draw a quad. A quad is a quadrilateral, a four sided polygon. It is similar
+ * to a rectangle, but the angles between its edges are not constrained to
+ * ninety degrees. The first pair of parameters (x1,y1) sets the first vertex
+ * and the subsequent pairs should proceed clockwise or counter-clockwise
+ * around the defined shape.
  * 
  * @param {number} x1 the x-coordinate of the first point
  * @param {number} y1 the y-coordinate of the first point
@@ -374,15 +387,16 @@ declare function quad(x1: number, y1: number, x2: number, y2: number,
 	x3: number, y3: number, x4: number, y4: number): p5;
 
 /**
- * Draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at
- * ninety degrees. By default, the first two parameters set the location of the upper-left
- * corner, the third sets the width, and the fourth sets the height. The way these
- * parameters are interpreted, however, may be changed with the rectMode() function.
+ * Draws a rectangle to the screen. A rectangle is a four-sided shape with
+ * every angle at ninety degrees. By default, the first two parameters set the
+ * location of the upper-left corner, the third sets the width, and the fourth
+ * sets the height. The way these parameters are interpreted, however, may be
+ * changed with the rectMode() function.
  * 
- * The fifth, sixth, seventh and eighth parameters, determine the corner radius for the
- * top-right, top-left, lower-right and lower-left corners, respectively. An omitted corner
- * radius parameter is set to the value of the previously specified radius value in the
- * parameter list.
+ * The fifth, sixth, seventh and eighth parameters, determine the corner radius
+ * for the top-right, top-left, lower-right and lower-left corners,
+ * respectively. An omitted corner radius parameter is set to the value of the
+ * previously specified radius value in the parameter list.
  * 
  * @param {number} x x-coordinate of the rectangle.
  * @param {number} y y-coordinate of the rectangle.
@@ -397,9 +411,9 @@ declare function rect(x: number, y: number, w: number, h: number, tl?: number,
 	tr?: number, br?: number, bl?: number): p5;
 
 /**
- * A triangle is a plane created by connecting three points. The first two arguments
- * specify the first point, the middle two arguments specify the second point, and the
- * last two arguments specify the third point.
+ * A triangle is a plane created by connecting three points. The first two
+ * arguments specify the first point, the middle two arguments specify the
+ * second point, and the last two arguments specify the third point.
  * 
  * @param {number} x1 x-coordinate of the first point
  * @param {number} y1 y-coordinate of the first point
@@ -416,90 +430,95 @@ declare function triangle(x1: number, y1: number, x2: number, y2: number,
 //
 
 /**
- * Modifies the location from which ellipses are drawn by changing the way in which
- * parameters given to ellipse() are interpreted.
+ * Modifies the location from which ellipses are drawn by changing the way in
+ * which parameters given to ellipse() are interpreted.
  * 
- * The default mode is ellipseMode(CENTER), which interprets the first two parameters
- * of ellipse() as the shape's center point, while the third and fourth parameters are its
- * width and height.
+ * The default mode is ellipseMode(CENTER), which interprets the first two
+ * parameters of ellipse() as the shape's center point, while the third and
+ * fourth parameters are its width and height.
  * 
- * ellipseMode(RADIUS) also uses the first two parameters of ellipse() as the shape's
- * center point, but uses the third and fourth parameters to specify half of the shapes's
- * width and height.
+ * ellipseMode(RADIUS) also uses the first two parameters of ellipse() as the
+ * shape's center point, but uses the third and fourth parameters to specify
+ * half of the shapes's width and height.
  * 
- * ellipseMode(CORNER) interprets the first two parameters of ellipse() as the upper-left
- * corner of the shape, while the third and fourth parameters are its width and height.
+ * ellipseMode(CORNER) interprets the first two parameters of ellipse() as the
+ * upper-left corner of the shape, while the third and fourth parameters are
+ * its width and height.
  * 
- * ellipseMode(CORNERS) interprets the first two parameters of ellipse() as the location
- * of one corner of the ellipse's bounding box, and the third and fourth parameters as
- * the location of the opposite corner.
+ * ellipseMode(CORNERS) interprets the first two parameters of ellipse() as the
+ * location of one corner of the ellipse's bounding box, and the third and
+ * fourth parameters as the location of the opposite corner.
  * 
- * The parameter must be written in ALL CAPS because Javascript is a case-sensitive language.
+ * The parameter must be written in ALL CAPS because Javascript is a
+ * case-sensitive language.
  * 
- * @param {string} mode
+ * @param {string} mode either CENTER, RADIUS, CORNER, or CORNERS
  */
 declare function ellipseMode(mode: string): p5;
 
 /**
- * Draws all geometry with jagged (aliased) edges. Note that smooth() is active by
- * default, so it is necessary to call noSmooth() to disable smoothing of geometry,
- * images, and fonts.
+ * Draws all geometry with jagged (aliased) edges. Note that smooth() is active
+ * by default, so it is necessary to call noSmooth() to disable smoothing of
+ * geometry, images, and fonts.
  */
 declare function noSmooth(): p5;
 
 /**
- * Modifies the location from which rectangles are drawn by changing the way in which
- * parameters given to rect() are interpreted.
+ * Modifies the location from which rectangles are drawn by changing the way in
+ * which parameters given to rect() are interpreted.
  * 
- * The default mode is rectMode(CORNER), which interprets the first two parameters of
- * rect() as the upper-left corner of the shape, while the third and fourth parameters are
- * its width and height.
+ * The default mode is rectMode(CORNER), which interprets the first two
+ * parameters of rect() as the upper-left corner of the shape, while the third
+ * and fourth parameters are its width and height.
  * 
- * rectMode(CORNERS) interprets the first two parameters of rect() as the location of
- * one corner, and the third and fourth parameters as the location of the opposite corner.
+ * rectMode(CORNERS) interprets the first two parameters of rect() as the
+ * location of one corner, and the third and fourth parameters as the location
+ * of the opposite corner.
  * 
- * rectMode(CENTER) interprets the first two parameters of rect() as the shape's center
- * point, while the third and fourth parameters are its width and height.
- * 
- * rectMode(RADIUS) also uses the first two parameters of rect() as the shape's center
- * point, but uses the third and fourth parameters to specify half of the shapes's width
+ * rectMode(CENTER) interprets the first two parameters of rect() as the
+ * shape's center point, while the third and fourth parameters are its width
  * and height.
  * 
- * The parameter must be written in ALL CAPS because Javascript is a case-sensitive
- * language.
+ * rectMode(RADIUS) also uses the first two parameters of rect() as the shape's
+ * center point, but uses the third and fourth parameters to specify half of
+ * the shapes's width and height.
+ * 
+ * The parameter must be written in ALL CAPS because Javascript is a
+ * case-sensitive language.
  * 
  * @param {string} mode either CORNER, CORNERS, CENTER, or RADIUS
  */
 declare function rectMode(mode: string): p5;
 
 /**
- * Draws all geometry with smooth (anti-aliased) edges. smooth() will also improve
- * image quality of resized images. Note that smooth() is active by default; noSmooth()
- * can be used to disable smoothing of geometry, images, and fonts.
+ * Draws all geometry with smooth (anti-aliased) edges. smooth() will also
+ * improve image quality of resized images. Note that smooth() is active by
+ * default; noSmooth() can be used to disable smoothing of geometry, images,
+ * and fonts.
  */
 declare function smooth(): p5;
 
 /**
- * Sets the style for rendering line endings. These ends are either squared, extended, or
- * rounded, each of which specified with the corresponding parameters: SQUARE,
- * PROJECT, and ROUND. The default cap is ROUND.
+ * Sets the style for rendering line endings. These ends are either squared,
+ * extended, or rounded, each of which specified with the corresponding
+ * parameters: SQUARE, PROJECT, and ROUND. The default cap is ROUND.
  * 
  * @param {string} cap either SQUARE, PROJECT, or ROUND
  */
 declare function strokeCap(cap: string): p5;
 
 /**
- * Sets the style of the joints which connect line segments. These joints are either
- * mitered, beveled, or rounded and specified with the corresponding parameters
- * MITER, BEVEL, and ROUND. The default joint is MITER.
+ * Sets the style of the joints which connect line segments. These joints are
+ * either mitered, beveled, or rounded and specified with the corresponding
+ * parameters MITER, BEVEL, and ROUND. The default joint is MITER.
  * 
  * @param {string} join either MITER, BEVEL, ROUND
  */
 declare function strokeJoin(join: string): p5;
 
 /**
- * Sets the width of the stroke used for lines, points, and the border around shapes. All
- * widths are set in units of pixels.
+ * Sets the width of the stroke used for lines, points, and the border around
+ * shapes. All widths are set in units of pixels.
  * 
  * @param {number} weight the weight (in pixels) of the stroke
  */
@@ -510,19 +529,20 @@ declare function strokeWeight(weight: number): p5;
 //
 
 /**
- * Called directly before setup(), the preload() function is used to handle asynchronous
- * loading of external files. If a preload function is defined, setup() will wait until any
- * load calls within have finished. Nothing besides load calls should be inside preload
- * (loadImage, loadJSON, loadFont, loadStrings, etc).
+ * Called directly before setup(), the preload() function is used to handle
+ * asynchronous loading of external files. If a preload function is defined,
+ * setup() will wait until any load calls within have finished. Nothing besides
+ * load calls should be inside preload (loadImage, loadJSON, loadFont,
+ * loadStrings, etc).
  */
 declare function preload(): void
 
 /**
  * The setup() function is called once when the program starts. It's used to
  * define initial environment properties such as screen size and background
- * color and to load media such as images and fonts as the program starts. There
- * can only be one setup() function for each program and it shouldn't be called
- * again after its initial execution. 
+ * color and to load media such as images and fonts as the program starts.
+ * There can only be one setup() function for each program and it shouldn't be
+ * called again after its initial execution. 
  */
 declare function setup(): void;
 
@@ -556,81 +576,87 @@ declare function setup(): void;
 declare function draw(): void;
 
 /**
- * Removes the entire p5 sketch. This will remove the canvas and any elements created
- * by p5.js. It will also stop the draw loop and unbind any properties or methods from
- * the window global scope. It will leave a variable p5 in case you wanted to create a
- * new p5 sketch. If you like, you can set p5 = null to erase it.
+ * Removes the entire p5 sketch. This will remove the canvas and any elements
+ * created by p5.js. It will also stop the draw loop and unbind any properties
+ * or methods from the window global scope. It will leave a variable p5 in case
+ * you wanted to create a new p5 sketch. If you like, you can set p5 = null to
+ * erase it.
  */
 declare function remove(): void;
 
 /**
- * Stops p5.js from continuously executing the code within draw(). If loop() is called, the
- * code in draw() begins to run continuously again. If using noLoop() in setup(), it
- * should be the last line inside the block. 
+ * Stops p5.js from continuously executing the code within draw(). If loop() is
+ * called, the code in draw() begins to run continuously again. If using
+ * noLoop() in setup(), it should be the last line inside the block.
  *
- * When noLoop() is used, it's not possible to manipulate or access the screen inside
- * event handling functions such as mousePressed() or keyPressed(). Instead, use those
- * functions to call redraw() or loop(), which will run draw(), which can update the screen
- * properly. This means that when noLoop() * has been called, no drawing can happen,
- * and functions like saveFrame() or loadPixels() may not be used. 
+ * When noLoop() is used, it's not possible to manipulate or access the screen
+ * inside event handling functions such as mousePressed() or keyPressed().
+ * Instead, use those functions to call redraw() or loop(), which will run
+ * draw(), which can update the screen properly. This means that when noLoop()
+ * has been called, no drawing can happen, and functions like saveFrame() or
+ * loadPixels() may not be used. 
  *
- * Note that if the sketch is resized, redraw() will be called to update the sketch, even
- * after noLoop() has been specified. Otherwise, the sketch would enter an odd state
- * until loop() was called.
+ * Note that if the sketch is resized, redraw() will be called to update the
+ * sketch, even after noLoop() has been specified. Otherwise, the sketch would
+ * enter an odd state until loop() was called.
  */
 declare function noLoop(): void;
 
 /**
- * By default, p5.js loops through draw() continuously, executing the code within it.
- * However, the draw() loop may be stopped by calling noLoop(). In that case, the
- * draw() loop can be resumed with loop().
+ * By default, p5.js loops through draw() continuously, executing the code
+ * within it. However, the draw() loop may be stopped by calling noLoop(). In
+ * that case, the draw() loop can be resumed with loop().
  */
 declare function loop(): void;
 
 /**
- * The push() function saves the current drawing style settings and transformations,
- * while pop() restores these settings. Note that these functions are always used
- * together. They allow you to change the style and transformation settings and later
- * return to what you had. When a new state is started with push(), it builds on the
- * current style and transform information. The push() and pop() functions can be
- * embedded to provide more control. (See the second example for a demonstration.)
+ * The push() function saves the current drawing style settings and
+ * transformations, while pop() restores these settings. Note that these
+ * functions are always used together. They allow you to change the style and
+ * transformation settings and later return to what you had. When a new state
+ * is started with push(), it builds on the current style and transform
+ * information. The push() and pop() functions can be embedded to provide more
+ * control. (See the second example for a demonstration.)
  * 
- * push() stores information related to the current transformation state and style
- * settings controlled by the following functions: fill(), stroke(), tint(), strokeWeight(),
- * strokeCap(), strokeJoin(), imageMode(), rectMode(), ellipseMode(), colorMode(),
- * textAlign(), textFont(), textMode(), textSize(), textLeading().
+ * push() stores information related to the current transformation state and
+ * style settings controlled by the following functions: fill(), stroke(),
+ * tint(), strokeWeight(), strokeCap(), strokeJoin(), imageMode(), rectMode(),
+ * ellipseMode(), colorMode(), textAlign(), textFont(), textMode(), textSize(),
+ * textLeading().
  */
 declare function push(): void;
 
 /**
- * The push() function saves the current drawing style settings and transformations,
- * while pop() restores these settings. Note that these functions are always used
- * together. They allow you to change the style and transformation settings and later
- * return to what you had. When a new state is started with push(), it builds on the
- * current style and transform information. The push() and pop() functions can be
- * embedded to provide more control. (See the second example for a demonstration.)
+ * The push() function saves the current drawing style settings and
+ * transformations, while pop() restores these settings. Note that these
+ * functions are always used together. They allow you to change the style and
+ * transformation settings and later return to what you had. When a new state
+ * is started with push(), it builds on the current style and transform
+ * information. The push() and pop() functions can be embedded to provide more
+ * control. (See the second example for a demonstration.)
  * 
- * push() stores information related to the current transformation state and style
- * settings controlled by the following functions: fill(), stroke(), tint(), strokeWeight(),
- * strokeCap(), strokeJoin(), imageMode(), rectMode(), ellipseMode(), colorMode(),
- * textAlign(), textFont(), textMode(), textSize(), textLeading().
+ * push() stores information related to the current transformation state and
+ * style settings controlled by the following functions: fill(), stroke(),
+ * tint(), strokeWeight(), strokeCap(), strokeJoin(), imageMode(), rectMode(),
+ * ellipseMode(), colorMode(), textAlign(), textFont(), textMode(), textSize(),
+ * textLeading().
  */
 declare function pop(): void;
 
 /**
- * Executes the code within draw() one time. This functions allows the program to
- * update the display window only when necessary, for example when an event
+ * Executes the code within draw() one time. This functions allows the program
+ * to update the display window only when necessary, for example when an event
  * registered by mousePressed() or keyPressed() occurs.
  * 
- * In structuring a program, it only makes sense to call redraw() within events such as
- * mousePressed(). This is because redraw() does not run draw() immediately (it only
- * sets a flag that indicates an update is needed).
+ * In structuring a program, it only makes sense to call redraw() within events
+ * such as mousePressed(). This is because redraw() does not run draw()
+ * immediately (it only sets a flag that indicates an update is needed).
  * 
  * The redraw() function does not work properly when called inside draw(). To
  * enable/disable animations, use loop() and noLoop().
  * 
- * In addition you can set the number of redraws per method call. Just add an integer as
- * single parameter for the number of redraws.
+ * In addition you can set the number of redraws per method call. Just add an
+ * integer as single parameter for the number of redraws.
  * 
  * @param {number} n Redraw for n-times. The default value is 1.
  */
@@ -641,44 +667,49 @@ declare function redraw(n?: number): void;
 //
 
 /**
- * The print() function writes to the console area of your browser. This function is often
- * helpful for looking at the data a program is producing. This function creates a new
- * line of text for each call to the function. Individual elements can be separated with
- * quotes ("") and joined with the addition operator (+).
+ * The print() function writes to the console area of your browser. This
+ * function is often helpful for looking at the data a program is producing.
+ * This function creates a new line of text for each call to the function.
+ * Individual elements can be separated with quotes ("") and joined with the
+ * addition operator (+).
  * 
- * While print() is similar to console.log(), it does not directly map to it in order to
- * simulate easier to understand behavior than console.log(). Due to this, it is slower. For
- * fastest results, use console.log().
+ * While print() is similar to console.log(), it does not directly map to it in
+ * order to simulate easier to understand behavior than console.log(). Due to
+ * this, it is slower. For fastest results, use console.log().
  * 
- * @param {*} content Any combination of Number, String, Object, Boolean, Array to print
+ * @param {*} content Any combination of Number, String, Object, Boolean, Array
+ * 		to print
  */
 declare function print(content: any): void;
 
 /**
- * Sets the cursor to a predefined symbol or an image, or makes it visible if already
- * hidden. If you are trying to set an image as the cursor, the recommended size is
- * 16x16 or 32x32 pixels. It is not possible to load an image as the cursor if you are
- * exporting your program for the Web, and not all MODES work with all browsers. The
- * values for parameters x and y must be less than the dimensions of the image.
+ * Sets the cursor to a predefined symbol or an image, or makes it visible if
+ * already hidden. If you are trying to set an image as the cursor, the
+ * recommended size is 16x16 or 32x32 pixels. It is not possible to load an
+ * image as the cursor if you are exporting your program for the Web, and not
+ * all MODES work with all browsers. The values for parameters x and y must be
+ * less than the dimensions of the image.
  * 
- * @param {number} type Either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT, or path for image
+ * @param {number} type Either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT, or path
+ * 		for image
  * @param {number} x The horizontal active spot of the cursor
  * @param {number} y The vertical active spot of the cursor
  */
 declare function cursor(type: number, x?: number, y?: number): void;
 
 /**
- * Specifies the number of frames to be displayed every second. For example, the
- * function call frameRate(30) will attempt to refresh 30 times a second. If the processor
- * is not fast enough to maintain the specified rate, the frame rate will not be achieved.
- * Setting the frame rate within setup() is recommended. The default rate is 60 frames
- * per second. This is the same as setFrameRate(val).
+ * Specifies the number of frames to be displayed every second. For example,
+ * the function call frameRate(30) will attempt to refresh 30 times a second.
+ * If the processor is not fast enough to maintain the specified rate, the
+ * frame rate will not be achieved. Setting the frame rate within setup() is
+ * recommended. The default rate is 60 frames per second. This is the same as
+ * setFrameRate(val).
  * 
- * Calling frameRate() with no arguments returns the current framerate. This is the same
- * as getFrameRate(). 
+ * Calling frameRate() with no arguments returns the current framerate. This is
+ * the same as getFrameRate(). 
  * 
- * Calling frameRate() with arguments that are not of the type numbers or are non
- * positive also returns current framerate.
+ * Calling frameRate() with arguments that are not of the type numbers or are
+ * non positive also returns current framerate.
  * 
  * @param {number} fps Number of frames to be displayed every second
  */
@@ -690,15 +721,15 @@ declare function frameRate(fps: number): number | p5;
 declare function getFrameRate(): number;
 
 /**
- * Specifies the number of frames to be displayed every second. For example, the
- * function call frameRate(30) will attempt to refresh 30 times a second. If the processor
- * is not fast enough to maintain the specified rate, the frame rate will not be achieved.
- * Setting the frame rate within setup() is recommended. The default rate is 60 frames
- * per second.
+ * Specifies the number of frames to be displayed every second. For example,
+ * the function call frameRate(30) will attempt to refresh 30 times a second.
+ * If the processor is not fast enough to maintain the specified rate, the
+ * frame rate will not be achieved. Setting the frame rate within setup() is
+ * recommended. The default rate is 60 frames per second.
  * 
  * @param {number} fps Number of frames to be displayed every second
  */
-declare function setFrameRate(fps: number): number;
+declare function setFrameRate(fps: number): p5;
 
 /**
  * Hides the cursor from view.
@@ -707,8 +738,8 @@ declare function noCursor(): void;
 
 /**
  * The windowResized() function is called once every time the browser window is
- * resized. This is a good place to resize the canvas or do any other adjustements to
- * accomodate the new window size.
+ * resized. This is a good place to resize the canvas or do any other
+ * adjustements to accomodate the new window size.
  */
 declare function windowResized(): void;
 
@@ -718,10 +749,10 @@ declare function windowResized(): void;
 declare function fullscreen(): boolean;
 
 /**
- * Sets the sketch to fullscreen or not based on the value of the argument. If no
- * argument is given, returns the current fullscreen state. Note that due to browser
- * restrictions this can only be called on user input, for example, on mouse press like the
- * example below.
+ * Sets the sketch to fullscreen or not based on the value of the argument. If
+ * no argument is given, returns the current fullscreen state. Note that due to
+ * browser restrictions this can only be called on user input, for example, on
+ * mouse press like the example below.
  * 
  * @param {boolean} val Whether the sketch should be in fullscreen mode or not
  */
@@ -735,8 +766,9 @@ declare function fullscreen(val: boolean): void;
 declare function pixelDensity(): number;
 
 /**
- * Sets the pixel scaling for high pixel density displays. By default pixel density is set to
- * match display density, call pixelDensity(1) to turn this off.
+ * Sets the pixel scaling for high pixel density displays. By default pixel
+ * density is set to match display density, call pixelDensity(1) to turn this
+ * off.
  * 
  * @param {number} val whether or how much the sketch should scale
  */
@@ -784,14 +816,14 @@ declare function getURLParams(): any;
 declare function createCanvas(w: number, h: number, renderer?: string): any;
 
 /**
- * Resizes the canvas to given width and height. The canvas will be cleared and draw
- * will be called immediately, allowing the sketch to re-render itself in the resized
- * canvas.
+ * Resizes the canvas to given width and height. The canvas will be cleared and
+ * draw will be called immediately, allowing the sketch to re-render itself in
+ * the resized canvas.
  * 
  * @param {number} w hidth of the canvas
  * @param {number} h height of the canvas
- * @param {boolean} noRedraw if the canvas should not call the draw function (does nothing if noLoop() is never
- * called) 
+ * @param {boolean} noRedraw if the canvas should not call the draw function
+ * 		(does nothing if noLoop() is never called) 
  */
 declare function resizeCanvas(w: number, h: number, noRedraw?: boolean): void;
 
@@ -801,22 +833,24 @@ declare function resizeCanvas(w: number, h: number, noRedraw?: boolean): void;
 declare function noCanvas(): void;
 
 /**
- * Creates and returns a new p5.Renderer object. Use this class if you need to draw into
- * an off-screen graphics buffer. The two parameters define the width and height in
- * pixels.
+ * Creates and returns a new p5.Renderer object. Use this class if you need to
+ * draw into an off-screen graphics buffer. The two parameters define the width
+ * and height in pixels.
  * 
  * @param {number} w width of the offscreen graphics buffer
  * @param {number} h height of the offscreen graphics buffer
  * @param {string} renderer P2D or WEBGL undefined defaults to P2D
  */
-declare function createGraphics(w: number, h: number, renderer?: string): p5.Graphics;
+declare function createGraphics(w: number, h: number, renderer?: string):
+	p5.Graphics;
 
 /**
- * Blends the pixels in the display window according to the defined mode. There is a
- * choice of the following modes to blend the source pixels (A) with the ones of pixels
- * already in the display window (B):
+ * Blends the pixels in the display window according to the defined mode. There
+ * is a choice of the following modes to blend the source pixels (A) with the
+ * ones of pixels already in the display window (B):
  * 
- * BLEND - linear interpolation of colours: C = Afactor + B. This is the default blending mode.
+ * BLEND - linear interpolation of colours: C = Afactor + B. This is the
+ * default blending mode.
  * 
  * ADD - sum of A and B
  * 
@@ -832,13 +866,16 @@ declare function createGraphics(w: number, h: number, renderer?: string): p5.Gra
  * 
  * SCREEN - opposite multiply, uses inverse values of the colors.
  * 
- * REPLACE - the pixels entirely replace the others and don't utilize alpha (transparency) values.
+ * REPLACE - the pixels entirely replace the others and don't utilize alpha
+ * (transparency) values.
  * 
- * OVERLAY - mix of MULTIPLY and SCREEN . Multiplies dark values, and screens light values.
+ * OVERLAY - mix of MULTIPLY and SCREEN . Multiplies dark values, and screens
+ * light values.
  * 
  * HARD_LIGHT - SCREEN when greater than 50% gray, MULTIPLY when lower.
  * 
- * SOFT_LIGHT - mix of DARKEST and LIGHTEST. Works like OVERLAY, but not as harsh.
+ * SOFT_LIGHT - mix of DARKEST and LIGHTEST. Works like OVERLAY, but not as
+ * harsh.
  * 
  * DODGE - lightens light tones and increases contrast, ignores darks.
  * 
