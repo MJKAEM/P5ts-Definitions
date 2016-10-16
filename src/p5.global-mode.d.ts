@@ -258,6 +258,10 @@ declare const _DEFAULT_FILL: string;
 ///////////////////////////////////////////////////////////////////////////////
 
 //
+// Color -> Creating & Reading
+//
+
+//
 // Color -> Setting
 //
 
@@ -268,9 +272,10 @@ declare const _DEFAULT_FILL: string;
  * background on the first frame of animation or if the background need only be set once.
  * 
  * @param {(p5.Color | string | number | p5.Image)} v1
- * @param {number} a Opacity of the background relative to current color range (default is 0-100)
+ * @param {number} a opacity of the background relative to current color range (default is 0-100)
  */
-declare function background(v1: (number | string | p5.Color | p5.Image), a?: number): void;
+declare function background(v1: (number | string | p5.Color | p5.Image),
+	a?: number): void;
 
 /**
  * The background() function sets the color used for the background of the p5.js canvas. The
@@ -278,15 +283,137 @@ declare function background(v1: (number | string | p5.Color | p5.Image), a?: num
  * display window at the beginning of each frame, but it can be used inside setup() to set the
  * background on the first frame of animation or if the background need only be set once.
  *
- * @param {number} v1 Red or hue value (depending on the current color mode)
- * @param {number} v2 Green or saturation value (depending on the current color mode)
- * @param {number} v3 Blue or brightness value (depending on the current color mode)
- * @param {number} a Opacity of the background relative to current color range (default is 0-100)
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value (depending on the current color mode)
+ * @param {number} v3 blue or brightness value (depending on the current color mode)
+ * @param {number} a opacity of the background relative to current color range (default is 0-100)
  */
-declare function background(v1: number, v2: number, v3: number, a?: number): void;
+declare function background(v1: number, v2: number, v3: number, a?: number):
+	void;
 
 //
-// Structure Functions
+// Shape -> 2D Primitives
+//
+
+/**
+ * Draw an arc to the screen. If called with only a, b, c, d, start, and stop, the arc will be
+ * drawn as an open pie. If mode is provided, the arc will be drawn either open, as a
+ * chord, or as a pie as specified. The origin may be changed with the ellipseMode()
+ * function.
+ * 
+ * Note that drawing a full circle (ex: 0 to TWO_PI) will appear blank because 0 and
+ * TWO_PI are the same position on the unit circle. The best way to handle this is by
+ * using the ellipse() function instead to create a closed ellipse, and to use the arc()
+ * function only to draw parts of an ellipse.
+ * 
+ * @param {number} a x-coordinate of the arc's ellipse
+ * @param {number} b y-coordinate of the arc's ellipse
+ * @param {number} c width of the arc's ellipse by default
+ * @param {number} d height of the arc's ellipse by default
+ * @param {number} start angle to start the arc, specified in radians
+ * @param {number} stop angle to stop the arc, specified in radians
+ * @param {string} mode optional parameter to determine the way of drawing the arc
+ */
+declare function arc(a: number, b: number, c: number, d: number, start: number,
+	stop: number, mode?: string): p5;
+
+/**
+ * Draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle.
+ * By default, the first two parameters set the location, and the third and fourth
+ * parameters set the shape's width and height. If no height is specified, the value of
+ * width is used for both the width and height. The origin may be changed with the
+ * ellipseMode() function.
+ * 
+ * @param {number} x x-coordinate of the ellipse.
+ * @param {number} y y-coordinate of the ellipse.
+ * @param {number} w width of the ellipse.
+ * @param {number} h height of the ellipse.
+ */
+declare function ellipse(x: number, y: number, w: number, h?: number): p5;
+
+/**
+ * Draws a line (a direct path between two points) to the screen. The version of line()
+ * with four parameters draws the line in 2D. To color a line, use the stroke() function. A
+ * line cannot be filled, therefore the fill() function will not affect the color of a line. 2D
+ * lines are drawn with a width of one pixel by default, but this can be changed with the
+ * strokeWeight() function.
+ * 
+ * @param {number} x1 the x-coordinate of the first point
+ * @param {number} y1 the y-coordinate of the first point
+ * @param {number} x2 the x-coordinate of the second point
+ * @param {number} y2 the y-coordinate of the second point
+ */
+declare function line(x1: number, y1: number, x2: number, y2: number): p5;
+
+/**
+ * Draws a point, a coordinate in space at the dimension of one pixel. The first
+ * parameter is the horizontal value for the point, the second value is the vertical value
+ * for the point. The color of the point is determined by the current stroke.
+ * 
+ * @param {number} x the x-coordinate
+ * @param {number} y the y-coordinate
+ */
+declare function point(x: number, y: number): p5;
+
+/**
+ * Draw a quad. A quad is a quadrilateral, a four sided polygon. It is similar to a
+ * rectangle, but the angles between its edges are not constrained to ninety degrees.
+ * The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs
+ * should proceed clockwise or counter-clockwise around the defined shape.
+ * 
+ * @param {number} x1 the x-coordinate of the first point
+ * @param {number} y1 the y-coordinate of the first point
+ * @param {number} x2 the x-coordinate of the second point
+ * @param {number} y2 the y-coordinate of the second point
+ * @param {number} x3 the x-coordinate of the third point
+ * @param {number} y3 the y-coordinate of the third point
+ * @param {number} x4 the x-coordinate of the fourth point
+ * @param {number} y4 the y-coordinate of the fourth point
+ */
+declare function quad(x1: number, y1: number, x2: number, y2: number,
+	x3: number, y3: number, x4: number, y4: number): p5;
+
+/**
+ * Draws a rectangle to the screen. A rectangle is a four-sided shape with every angle at
+ * ninety degrees. By default, the first two parameters set the location of the upper-left
+ * corner, the third sets the width, and the fourth sets the height. The way these
+ * parameters are interpreted, however, may be changed with the rectMode() function.
+ * 
+ * The fifth, sixth, seventh and eighth parameters, determine the corner radius for the
+ * top-right, top-left, lower-right and lower-left corners, respectively. An omitted corner
+ * radius parameter is set to the value of the previously specified radius value in the
+ * parameter list.
+ * 
+ * @param {number} x x-coordinate of the rectangle.
+ * @param {number} y y-coordinate of the rectangle.
+ * @param {number} w width of the rectangle.
+ * @param {number} h height of the rectangle.
+ * @param {number} tl optional radius of top-left corner.
+ * @param {number} tr optional radius of top-right corner.
+ * @param {number} br optional radius of bottom-right corner.
+ * @param {number} bl optional radius of bottom-left corner.
+ */
+declare function rect(x: number, y: number, w: number, h: number, tl?: number,
+	tr?: number, br?: number, bl?: number): p5;
+
+/**
+ * A triangle is a plane created by connecting three points. The first two arguments
+ * specify the first point, the middle two arguments specify the second point, and the
+ * last two arguments specify the third point.
+ * 
+ * @param {number} x1 x-coordinate of the first point
+ * @param {number} y1 y-coordinate of the first point
+ * @param {number} x2 x-coordinate of the second point
+ * @param {number} y2 y-coordinate of the second point
+ * @param {number} x3 x-coordinate of the third point
+ * @param {number} y3 y-coordinate of the third point
+ */
+declare function triangle(x1: number, y1: number, x2: number, y2: number,
+	x3: number, y3: number): p5;
+
+
+//
+// Structure
 //
 
 /**
@@ -457,11 +584,12 @@ declare function cursor(type: number, x?: number, y?: number): void;
  * Calling frameRate() with no arguments returns the current framerate. This is the same
  * as getFrameRate(). 
  * 
- * Calling frameRate() with arguments that are not of the type numbers or are non positive also returns current framerate.
+ * Calling frameRate() with arguments that are not of the type numbers or are non
+ * positive also returns current framerate.
  * 
  * @param {number} fps Number of frames to be displayed every second
  */
-declare function frameRate(fps?: number): number;
+declare function frameRate(fps: number): number | p5;
 
 /**
  * Returns the current framerate.
@@ -492,23 +620,34 @@ declare function noCursor(): void;
 declare function windowResized(): void;
 
 /**
- * If argument is given, sets the sketch to fullscreen or not based on the value of the
- * argument. If no argument is given, returns the current fullscreen state. Note that due
- * to browser restrictions this can only be called on user input, for example, on mouse
- * press like the example below.
+ * Returns the current fullscreen state.
+ */
+declare function fullscreen(): boolean;
+
+/**
+ * Sets the sketch to fullscreen or not based on the value of the argument. If no
+ * argument is given, returns the current fullscreen state. Note that due to browser
+ * restrictions this can only be called on user input, for example, on mouse press like the
+ * example below.
  * 
  * @param {boolean} val Whether the sketch should be in fullscreen mode or not
  */
-declare function fullscreen(val?: boolean): boolean;
+declare function fullscreen(val: boolean): void;
+
+/**
+ * Returns the current pixel density of the sketch.
+ * 
+ * @param {number} val whether or how much the sketch should scale
+ */
+declare function pixelDensity(): number;
 
 /**
  * Sets the pixel scaling for high pixel density displays. By default pixel density is set to
- * match display density, call pixelDensity(1) to turn this off. Calling pixelDensity() with
- * no arguments returns the current pixel density of the sketch.
+ * match display density, call pixelDensity(1) to turn this off.
  * 
- * @param {number} val Whether or how much the sketch should scale
+ * @param {number} val whether or how much the sketch should scale
  */
-declare function pixelDensity(val?: number): number;
+declare function pixelDensity(val: number): void;
 
 /**
  * Returns the pixel density of the current display the sketch is running on.
@@ -545,8 +684,8 @@ declare function getURLParams(): any;
  * this function. If createCanvas() is not used, the window will be given a
  * default size of 100x100 pixels.
  *
- * @param {number} w Width of the canvas
- * @param {number} h Height of the canvas
+ * @param {number} w width of the canvas
+ * @param {number} h height of the canvas
  * @param {string} renderer P2D or WEBGL
  */
 declare function createCanvas(w: number, h: number, renderer?: string): any;
@@ -556,9 +695,9 @@ declare function createCanvas(w: number, h: number, renderer?: string): any;
  * will be called immediately, allowing the sketch to re-render itself in the resized
  * canvas.
  * 
- * @param {number} w Width of the canvas
- * @param {number} h Height of the canvas
- * @param {boolean} noRedraw If the canvas should not call the draw function (does nothing if noLoop() is never
+ * @param {number} w hidth of the canvas
+ * @param {number} h height of the canvas
+ * @param {boolean} noRedraw if the canvas should not call the draw function (does nothing if noLoop() is never
  * called) 
  */
 declare function resizeCanvas(w: number, h: number, noRedraw?: boolean): void;
@@ -573,8 +712,8 @@ declare function noCanvas(): void;
  * an off-screen graphics buffer. The two parameters define the width and height in
  * pixels.
  * 
- * @param {number} w Width of the offscreen graphics buffer
- * @param {number} h Height of the offscreen graphics buffer
+ * @param {number} w width of the offscreen graphics buffer
+ * @param {number} h height of the offscreen graphics buffer
  * @param {string} renderer P2D or WEBGL undefined defaults to P2D
  */
 declare function createGraphics(w: number, h: number, renderer?: string): p5.Graphics;
@@ -612,6 +751,6 @@ declare function createGraphics(w: number, h: number, renderer?: string): p5.Gra
  * 
  * BURN - darker areas are applied, increasing contrast, ignores lights.
  * 
- * @param {string} mode Blend mode to set for canvas
+ * @param {string} mode blend mode to set for canvas
  */
 declare function blendMode(mode: string): void;
