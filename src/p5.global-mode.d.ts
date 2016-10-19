@@ -436,12 +436,11 @@ declare function saturation(color: p5.Color | number[]): number
  * each frame, but it can be used inside setup() to set the background on the
  * first frame of animation or if the background need only be set once.
  * 
- * @param {(p5.Color | string | number | p5.Image)} v1
+ * @param  v1
  * @param {number} a opacity of the background relative to current color range
  * 		(default is 0-100)
  */
-declare function background(v1: (number | string | p5.Color | p5.Image),
-	a?: number): void;
+
 
 /**
  * The background() function sets the color used for the background of the
@@ -450,7 +449,9 @@ declare function background(v1: (number | string | p5.Color | p5.Image),
  * each frame, but it can be used inside setup() to set the background on the
  * first frame of animation or if the background need only be set once.
  *
- * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {(p5.Color | string | number | p5.Image)} v1 gray value, red or hue
+ * 		value (depending on the current color mode), or color Array, or CSS
+ * 		color string
  * @param {number} v2 green or saturation value (depending on the current color
  * 		mode)
  * @param {number} v3 blue or brightness value (depending on the current color
@@ -458,8 +459,97 @@ declare function background(v1: (number | string | p5.Color | p5.Image),
  * @param {number} a opacity of the background relative to current color range
  * 		(default is 0-100)
  */
-declare function background(v1: number, v2: number, v3: number, a?: number):
-	void;
+declare function background(v1: (number | string | p5.Color | p5.Image),
+	v2: number, v3: number, a?: number): p5;
+
+/**
+ * Clears the pixels within a buffer. This function only works on p5.Canvas
+ * objects created with the createCanvas() function; it won't work with the
+ * main display window. Unlike the main graphics context, pixels in additional
+ * graphics areas created with createGraphics() can be entirely or partially
+ * transparent. This function clears everything to make all of the pixels 100%
+ * transparent.
+ */
+declare function clear(): p5;
+
+/**
+ * colorMode() changes the way p5.js interprets color data. By default, the
+ * parameters for fill(), stroke(), background(), and color() are defined by
+ * values between 0 and 255 using the RGB color model. This is equivalent to
+ * setting colorMode(RGB, 255). Setting colorMode(HSB) lets you use the HSB
+ * system instead. By default, this is colorMode(HSB, 360, 100, 100, 1). You
+ * can also use HSL.
+ * 
+ * Note: existing color objects remember the mode that they were created in, so
+ * you can change modes as you like without affecting their appearance.
+ * 
+ * @param {string} mode either RGB or HSB, corresponding to Red/Green/Blue and
+ * 		Hue/Saturation/Brightness (or Lightness)
+ * @param {number} max1 range for the red or hue depending on the current color
+ * 		mode, or range for all values
+ * @param {number} max2 range for the green or saturation depending on the
+ * 		current color mode
+ * @param {number} max3 range for the blue or brightness/lighntess depending on
+ * 		the current color mode
+ * @param {number} maxA range for the alpha
+ */
+declare function colorMode(mode: string, max1?: number, max2?: number,
+	max3?: number, maxA?: number): p5;
+
+/**
+ * Sets the color used to fill shapes. For example, if you run
+ * fill(204, 102, 0), all subsequent shapes will be filled with orange. This
+ * color is either specified in terms of the RGB or HSB color depending on the
+ * current colorMode(). (The default color space is RGB, with each value in the
+ * range from 0 to 255).
+ * 
+ * If a single string argument is provided, RGB, RGBA and Hex CSS color strings
+ * and all named color strings are supported. A p5 Color object can also be
+ * provided to set the fill color.
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1
+ * @param {number} v2 green or saturation value (depending on the current color
+ * 		mode)
+ * @param {number} v3 blue or brightness value (depending on the current color
+ * 		mode)
+ * @param {number} a opacity of the background
+ */
+declare function fill(v1: string | number | number[] | p5.Color, v2?: number,
+	v3?: number, a?: number): p5;
+
+/**
+ * Disables filling geometry. If both noStroke() and noFill() are called,
+ * nothing will be drawn to the screen.
+ */
+declare function noFill(): p5;
+
+/**
+ * Disables drawing the stroke (outline). If both noStroke() and noFill() are
+ * called, nothing will be drawn to the screen.
+ */
+declare function noStroke(): p5;
+
+/**
+ * Sets the color used to draw lines and borders around shapes. This color is
+ * either specified in terms of the RGB or HSB color depending on the current
+ * colorMode() (the default color space is RGB, with each value in the range
+ * from 0 to 255).
+ * 
+ * If a single string argument is provided, RGB, RGBA and Hex CSS color strings
+ * and all named color strings are supported. A p5 Color object can also be
+ * provided to set the stroke color.
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1 gray value, red or hue
+ * 		value (depending on the current color mode), or color Array, or CSS
+ * 		color string
+ * @param {number} v2 green or saturation value (depending on the current color
+ * 		mode)
+ * @param {number} v3 blue or brightness value (depending on the current color
+ * 		mode)
+ * @param {number} a opacity of the background
+ */
+declare function stroke(v1: string | number | number[] | p5.Color, v2?: number,
+	v3?: number, a?: number): p5;
 
 //
 // Shape -> 2D Primitives

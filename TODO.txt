@@ -3,6 +3,8 @@ Everything listed in this TODO is in alphabetical order.
 Test the following functions for implementation errors:
 - background
 - color
+- fill
+- stroke
 - lerpColor
 - p5.Color._parseInputs + p5.Color.constructor
 
