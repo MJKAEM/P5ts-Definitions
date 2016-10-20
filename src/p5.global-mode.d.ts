@@ -435,19 +435,6 @@ declare function saturation(color: p5.Color | number[]): number
  * typically used within draw() to clear the display window at the beginning of
  * each frame, but it can be used inside setup() to set the background on the
  * first frame of animation or if the background need only be set once.
- * 
- * @param  v1
- * @param {number} a opacity of the background relative to current color range
- * 		(default is 0-100)
- */
-
-
-/**
- * The background() function sets the color used for the background of the
- * p5.js canvas. The default background is light gray. This function is
- * typically used within draw() to clear the display window at the beginning of
- * each frame, but it can be used inside setup() to set the background on the
- * first frame of animation or if the background need only be set once.
  *
  * @param {(p5.Color | string | number | p5.Image)} v1 gray value, red or hue
  * 		value (depending on the current color mode), or color Array, or CSS
@@ -460,7 +447,7 @@ declare function saturation(color: p5.Color | number[]): number
  * 		(default is 0-100)
  */
 declare function background(v1: (number | string | p5.Color | p5.Image),
-	v2: number, v3: number, a?: number): p5;
+	v2?: number, v3?: number, a?: number): p5;
 
 /**
  * Clears the pixels within a buffer. This function only works on p5.Canvas
@@ -774,6 +761,151 @@ declare function strokeJoin(join: string): p5;
  * @param {number} weight the weight (in pixels) of the stroke
  */
 declare function strokeWeight(weight: number): p5;
+
+//
+// Shape -> Curves
+//
+
+//
+// Shape -> Vertex
+//
+
+/**
+ * Use the beginContour() and endContour() functions to create negative shapes
+ * within shapes such as the center of the letter 'O'. beginContour() begins
+ * recording vertices for the shape and endContour() stops recording. The
+ * vertices that define a negative shape must "wind" in the opposite direction
+ * from the exterior shape. First draw vertices for the exterior clockwise
+ * order, then for internal shapes, draw vertices shape in counter-clockwise.
+ * 
+ * These functions can only be used within a beginShape()/endShape() pair and
+ * transformations such as translate(), rotate(), and scale() do not work
+ * within a beginContour()/endContour() pair. It is also not possible to use
+ * other shapes, such as ellipse() or rect() within.
+ */
+declare function beginContour(): p5;
+
+/**
+ * Using the beginShape() and endShape() functions allow creating more complex
+ * forms. beginShape() begins recording vertices for a shape and endShape()
+ * stops recording. The value of the kind parameter tells it which types of
+ * shapes to create from the provided vertices. With no mode specified, the
+ * shape can be any irregular polygon.
+ * 
+ * The parameters available for beginShape() are POINTS, LINES, TRIANGLES,
+ * TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, and QUAD_STRIP. After calling the
+ * beginShape() function, a series of vertex() commands must follow. To stop
+ * drawing the shape, call endShape(). Each shape will be outlined with the
+ * current stroke color and filled with the fill color.
+ * 
+ * Transformations such as translate(), rotate(), and scale() do not work
+ * within beginShape(). It is also not possible to use other shapes, such as
+ * ellipse() or rect() within beginShape().
+ * 
+ * @param {(number | string)} kind either POINTS, LINES, TRIANGLES,
+ * 		TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, or QUAD_STRIP
+ */
+declare function beginShape(kind?: number | string);
+
+/**
+ * Specifies vertex coordinates for Bezier curves. Each call to bezierVertex()
+ * defines the position of two control points and one anchor point of a Bezier
+ * curve, adding a new segment to a line or shape.
+ * 
+ * The first time bezierVertex() is used within a beginShape() call, it must be
+ * prefaced with a call to vertex() to set the first anchor point. This
+ * function must be used between beginShape() and endShape() and only when
+ * there is no MODE parameter specified to beginShape().
+ * 
+ * @param {number} x2 x-coordinate for the first control point
+ * @param {number} y2 y-coordinate for the first control point
+ * @param {number} x3 x-coordinate for the second control point
+ * @param {number} y3 y-coordinate for the second control point
+ * @param {number} x4 x-coordinate for the anchor point
+ * @param {number} y4 y-coordinate for the anchor point
+ */
+declare function bezierVertex(x2: number, y2: number, x3: number, y3: number,
+	x4: number, y4: number): p5;
+
+/**
+ * Specifies vertex coordinates for curves. This function may only be used
+ * between beginShape() and endShape() and only when there is no MODE parameter
+ * specified to beginShape().
+ * 
+ * The first and last points in a series of curveVertex() lines will be used to
+ * guide the beginning and end of a the curve. A minimum of four points is
+ * required to draw a tiny curve between the second and third points. Adding a
+ * fifth point with curveVertex() will draw the curve between the second,
+ * third, and fourth points. The curveVertex() function is an implementation of
+ * Catmull-Rom splines.
+ * 
+ * @param {number} x x-coordinate of the vertex
+ * @param {number} y y-coordinate of the vertex
+ */
+declare function curveVertex(x: number, y: number): p5;
+
+/**
+ * Use the beginContour() and endContour() functions to create negative shapes
+ * within shapes such as the center of the letter 'O'. beginContour() begins
+ * recording vertices for the shape and endContour() stops recording. The
+ * vertices that define a negative shape must "wind" in the opposite direction
+ * from the exterior shape. First draw vertices for the exterior clockwise
+ * order, then for internal shapes, draw vertices shape in counter-clockwise.
+ * 
+ * These functions can only be used within a beginShape()/endShape() pair and
+ * transformations such as translate(), rotate(), and scale() do not work
+ * within a beginContour()/endContour() pair. It is also not possible to use
+ * other shapes, such as ellipse() or rect() within.
+ */
+declare function endContour(): p5;
+
+/**
+ * The endShape() function is the companion to beginShape() and may only be
+ * called after beginShape(). When endshape() is called, all of image data
+ * defined since the previous call to beginShape() is written into the image
+ * buffer. The constant CLOSE as the value for the MODE parameter to close the
+ * shape (to connect the beginning and the end).
+ * 
+ * @param {*} mode use CLOSE to close the shape
+ */
+declare function endShape(mode?: any): p5;
+
+/**
+ * Specifies vertex coordinates for quadratic Bezier curves. Each call to
+ * quadraticVertex() defines the position of one control points and one anchor
+ * point of a Bezier curve, adding a new segment to a line or shape. The first
+ * time quadraticVertex() is used within a beginShape() call, it must be
+ * prefaced with a call to vertex() to set the first anchor point. This
+ * function must be used between beginShape() and endShape() and only when
+ * there is no MODE parameter specified to beginShape().
+ * 
+ * @param {number} cx x-coordinate for the control point
+ * @param {number} cy y-coordinate for the control point
+ * @param {number} x3 x-coordinate for the anchor point
+ * @param {number} y3 y-coordinate for the anchor point
+ */
+declare function quadraticVertex(cx: number, cy: number, x3: number,
+	y3: number): p5;
+
+/**
+ * All shapes are constructed by connecting a series of vertices. vertex() is
+ * used to specify the vertex coordinates for points, lines, triangles, quads,
+ * and polygons. It is used exclusively within the beginShape() and endShape()
+ * functions.
+ * 
+ * @param {number} x x-coordinate of the vertex
+ * @param {number} y y-coordinate of the vertex
+ * @param {number} moveTo
+ */
+declare function vertex(x: number, y: number, moveTo?: number): p5;
+
+//
+// Shape -> 3D Models
+//
+
+//
+// Shape -> 3D Primitives
+//
 
 //
 // Structure

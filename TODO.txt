@@ -3,6 +3,7 @@ Everything listed in this TODO is in alphabetical order.
 Test the following functions for implementation errors:
 - background
 - color
+- endShape
 - fill
 - stroke
 - lerpColor
@@ -11,6 +12,7 @@ Test the following functions for implementation errors:
 The following are missing documentation:
 - Most constants
 - p5.Color class
+- vertex function
 
 The following functions are clean and do not require testing:
 - All structure functions
