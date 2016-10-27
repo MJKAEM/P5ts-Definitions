@@ -1267,3 +1267,99 @@ declare function createGraphics(w: number, h: number, renderer?: string):
  * @param {string} mode blend mode to set for canvas
  */
 declare function blendMode(mode: string): void;
+
+//
+// Transform
+//
+
+//
+// Events -> Acceleration
+//
+
+//
+// Events -> Keyboard
+//
+
+//
+// Events -> Mouse
+//
+
+//
+// Events -> Touch
+//
+
+//
+// Image
+//
+
+//
+// Image -> Loading & Displaying
+//
+
+//
+// Image -> Pixels
+//
+
+//
+// IO -> Input
+//
+
+//
+// IO -> Output
+//
+
+//
+// IO -> Time & Date
+//
+
+//
+// Math
+//
+
+//
+// Math -> Calculation
+//
+
+//
+// Math -> Noise
+//
+
+//
+// Math -> Random
+//
+
+//
+// Math -> Trigonometry
+//
+
+//
+// Typography -> Attributes
+//
+
+//
+// Typography -> Loading & Displaying
+//
+
+//
+// Data -> Array Functions
+//
+
+//
+// Data -> Conversion
+//
+
+//
+// Data -> String Functions
+//
+
+//
+// Lights, Camera -> Camera
+//
+
+//
+// Lights, Camera -> Lights
+//
+
+//
+// Lights, Camera -> Material
+//
