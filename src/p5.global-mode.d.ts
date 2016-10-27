@@ -1272,6 +1272,180 @@ declare function blendMode(mode: string): void;
 // Transform
 //
 
+/**
+ * Multiplies the current matrix by the one specified through the parameters.
+ * This is very slow because it will try to calculate the inverse of the
+ * transform, so avoid it whenever possible.
+ * 
+ * @param {number} n00 numbers which define the 3x2 matrix to be multiplied
+ * @param {number} n01 numbers which define the 3x2 matrix to be multiplied
+ * @param {number} n02 numbers which define the 3x2 matrix to be multiplied
+ * @param {number} n10 numbers which define the 3x2 matrix to be multiplied
+ * @param {number} n11 numbers which define the 3x2 matrix to be multiplied
+ * @param {number} n12 numbers which define the 3x2 matrix to be multiplied
+ */
+declare function applyMatrix(n00: number, n01: number, n02: number,
+	n10: number, n11: number, n12: number): p5;
+
+/**
+ * Throws an error with the message: 'popMatrix() not used, see pop()'
+ */
+declare function popMatrix(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function printMatrix();
+
+/**
+ * Throws an error with the message: 'pushMatrix() not used, see push()'
+ */
+declare function pushMatrix(): never;
+
+/**
+ * Replaces the current matrix with the identity matrix.
+ */
+declare function resetMatrix(): p5;
+
+/**
+ * Rotates a shape the amount specified by the angle parameter. This function
+ * accounts for angleMode, so angles can be entered in either RADIANS or
+ * DEGREES.
+ * 
+ * Objects are always rotated around their relative position to the origin and
+ * positive numbers rotate objects in a clockwise direction. Transformations
+ * apply to everything that happens after and subsequent calls to the function
+ * accumulates the effect. For example, calling rotate(HALF_PI) and then
+ * rotate(HALF_PI) is the same as rotate(PI). All tranformations are reset when
+ * draw() begins again.
+ * 
+ * Technically, rotate() multiplies the current transformation matrix by a
+ * rotation matrix. This function can be further controlled by the push() and
+ * pop().
+ * 
+ * @param {number} angle the angle of rotation, specified in radians or
+ * 		degrees, depending on current angleMode
+ * @param {(p5.Vector | number[])} axis axis to rotate around
+ */
+declare function rotate(angle: number, axis?: p5.Vector | number[]): p5;
+
+/**
+ * Rotates around X axis.
+ * 
+ * @param {number} rad angles in radians
+ */
+declare function rotateX(rad: number): p5;
+
+/**
+ * Rotates around Y axis.
+ * 
+ * @param {number} rad angles in radians
+ */
+declare function rotateY(rad: number): p5;
+
+/**
+ * Rotates around Z axis. Webgl mode only.
+ * 
+ * @param {number} rad angles in radians
+ */
+declare function rotateZ(rad: number): p5;
+
+/**
+ * Increases or decreases the size of a shape by expanding and contracting
+ * vertices. Objects always scale from their relative origin to the coordinate
+ * system. Scale values are specified as decimal percentages. For example, the
+ * function call scale(2.0) increases the dimension of a shape by 200%.
+ * 
+ * Transformations apply to everything that happens after and subsequent calls
+ * to the function multiply the effect. For example, calling scale(2.0) and
+ * then scale(1.5) is the same as scale(3.0). If scale() is called within
+ * draw(), the transformation is reset when the loop begins again.
+ * 
+ * Using this function with the z parameter is only available in WEBGL mode.
+ * This function can be further controlled with push() and pop().
+ * 
+ * @param {(number | p5.Vector | number[])} s percent to scale the object
+ */
+declare function scale(s: number | p5.Vector | number[]): p5;
+
+/**
+ * Increases or decreases the size of a shape by expanding and contracting
+ * vertices. Objects always scale from their relative origin to the coordinate
+ * system. Scale values are specified as decimal percentages. For example, the
+ * function call scale(2.0) increases the dimension of a shape by 200%.
+ * 
+ * Transformations apply to everything that happens after and subsequent calls
+ * to the function multiply the effect. For example, calling scale(2.0) and
+ * then scale(1.5) is the same as scale(3.0). If scale() is called within
+ * draw(), the transformation is reset when the loop begins again.
+ * 
+ * Using this function with the z parameter is only available in WEBGL mode.
+ * This function can be further controlled with push() and pop().
+ * 
+ * @param {number} x percent to scale the object in the x-axis
+ * @param {number} y percent to scale the object in the y-axis
+ * @param {number} z percent to scale the object in the z-axis (webgl only)
+ */
+declare function scale(x: number, y: number, z: number): p5;
+
+/**
+ * Shears a shape around the x-axis the amount specified by the angle
+ * parameter. Angles should be specified in the current angleMode. Objects are
+ * always sheared around their relative position to the origin and positive
+ * numbers shear objects in a clockwise direction.
+ * 
+ * Transformations apply to everything that happens after and subsequent calls
+ * to the function accumulates the effect. For example, calling shearX(PI/2)
+ * and then shearX(PI/2) is the same as shearX(PI). If shearX() is called
+ * within the draw(), the transformation is reset when the loop begins again.
+ * 
+ * Technically, shearX() multiplies the current transformation matrix by a
+ * rotation matrix. This function can be further controlled by the push() and
+ * pop() functions.
+ * 
+ * @param {number} angle angle of shear specified in radians or degrees,
+ * 		depending on current angleMode
+ */
+declare function shearX(angle: number): p5;
+
+/**
+ * Shears a shape around the y-axis the amount specified by the angle
+ * parameter. Angles should be specified in the current angleMode. Objects are
+ * always sheared around their relative position to the origin and positive
+ * numbers shear objects in a clockwise direction.
+ * 
+ * Transformations apply to everything that happens after and subsequent calls
+ * to the function accumulates the effect. For example, calling shearY(PI/2)
+ * and then shearY(PI/2) is the same as shearY(PI). If shearY() is called
+ * within the draw(), the transformation is reset when the loop begins again.
+ * 
+ * Technically, shearY() multiplies the current transformation matrix by a
+ * rotation matrix. This function can be further controlled by the push() and
+ * pop() functions.
+ * 
+ * @param {number} angle angle of shear specified in radians or degrees,
+ * 		depending on current angleMode
+ */
+declare function shearY(angle: number): p5;
+
+/**
+ * Specifies an amount to displace objects within the display window. The x
+ * parameter specifies left/right translation, the y parameter specifies
+ * up/down translation. 
+ * 
+ * Transformations are cumulative and apply to everything that happens after
+ * and subsequent calls to the function accumulates the effect. For example,
+ * calling translate(50, 0) and then translate(20, 0) is the same as
+ * translate(70, 0). If translate() is called within draw(), the transformation
+ * is reset when the loop begins again. This function can be further controlled
+ * by using push() and pop().
+ * 
+ * @param {number} x left/right translation
+ * @param {number} y up/down translation
+ * @param {number} z forward/backward translation (webgl only)
+ */
+declare function translate(x: number, y: number, z?: number);
+
 //
 // Events -> Acceleration
 //
