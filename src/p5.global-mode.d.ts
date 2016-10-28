@@ -64,6 +64,118 @@ declare var width: number;
 declare var height: number;
 
 //
+// Events -> Acceleration
+//
+
+/**
+ * The system variable deviceOrientation always contains the orientation of the
+ * device. The value of this variable will either be set 'landscape' or
+ * 'portrait'. If no data is available it will be set to 'undefined'.
+ */
+declare var deviceOrientation: string;
+
+/**
+ * The system variable accelerationX always contains the acceleration of the
+ * device along the x axis. Value is represented as meters per second squared.
+ */
+declare var accelerationX: number;
+
+/**
+ * The system variable accelerationY always contains the acceleration of the
+ * device along the y axis. Value is represented as meters per second squared.
+ */
+declare var accelerationY: number;
+
+/**
+ * The system variable accelerationZ always contains the acceleration of the
+ * device along the z axis. Value is represented as meters per second squared.
+ */
+declare var accelerationZ: number;
+
+/**
+ * The system variable pAccelerationX always contains the acceleration of the
+ * device along the x axis in the frame previous to the current frame. Value is
+ * represented as meters per second squared.
+ */
+declare var pAccelerationX: number;
+
+/**
+ * The system variable pAccelerationY always contains the acceleration of the
+ * device along the y axis in the frame previous to the current frame. Value is
+ * represented as meters per second squared.
+ */
+declare var pAccelerationY: number;
+
+/**
+ * The system variable pAccelerationZ always contains the acceleration of the
+ * device along the z axis in the frame previous to the current frame. Value is
+ * represented as meters per second squared.
+ */
+declare var pAccelerationZ: number;
+
+/**
+ * The system variable rotationX always contains the rotation of the device
+ * along the x axis. Value is represented as 0 to +/-180 degrees.
+ * 
+ * Note: The order the rotations are called is important, ie. if used together,
+ * it must be called in the order Z-X-Y or there might be unexpected behaviour.
+ */
+declare var rotationX: number;
+
+/**
+ * The system variable rotationY always contains the rotation of the device
+ * along the y axis. Value is represented as 0 to +/-90 degrees.
+ * 
+ * Note: The order the rotations are called is important, ie. if used together,
+ * it must be called in the order Z-X-Y or there might be unexpected behaviour.
+ */
+declare var rotationY: number;
+
+/**
+ * The system variable rotationZ always contains the rotation of the device
+ * along the z axis. Value is represented as 0 to 359 degrees.
+ * 
+ * Unlike rotationX and rotationY, this variable is available for devices with
+ * a built-in compass only.
+ * 
+ * Note: The order the rotations are called is important, ie. if used together,
+ * it must be called in the order Z-X-Y or there might be unexpected behaviour.
+ */
+declare var rotationZ: number;
+
+/**
+ * The system variable pRotationX always contains the rotation of the device
+ * along the x axis in the frame previous to the current frame. Value is
+ * represented as 0 to +/-180 degrees.
+ * 
+ * pRotationX can also be used with rotationX to determine the rotate direction
+ * of the device along the X-axis.
+ */
+declare var pRotationX: number;
+
+/**
+ * The system variable pRotationY always contains the rotation of the device
+ * along the y axis in the frame previous to the current frame. Value is
+ * represented as 0 to +/-90 degrees.
+ * 
+ * pRotationY can also be used with rotationY to determine the rotate direction
+ * of the device along the Y-axis.
+ */
+declare var pRotationY: number;
+
+/**
+ * The system variable pRotationZ always contains the rotation of the device
+ * along the z axis in the frame previous to the current frame. Value is
+ * represented as 0 to 359 degrees.
+ * 
+ * pRotationZ can also be used with rotationZ to determine the rotate direction
+ * of the device along the Z-axis.
+ */
+declare var pRotationZ: number;
+
+declare var turnAxis: string;
+
+//
 // Image -> Pixels
 //
 
@@ -918,7 +1030,7 @@ declare function vertex(x: number, y: number, moveTo?: number): p5;
  * load calls should be inside preload (loadImage, loadJSON, loadFont,
  * loadStrings, etc).
  */
-declare function preload(): void
+declare function preload(): void;
 
 /**
  * The setup() function is called once when the program starts. It's used to
@@ -1449,6 +1561,53 @@ declare function translate(x: number, y: number, z?: number);
 //
 // Events -> Acceleration
 //
+
+/**
+ * Updates the pAcceleration values. Intended to be private; do not invoke.
+ */
+declare function _updatePAccelerations(): void;
+
+/**
+ * Updates the pRotation values. Intended to be private; do not invoke.
+ */
+declare function _updatePRotations(): void;
+
+/**
+ * The setMoveThreshold() function is used to set the movement threshold for
+ * the deviceMoved() function. The default threshold is set to 0.5.
+ * 
+ * @param {number} value The threshold value
+ */
+declare function setMoveThreshold(value: number): void;
+
+/**
+ * The setShakeThreshold() function is used to set the movement threshold for
+ * the deviceShaken() function. The default threshold is set to 30.
+ * 
+ * @param {number} value The threshold value
+ */
+declare function setShakeThreshold(value: number): void;
+
+/**
+ * Event handler when the device is rotated.  Intended to be private; do not
+ * invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _ondeviceorientation(e: Event);
+
+/**
+ * Event handler when the device is moved. Intended to be private; do not
+ * invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _ondevicemotion(e: Event);
+
+/**
+ * Intended to be private; do not invoke.
+ */
+declare function _handleMotion(): void;
 
 //
 // Events -> Keyboard

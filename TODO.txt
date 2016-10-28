@@ -16,6 +16,8 @@ The following are missing documentation:
 - p5.Color class
 - p5.Geometry
 - vertex function
+- turnAxis variable
+- _handleMotion
 
 The following functions are clean and do not require testing:
 - All structure functions
