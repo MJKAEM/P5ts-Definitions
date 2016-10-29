@@ -289,6 +289,75 @@ declare var isMousePressed: boolean;
 declare var _hasMouseInteracted: boolean;
 
 //
+// Events -> Touch
+//
+
+/**
+ * The system variable ptouchX always contains the horizontal position of one
+ * finger, relative to (0, 0) of the canvas, in the frame previous to the
+ * current frame.
+ */
+declare var ptouchX: number;
+
+/**
+ * The system variable ptouchY always contains the vertical position of one
+ * finger, relative to (0, 0) of the canvas, in the frame previous to the
+ * current frame.
+ */
+declare var ptouchY: number;
+
+/**
+ * The system variable winTouchX always contains the horizontal position of one
+ * finger, relative to (0, 0) of the window.
+ */
+declare var winTouchX: number;
+
+/**
+ * The system variable winTouchY always contains the vertical position of one
+ * finger, relative to (0, 0) of the window.
+ */
+declare var winTouchY: number;
+
+/**
+ * The system variable pwinTouchX always contains the horizontal position of
+ * one finger, relative to (0, 0) of the window, in the frame previous to the
+ * current frame.
+ */
+declare var pwinTouchX: number;
+
+/**
+ * The system variable pwinTouchY always contains the vertical position of one
+ * finger, relative to (0, 0) of the window, in the frame previous to the
+ * current frame.
+ */
+declare var pwinTouchY: number;
+
+/**
+ * The system variable touches[] contains an array of the positions of all
+ * current touch points, relative to (0, 0) of the canvas, and IDs identifying
+ * a unique touch as it moves. Each element in the array is an object with
+ * x, y, and id properties.
+ */
+declare var touches: {
+	clientX: number,
+	clientY: number,
+	identifier: any
+}[];
+
+/**
+ * The boolean system variable touchIsDown is true if the screen is touched and
+ * false if not.
+ */
+declare var touchIsDown: boolean;
+
+/**
+ * This is a flag which is false until the first time we receive a touch event.
+ * The ptouchX and ptouchY values will match the touchX and touchY values until
+ * this interaction takes place.
+ */
+declare var _hasTouchInteracted: boolean;
+
+//
 // Image -> Pixels
 //
 
@@ -1807,17 +1876,20 @@ declare function keyIsDown(code: number): boolean;
 
 
 /**
- * Event handler when a key goes down. Intended to be private; do not invoke.
+ * Event handler called once every time a key is pressed. Intended to be
+ * private; do not invoke.
  */
 declare function _onkeydown(e): void;
 
 /**
- * Event handler when a key goes up. Intended to be private; do not invoke.
+ * Event handler called once every time a key is released. Intended to be
+ * private; do not invoke.
  */
 declare function _onkeyup(e): void;
 
 /**
- * Event handler when a key is pressed. Intended to be private; do not invoke.
+ * Event handler called once every time a key is pressed, but action keys such
+ * as Ctrl, Shift, and Alt are ignored. Intended to be private; do not invoke.
  */
 declare function _onkeypress(e): void;
 
@@ -1924,49 +1996,112 @@ declare function _updateMouseCoords(): void;
 declare function _setMouseButton(e): void;
 
 /**
- * Event handler when the mouse is moved. Intended to be private; do not invoke.
+ * Event handler called every time the mouse moves and a mouse button is not
+ * pressed. Intended to be private; do not invoke.
  */
 declare function _onmousemove(e): void;
 
 /**
- * Event handler when one of the mouse buttons are pressed down. Intended to be
- * private; do not invoke.
+ * Event handler called once after every time a mouse button is pressed.
+ * Intended to be private; do not invoke.
  */
 declare function _onmousedown(e): void;
 
 /**
- * Event handler when one of the mouse buttons are released. Intended to be
+ * Event handler called every time a mouse button is released. Intended to be
  * private; do not invoke.
  */
 declare function _onmouseup(e): void;
 
 /**
- * Event handler when the touch screen no longer detects movement. Intended to
- * be private; do not invoke.
+ * Event handler called every time a mouse button is released. Intended to be
+ * private; do not invoke. Synonymous to _onmouseup.
  */
 declare function _ondragend(e): void;
 
 /**
- * Event handler when the touch screen detects movement. Intended to be
- * private; do not invoke.
+ * Event handler called every time the mouse moves and a mouse button is not
+ * pressed. Intended to be private; do not invoke. Synonymous to _onmousemove.
  */
 declare function _ondragover(e): void;
 
 /**
- * Event handler when one of the mouse buttons are clicked. Intended to be
- * private; do not invoke.
+ * Event handler called once after a mouse button has been pressed and then
+ * released. Intended to be private; do not invoke.
  */
 declare function _onclick(e): void;
 
 /**
- * Event handler when the mouse wheel is scrolled. Intended to be private; do
- * not invoke.
+ * Event handler every time a vertical mouse wheel event is detected. Intended
+ * to be private; do not invoke.
  */
 declare function _onwheel(e): void;
 
 //
 // Events -> Touch
 //
+
+/**
+ * The touchStarted() function is called once after every time a touch is
+ * registered. If no touchStarted() function is defined, the mousePressed()
+ * function will be called instead if it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various touch
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function touchStarted(): boolean | void;
+
+/**
+ * The touchMoved() function is called every time a touch move is registered.
+ * If no touchMoved() function is defined, the mouseDragged() function will be
+ * called instead if it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various touch
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function touchMoved(): boolean | void;
+
+/**
+ * The touchEnded() function is called every time a touch ends. If no
+ * touchEnded() function is defined, the mouseReleased() function will be
+ * called instead if it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various touch
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function touchEnded(): boolean | void;
+
+/**
+ * Updates the values of 'touch' and 'winTouch'. Also initializes
+ * '_hasTouchInteracted'. Intended to be private; do not invoke.
+ */
+declare function _updateNextTouchCoords(e);
+
+/**
+ * Updates the values of 'ptouch' and 'pwinTouch'. Intended to be private; do
+ * not invoke.
+ */
+declare function _updateTouchCoords(e);
+
+/**
+ * Event handler after every time a touch is registered. Intended to be
+ * private; do not invoke.
+ */
+declare function _ontouchstart(e);
+
+/**
+ * Event handler every time a touch move is registered. Intended to be private;
+ * do not invoke.
+ */
+declare function _ontouchmove(e);
+
+/**
+ * Event handler every time a touch ends. Intended to be private; do not invoke.
+ */
+declare function _ontouchend(e);
 
 //
 // Image
