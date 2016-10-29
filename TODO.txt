@@ -11,6 +11,17 @@ Test the following functions for implementation errors:
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 
+These functions that must be overloaded produce compiler errors:
+- preload
+- setup
+- draw
+- deviceMoved
+- deviceTurned
+- deviceShaken
+- keyPressed
+- keyReleased
+- keyTyped
+
 The following are missing documentation:
 - Most constants
 - p5.Color class

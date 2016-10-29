@@ -176,6 +176,36 @@ declare var pRotationZ: number;
 declare var turnAxis: string;
 
 //
+// Events -> Keyboard
+//
+
+/**
+ * The boolean system variable isKeyPressed is true if any key is pressed and
+ * false if no keys are pressed. Synonymous to keyIsPressed.
+ */
+declare var isKeyPressed: boolean;
+
+/**
+ * The boolean system variable keyIsPressed is true if any key is pressed and
+ * false if no keys are pressed.
+ */
+declare var keyIsPressed: boolean;
+
+/**
+ * The system variable key always contains the value of the most recent key on
+ * the keyboard that was typed. To get the proper capitalization, it is best to
+ * use it within keyTyped(). For non-ASCII keys, use the keyCode variable.
+ */
+declare var key: string;
+
+/**
+ * The variable keyCode is used to detect special keys such as BACKSPACE,
+ * DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL, OPTION, ALT, UP_ARROW,
+ * DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW.
+ */
+declare var keyCode: number;
+
+//
 // Image -> Pixels
 //
 
@@ -372,14 +402,6 @@ declare const ITALIC: string;
 declare const BOLD: string;
 
 //
-// Typography-Internal
-//
-
-declare const _DEFAULT_TEXT_FILL: string;
-declare const _DEFAULT_LEADMULT: number;
-declare const _CTX_MIDDLE: string;
-
-//
 // Vertices
 //
 
@@ -387,6 +409,14 @@ declare const LINEAR: string;
 declare const QUADRATIC: string;
 declare const BEZIER: string;
 declare const CURVE: string;
+
+//
+// Typography-Internal
+//
+
+declare const _DEFAULT_TEXT_FILL: string;
+declare const _DEFAULT_LEADMULT: number;
+declare const _CTX_MIDDLE: string;
 
 //
 // Defaults
@@ -535,7 +565,7 @@ declare function red(obj: p5.Color | number[]): number;
  * 
  * @param {(p5.Color | number[])} color p5.Color object or pixel array
  */
-declare function saturation(color: p5.Color | number[]): number
+declare function saturation(color: p5.Color | number[]): number;
 
 //
 // Color -> Setting
@@ -1563,16 +1593,6 @@ declare function translate(x: number, y: number, z?: number);
 //
 
 /**
- * Updates the pAcceleration values. Intended to be private; do not invoke.
- */
-declare function _updatePAccelerations(): void;
-
-/**
- * Updates the pRotation values. Intended to be private; do not invoke.
- */
-declare function _updatePRotations(): void;
-
-/**
  * The setMoveThreshold() function is used to set the movement threshold for
  * the deviceMoved() function. The default threshold is set to 0.5.
  * 
@@ -1587,6 +1607,40 @@ declare function setMoveThreshold(value: number): void;
  * @param {number} value The threshold value
  */
 declare function setShakeThreshold(value: number): void;
+
+/**
+ * The deviceMoved() function is called when the device is moved by more than
+ * the threshold value along X, Y or Z axis. The default threshold is set to
+ * 0.5.
+ */
+declare function deviceMoved(): void;
+
+/**
+ * The deviceTurned() function is called when the device rotates by more than
+ * 90 degrees continuously.
+ * 
+ * The axis that triggers the deviceTurned() method is stored in the turnAxis
+ * variable. The deviceTurned() method can be locked to trigger on any axis: X,
+ * Y or Z by comparing the turnAxis variable to 'X', 'Y' or 'Z'.
+ */
+declare function deviceTurned(): void;
+
+/**
+ * The deviceShaken() function is called when the device total acceleration
+ * changes of accelerationX and accelerationY values is more than the threshold
+ * value. The default threshold is set to 30.
+ */
+declare function deviceShaken(): void;
+
+/**
+ * Updates the pAcceleration values. Intended to be private; do not invoke.
+ */
+declare function _updatePAccelerations(): void;
+
+/**
+ * Updates the pRotation values. Intended to be private; do not invoke.
+ */
+declare function _updatePRotations(): void;
 
 /**
  * Event handler when the device is rotated.  Intended to be private; do not
@@ -1612,6 +1666,97 @@ declare function _handleMotion(): void;
 //
 // Events -> Keyboard
 //
+
+/**
+ * The keyPressed() function is called once every time a key is pressed. The
+ * keyCode for the key that was pressed is stored in the keyCode variable.
+ * 
+ * For non-ASCII keys, use the keyCode variable. You can check if the keyCode
+ * equals BACKSPACE, DELETE, ENTER, RETURN, TAB, ESCAPE, SHIFT, CONTROL,
+ * OPTION, ALT, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW.
+ * 
+ * For ASCII keys that was pressed is stored in the key variable. However, it
+ * does not distinguish between uppercase and lowercase. For this reason, it is
+ * recommended to use keyTyped() to read the key variable, in which the case of
+ * the variable will be distinguished.
+ * 
+ * Because of how operating systems handle key repeats, holding down a key may
+ * cause multiple calls to keyTyped() (and keyReleased() as well). The rate of
+ * repeat is set by the operating system and how each computer is configured.
+ * 
+ * Browsers may have different default behaviors attached to various key
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function keyPressed(): boolean | void;
+
+/**
+ * The keyReleased() function is called once every time a key is released. See
+ * key and keyCode for more information.
+ * 
+ * Browsers may have different default behaviors attached to various key
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function keyReleased(): boolean | void;
+
+/**
+ * The keyTyped() function is called once every time a key is pressed, but
+ * action keys such as Ctrl, Shift, and Alt are ignored. The most recent key
+ * pressed will be stored in the key variable.
+ * 
+ * Because of how operating systems handle key repeats, holding down a key will
+ * cause multiple calls to keyTyped() (and keyReleased() as well). The rate of
+ * repeat is set by the operating system and how each computer is configured.
+ * 
+ * Browsers may have different default behaviors attached to various key
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function keyTyped(): boolean | void;
+
+/**
+ * The keyIsDown() function checks if the key is currently down, i.e. pressed.
+ * It can be used if you have an object that moves, and you want several keys
+ * to be able to affect its behaviour simultaneously, such as moving a sprite
+ * diagonally. You can put in any number representing the keyCode of the key,
+ * or use any of the variable keyCode constants.
+ * 
+ * @param {number} code The key to check for.
+ */
+declare function keyIsDown(code: number): boolean;
+
+
+/**
+ * Event handler when a key goes down. Intended to be private; do not invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _onkeydown(e: Event): void;
+
+/**
+ * Event handler when a key goes up. Intended to be private; do not invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _onkeyup(e: Event): void;
+
+/**
+ * Event handler when a key is pressed. Intended to be private; do not invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _onkeypress(e: Event): void;
+
+/**
+ * The onblur function is called when the user is no longer focused
+ * on the p5 element. Because the keyup events will not fire if the user is
+ * not focused on the element we must assume all keys currently down have
+ * been released. Intended to be private; do not invoke.
+ * 
+ * @param {Event} e event to handle
+ */
+declare function _onblur(e: Event): void;
 
 //
 // Events -> Mouse
