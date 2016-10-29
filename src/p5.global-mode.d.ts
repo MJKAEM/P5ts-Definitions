@@ -206,6 +206,89 @@ declare var key: string;
 declare var keyCode: number;
 
 //
+// Events -> Mouse
+//
+
+/**
+ * The system variable mouseX always contains the current horizontal position
+ * of the mouse, relative to (0, 0) of the canvas.
+ */
+declare var mouseX: number;
+
+/**
+ * The system variable mouseY always contains the current vertical position of
+ * the mouse, relative to (0, 0) of the canvas.
+ */
+declare var mouseY: number;
+
+/**
+ * The system variable pmouseX always contains the horizontal position of the
+ * mouse in the frame previous to the current frame, relative to (0, 0) of the
+ * canvas.
+ */
+declare var pmouseX: number;
+
+/**
+ * The system variable pmouseY always contains the vertical position of the
+ * mouse in the frame previous to the current frame, relative to (0, 0) of the
+ * canvas.
+ */
+declare var pmouseY: number;
+
+/**
+ * The system variable winMouseX always contains the current horizontal
+ * position of the mouse, relative to (0, 0) of the window.
+ */
+declare var winMouseX: number;
+
+/**
+ * The system variable winMouseY always contains the current vertical position
+ * of the mouse, relative to (0, 0) of the window.
+ */
+declare var winMouseY: number;
+
+/**
+ * The system variable pwinMouseX always contains the horizontal position of
+ * the mouse in the frame previous to the current frame, relative to (0, 0) of
+ * the window.
+ */
+declare var pwinMouseX: number;
+
+/**
+ * The system variable pwinMouseY always contains the vertical position of the
+ * mouse in the frame previous to the current frame, relative to (0, 0) of the
+ * window.
+ */
+declare var pwinMouseY: number;
+
+/**
+ * Processing automatically tracks if the mouse button is pressed and which
+ * button is pressed. The value of the system variable mouseButton is either
+ * LEFT, RIGHT, or CENTER depending on which button was pressed last. Warning:
+ * different browsers may track mouseButton differently.
+ */
+declare var mouseButton: number;
+
+/**
+ * The boolean system variable mouseIsPressed is true if the mouse is pressed
+ * and false if not.
+ */
+declare var mouseIsPressed: boolean;
+
+/**
+ * The boolean system variable mouseIsPressed is true if the mouse is pressed
+ * and false if not. Synonymous to isMousePressed.
+ */
+declare var isMousePressed: boolean;
+
+/**
+ * This is a flag which is false until the first time we receive a mouse event.
+ * The pmouseX and pmouseY values will match the mouseX and mouseY values until
+ * this interaction takes place.
+ */
+declare var _hasMouseInteracted: boolean;
+
+//
 // Image -> Pixels
 //
 
@@ -1645,18 +1728,14 @@ declare function _updatePRotations(): void;
 /**
  * Event handler when the device is rotated.  Intended to be private; do not
  * invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _ondeviceorientation(e: Event);
+declare function _ondeviceorientation(e);
 
 /**
  * Event handler when the device is moved. Intended to be private; do not
  * invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _ondevicemotion(e: Event);
+declare function _ondevicemotion(e);
 
 /**
  * Intended to be private; do not invoke.
@@ -1729,38 +1808,161 @@ declare function keyIsDown(code: number): boolean;
 
 /**
  * Event handler when a key goes down. Intended to be private; do not invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _onkeydown(e: Event): void;
+declare function _onkeydown(e): void;
 
 /**
  * Event handler when a key goes up. Intended to be private; do not invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _onkeyup(e: Event): void;
+declare function _onkeyup(e): void;
 
 /**
  * Event handler when a key is pressed. Intended to be private; do not invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _onkeypress(e: Event): void;
+declare function _onkeypress(e): void;
 
 /**
  * The onblur function is called when the user is no longer focused
  * on the p5 element. Because the keyup events will not fire if the user is
  * not focused on the element we must assume all keys currently down have
  * been released. Intended to be private; do not invoke.
- * 
- * @param {Event} e event to handle
  */
-declare function _onblur(e: Event): void;
+declare function _onblur(e): void;
 
 //
 // Events -> Mouse
 //
+
+/**
+ * The mouseMoved() function is called every time the mouse moves and a mouse
+ * button is not pressed.
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function mouseMoved(): boolean | void;
+
+/**
+ * The mouseDragged() function is called once every time the mouse moves and a
+ * mouse button is pressed. If no mouseDragged() function is defined, the
+ * touchMoved() function will be called instead if it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function mouseDragged(): boolean | void;
+
+/**
+ * The mousePressed() function is called once after every time a mouse button
+ * is pressed. The mouseButton variable (see the related reference entry) can
+ * be used to determine which button has been pressed. If no mousePressed()
+ * function is defined, the touchStarted() function will be called instead if
+ * it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function mousePressed(): boolean | void;
+
+/**
+ * The mouseReleased() function is called every time a mouse button is
+ * released. If no mouseReleased() function is defined, the touchEnded()
+ * function will be called instead if it is defined.
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function mouseReleased(): boolean | void;
+
+/**
+ * The mouseClicked() function is called once after a mouse button has been
+ * pressed and then released.
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ */
+declare function mouseClicked(): boolean | void;
+
+/**
+ * The function mouseWheel() is executed every time a vertical mouse wheel
+ * event is detected either triggered by an actual mouse wheel or by a
+ * touchpad.
+ * 
+ * The event.delta property returns the amount the mouse wheel have scrolled.
+ * The values can be positive or negative depending on the scroll direction (on
+ * OS X with "natural" scrolling enabled, the signs are inverted).
+ * 
+ * Browsers may have different default behaviors attached to various mouse
+ * events. To prevent any default behavior for this event, add "return false"
+ * to the end of the method.
+ * 
+ * Due to the current support of the "wheel" event on Safari, the function may
+ * only work as expected if "return false" is included while using Safari.
+ */
+declare function mouseWheel(): boolean | void;
+
+/**
+ * Updates the values of 'mouse' and 'winMouse'. Also initializes
+ * '_hasMouseInteracted'. Intended to be private; do not invoke.
+ */
+declare function _updateNextMouseCoords(): void;
+
+/**
+ * Updates the values of 'pmouse' and 'pwinMouse'. Intended to be private; do
+ * not invoke.
+ */
+declare function _updateMouseCoords(): void;
+
+/**
+ * Sets the active mouse button. Intended to be private; do not invoke.
+ */
+declare function _setMouseButton(e): void;
+
+/**
+ * Event handler when the mouse is moved. Intended to be private; do not invoke.
+ */
+declare function _onmousemove(e): void;
+
+/**
+ * Event handler when one of the mouse buttons are pressed down. Intended to be
+ * private; do not invoke.
+ */
+declare function _onmousedown(e): void;
+
+/**
+ * Event handler when one of the mouse buttons are released. Intended to be
+ * private; do not invoke.
+ */
+declare function _onmouseup(e): void;
+
+/**
+ * Event handler when the touch screen no longer detects movement. Intended to
+ * be private; do not invoke.
+ */
+declare function _ondragend(e): void;
+
+/**
+ * Event handler when the touch screen detects movement. Intended to be
+ * private; do not invoke.
+ */
+declare function _ondragover(e): void;
+
+/**
+ * Event handler when one of the mouse buttons are clicked. Intended to be
+ * private; do not invoke.
+ */
+declare function _onclick(e): void;
+
+/**
+ * Event handler when the mouse wheel is scrolled. Intended to be private; do
+ * not invoke.
+ */
+declare function _onwheel(e): void;
 
 //
 // Events -> Touch

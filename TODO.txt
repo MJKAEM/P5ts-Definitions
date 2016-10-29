@@ -18,9 +18,9 @@ These functions that must be overloaded produce compiler errors:
 - deviceMoved
 - deviceTurned
 - deviceShaken
-- keyPressed
-- keyReleased
-- keyTyped
+- keyPressed, keyReleased, keyTyped
+- mouseMoved, mouseDragged, mousePressed, mouseReleased, mouseClicked,
+	mouseWheel
 
 The following are missing documentation:
 - Most constants
@@ -29,6 +29,8 @@ The following are missing documentation:
 - vertex function
 - turnAxis variable
 - _handleMotion
+
+3D has been temporarily skipped. Please implement.
 
 The following functions are clean and do not require testing:
 - All structure functions
