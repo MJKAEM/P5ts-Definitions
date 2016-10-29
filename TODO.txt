@@ -29,6 +29,7 @@ The following are missing documentation:
 - vertex function
 - turnAxis variable
 - _handleMotion
+- _makeFrame
 
 3D has been temporarily skipped. Please implement.
 

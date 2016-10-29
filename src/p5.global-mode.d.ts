@@ -2107,6 +2107,88 @@ declare function _ontouchend(e);
 // Image
 //
 
+/**
+ * Creates a new p5.Image (the datatype for storing images). This provides a
+ * fresh buffer of pixels to play with. Set the size of the buffer with the
+ * width and height parameters.
+ * 
+ * .pixels gives access to an array containing the values for all the pixels in
+ * the display window. These values are numbers. This array is the size
+ * (including an appropriate factor for the pixelDensity) of the display window
+ * x4, representing the R, G, B, A values in order for each pixel, moving from
+ * left to right across each row, then down each column. See .pixels for more
+ * info. It may also be simpler to use set() or get().
+ * 
+ * Before accessing the pixels of an image, the data must loaded with the
+ * loadPixels() function. After the array data has been modified, the
+ * updatePixels() function must be run to update the changes.
+ * 
+ * @param {number} width width in pixels
+ * @param {number} height height in pixels
+ */
+declare function createImage(width: number, height: number): p5.Image;
+
+/**
+ * Save the current canvas as an image. In Safari, this will open the image in
+ * the window and the user must provide their own filename on save-as. Other
+ * browsers will either save the file immediately, or prompt the user with a
+ * dialogue window.
+ * 
+ * @param {*} canvas a variable representing a specific html5 canvas
+ * @param {string} filename the name of the output file
+ * @param {string} extension 'jpg' or 'png'
+ */
+declare function saveCanvas(canvas: any, filename: string,
+	extension: string): void;
+
+/**
+ * Capture a sequence of frames that can be used to create a movie. Accepts a
+ * callback. For example, you may wish to send the frames to a server where
+ * they can be stored or converted into a movie. If no callback is provided,
+ * the browser will pop up save dialogues in an attempt to download all of the
+ * images that have just been created. With the callback provided the image
+ * data isn't saved by default but instead passed as an argument to the
+ * callback function as an array of objects, with the size of array equal to
+ * the total number of frames.
+ * 
+ * @param {string} filename the name of the output file
+ * @param {string} extension 'jpg' or 'png'
+ * @param {number} duration Duration in seconds to save the frames for.
+ * @param {number} framerate Framerate to save the frames in.
+ * @param {(array: {
+ * 		imageData: any,
+ * 		filename: string,
+ * 		extension: string
+ * 	}[]) => void} callback A callback function that will be executed to handle
+ * 			the image data. This function should accept an array as argument.
+ * 			The array will contain the specified number of frames of objects.
+ */
+declare function saveFrames(filename: string, extension: string,
+	duration: number, framerate: number, callback?: (array: {
+		/**
+		 * An image/octet-stream
+		 */
+		imageData: any,
+		/**
+		 * The name of the output file
+		 */
+		filename: string,
+		/**
+		 * Extension 'jpg' or 'png'
+		 */
+		extension: string
+	}[]) => void): void;
+
+/**
+ * 
+ * 
+ * @param {string} filename the name of the output file
+ * @param {string} extension 'jpg' or 'png'
+ * @param {HTMLCanvasElement} _cnv
+ */
+declare function _makeFrame(filename: string, extension: string,
+	_cnv: HTMLCanvasElement): void;
+
 //
 // Image -> Loading & Displaying
 //
