@@ -8,6 +8,8 @@ Test the following functions for implementation errors:
 - stroke
 - lerpColor
 - scale
+- get
+- updatePixels
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 

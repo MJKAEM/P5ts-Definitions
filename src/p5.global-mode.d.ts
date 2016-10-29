@@ -2193,9 +2193,277 @@ declare function _makeFrame(filename: string, extension: string,
 // Image -> Loading & Displaying
 //
 
+/**
+ * Loads an image from a path and creates a p5.Image from it.
+ * 
+ * The image may not be immediately available for rendering If you want to
+ * ensure that the image is ready before doing anything with it, place the
+ * loadImage() call in preload(). You may also supply a callback function to
+ * handle the image when it's ready.
+ * 
+ * The path to the image should be relative to the HTML file that links in your
+ * sketch. Loading an from a URL or other remote location may be blocked due to
+ * your browser's built-in security.
+ * 
+ * @param {string} path Path of the image to be loaded
+ * @param {(img: p5.Image) => any} successCallback Function to be called once
+ * 		the image is loaded. Will be passed the p5.Image.
+ * @param {(e: Event) => any} failureCallback called with event error if the
+ * 		image fails to load.
+ */
+declare function loadImage(path: string,
+	successCallback?: (img: p5.Image) => any,
+	failureCallback?: (e: Event) => any): p5.Image;
+
+/**
+ * Draw an image to the main canvas of the p5js sketch
+ * 
+ * @param {p5.Image} img the image to display
+ * @param {number} sx The X coordinate of the top left corner of the
+ * 		sub-rectangle of the source image to draw into the destination canvas.
+ * @param {number} sy The Y coordinate of the top left corner of the
+ * 		sub-rectangle of the source image to draw into the destination canvas.
+ * @param {number} sWidth The width of the sub-rectangle of the source image to
+ * 		draw into the destination canvas.
+ * @param {number} sHeight The height of the sub-rectangle of the source image
+ * 		to draw into the destination context.
+ * @param {number} dx The X coordinate in the destination canvas at which to
+ * 		place the top-left corner of the source image.
+ * @param {number} dy The Y coordinate in the destination canvas at which to
+ * 		place the top-left corner of the source image.
+ * @param {number} dWidth The width to draw the image in the destination
+ * 		canvas. This allows scaling of the drawn image.
+ * @param {number} dHeight The height to draw the image in the destination
+ * 		canvas. This allows scaling of the drawn image.
+ */
+declare function image(img: p5.Image, sx?: number, sy?: number,
+	sWidth?: number, sHeight?: number, dx?: number, dy?: number,
+	dWidth?: number, dHeight?: number): void;
+
+/**
+ * Sets the fill value for displaying images. Images can be tinted to specified
+ * colors or made transparent by including an alpha value.
+ * 
+ * To apply transparency to an image without affecting its color, use white as
+ * the tint color and specify an alpha value. For instance, tint(255, 128) will
+ * make an image 50% transparent (assuming the default alpha range of 0-255,
+ * which can be changed with colorMode()).
+ * 
+ * The value for the gray parameter must be less than or equal to the current
+ * maximum value as specified by colorMode(). The default maximum value is 255.
+ * 
+ * @param {(number | number[])} v1 gray value, red or hue value (depending on
+ * 		the current color mode), or color Array
+ * @param {number} v2 green or saturation value (depending on the current color
+ * 		mode)
+ * @param {number} v3 blue or brightness value (depending on the current color
+ * 		mode)
+ * @param {number} a opacity of the background
+ */
+declare function tint(v1: number | number[], v2?: number, v3?: number,
+	a?: number): void;
+
+/**
+ * Removes the current fill value for displaying images and reverts to
+ * displaying images with their original hues.
+ */
+declare function noTint(): void;
+
+/**
+ * Set image mode. Modifies the location from which images are drawn by changing
+ * the way in which parameters given to image() are interpreted. The default
+ * mode is imageMode(CORNER), which interprets the second and third parameters
+ * of image() as the upper-left corner of the image. If two additional
+ * parameters are specified, they are used to set the image's width and height.
+ * 
+ * imageMode(CORNERS) interprets the second and third parameters of image() as
+ * the location of one corner, and the fourth and fifth parameters as the
+ * opposite corner.
+ * 
+ * imageMode(CENTER) interprets the second and third parameters of image() as
+ * the image's center point. If two additional parameters are specified, they
+ * are used to set the image's width and height.
+ * 
+ * @param {string} mode either CORNER, CORNERS, or CENTER
+ */
+declare function imageMode(mode: string): void;
+
+/**
+ * Apply the current tint color to the input image, return the resulting
+ * canvas. Intended to be private; do not invoke.
+ * 
+ * @param {p5.Image} img The image to be tinted
+ */
+declare function _getTintedImageCanvas(img: p5.Image): HTMLCanvasElement;
+
 //
 // Image -> Pixels
 //
+
+/**
+ * Copies a region of pixels from one image to another, using a specified blend
+ * mode to do the operation.
+ * 
+ * Available blend modes are: BLEND | DARKEST | LIGHTEST | DIFFERENCE |
+ * MULTIPLY| EXCLUSION | SCREEN | REPLACE | OVERLAY | HARD_LIGHT | SOFT_LIGHT |
+ * DODGE | BURN | ADD | NORMAL
+ * 
+ * @param {p5.Image} srcImage source image
+ * @param {number} sx X coordinate of the source's upper left corner
+ * @param {number} sy Y coordinate of the source's upper left corner
+ * @param {number} sw source image width
+ * @param {number} sh source image height
+ * @param {number} dx X coordinate of the destination's upper left corner
+ * @param {number} dy Y coordinate of the destination's upper left corner
+ * @param {number} dw destination image width
+ * @param {number} dh destination image height
+ * @param {string} blendMode the blend mode
+ */
+declare function blend(srcImage: p5.Image, sx: number, sy: number, sw: number,
+	sh: number, dx: number, dy: number, dw: number, dh: number,
+	blendMode: string): void;
+
+/**
+ * Copies a region of the canvas to another region of the canvas and copies a
+ * region of pixels from an image used as the srcImg parameter into the canvas
+ * srcImage is specified this is used as the source. If the source and
+ * destination regions aren't the same size, it will automatically resize
+ * source pixels to fit the specified target region.
+ * 
+ * @param {p5.Image} srcImage source image
+ * @param {number} sx X coordinate of the source's upper left corner
+ * @param {number} sy Y coordinate of the source's upper left corner
+ * @param {number} sw source image width
+ * @param {number} sh source image height
+ * @param {number} dx X coordinate of the destination's upper left corner
+ * @param {number} dy Y coordinate of the destination's upper left corner
+ * @param {number} dw destination image width
+ * @param {number} dh destination image height
+ */
+declare function copy(srcImage: p5.Image, sx: number, sy: number, sw: number,
+	sh: number, dx: number, dy: number, dw: number, dh: number): void;
+
+/**
+ * Applies a filter to the canvas.
+ * 
+ * The presets options are:
+ * 
+ * THRESHOLD Converts the image to black and white pixels depending if they are
+ * above or below the threshold defined by the level parameter. The parameter
+ * must be between 0.0 (black) and 1.0 (white). If no level is specified, 0.5
+ * is used.
+ * 
+ * GRAY Converts any colors in the image to grayscale equivalents. No parameter
+ * is used.
+ * 
+ * OPAQUE Sets the alpha channel to entirely opaque. No parameter is used.
+ * 
+ * INVERT Sets each pixel to its inverse value. No parameter is used.
+ * 
+ * POSTERIZE Limits each channel of the image to the number of colors specified
+ * as the parameter. The parameter can be set to values between 2 and 255, but
+ * results are most noticeable in the lower ranges.
+ * 
+ * BLUR Executes a Guassian blur with the level parameter specifying the extent
+ * of the blurring. If no parameter is used, the blur is equivalent to Guassian
+ * blur of radius 1. Larger values increase the blur.
+ * 
+ * ERODE Reduces the light areas. No parameter is used.
+ * 
+ * DILATE Increases the light areas. No parameter is used.
+ * 
+ * @param {string} filterType a preset option
+ * @param {number} filterParam an optional parameter unique to each filter, see
+ * 		above
+ */
+declare function filter(filterType: string, filterParam: number): void;
+
+/**
+ * Grabs an entire image.
+ * 
+ * To get the numbers scaled according to the current color ranges and taking
+ * into account colorMode, use getColor instead of get.
+ */
+declare function get(): p5.Image;
+
+/**
+ * Returns an array of [R,G,B,A] values for any pixel. Use the x and y
+ * parameters to get the value of one pixel.
+ * 
+ * If the pixel requested is outside of the image window, [0,0,0,255] is
+ * returned. To get the numbers scaled according to the current color ranges
+ * and taking into account colorMode, use getColor instead of get.
+ * 
+ * @param {number} x x-coordinate of the pixel
+ * @param {number} y y-coordinate of the pixel
+ */
+declare function get(x: number, y: number): number[];
+
+/**
+ * Grabs a section of an image. When getting an image, the x and y parameters
+ * define the coordinates for the upper-left corner of the image, regardless of
+ * the current imageMode().
+ * 
+ * If the pixel requested is outside of the image window, [0,0,0,255] is
+ * returned. To get the numbers scaled according to the current color ranges
+ * and taking into account colorMode, use getColor instead of get.
+ * 
+ * @param {number} x x-coordinate of the pixel
+ * @param {number} y y-coordinate of the pixel
+ * @param {number} w width
+ * @param {number} h height
+ */
+declare function get(x: number, y: number, w: number, h: number): p5.Image;
+
+/**
+ * Loads the pixel data for the display window into the pixels[] array. This
+ * function must always be called before reading from or writing to pixels[].
+ */
+declare function loadPixels(): void;
+
+/**
+ * Changes the color of any pixel, or writes an image directly to the display
+ * window.
+ * 
+ * The x and y parameters specify the pixel to change and the c parameter
+ * specifies the color value. This can be a p5.Color object, or [R, G, B, A]
+ * pixel array. It can also be a single grayscale value. When setting an image,
+ * the x and y parameters define the coordinates for the upper-left corner of
+ * the image, regardless of the current imageMode().
+ * 
+ * After using set(), you must call updatePixels() for your changes to appear.
+ * This should be called once all pixels have been set.
+ * 
+ * @param {number} x x-coordinate of the pixel
+ * @param {number} y y-coordinate of the pixel
+ * @param {(number | number[] | p5.Color | p5.Image)} c insert a grayscale
+ * 		value | a pixel array | a p5.Color object | a p5.Image to copy
+ */
+declare function set(x: number, y: number,
+	c: number | number[] | p5.Color | p5.Image): void;
+
+/**
+ * Updates the display window with the data in the pixels[] array. Use in
+ * conjunction with loadPixels(). If you're only reading pixels from the array,
+ * there's no need to call updatePixels() — updating is only necessary to apply
+ * changes. updatePixels() should be called anytime the pixels array is
+ * manipulated or set() is called.
+ */
+declare function updatePixels(): void;
+
+/**
+ * Updates the display window with the data in the pixels[] array. Use in
+ * conjunction with loadPixels(). If you're only reading pixels from the array,
+ * there's no need to call updatePixels() — updating is only necessary to apply
+ * changes. updatePixels() should be called anytime the pixels array is
+ * manipulated or set() is called.
+ * 
+ * @param {number} x x-coordinate of the upper-left corner of region to update
+ * @param {number} y y-coordinate of the upper-left corner of region to update
+ * @param {number} w width of region to update
+ * @param {number} h height of region to update
+ */
+declare function updatePixels(x:number, y:number, w?:number, h?: number): void;
 
 //
 // IO -> Input
