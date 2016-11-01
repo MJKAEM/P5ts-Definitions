@@ -2931,6 +2931,18 @@ declare function year(): number;
 // Math
 //
 
+/**
+ * Creates a new p5.Vector (the datatype for storing vectors). This provides a
+ * two or three dimensional vector, specifically a Euclidean (also known as
+ * geometric) vector. A vector is an entity that has both magnitude and
+ * direction.
+ * 
+ * @param {number} x x component of the vector
+ * @param {number} y y component of the vector
+ * @param {number} z z component of the vector
+ */
+declare function createVector(x: number, y: number, z: number): p5.Vector;
+
 //
 // Math -> Calculation
 //
