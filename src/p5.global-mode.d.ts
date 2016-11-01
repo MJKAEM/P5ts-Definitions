@@ -3400,6 +3400,106 @@ declare function angleMode(mode: string): void;
 // Typography -> Attributes
 //
 
+/**
+ * Gets the current alignment for drawing text.
+ */
+declare function textAlign(): {
+	horizontal: number,
+	vertical: number
+};
+
+/**
+ * Sets the current alignment for drawing text. Accepts two arguments:
+ * horizAlign (LEFT, CENTER, or RIGHT) and
+ * vertAlign (TOP, BOTTOM, CENTER, or BASELINE).
+ * 
+ * The horizAlign parameter is in reference to the x value of the text()
+ * function, while the vertAlign parameter is in reference to the y value.
+ * 
+ * So if you write textAlign(LEFT), you are aligning the left edge of your text
+ * to the x value you give in text(). If you write textAlign(RIGHT, TOP), you
+ * are aligning the right edge of your text to the x value and the top of edge
+ * of the text to the y value.
+ * 
+ * @param {string} horizAlign horizontal alignment, either LEFT, CENTER, or
+ * 		RIGHT
+ * @param {string} vertAlign vertical alignment, either TOP, BOTTOM, CENTER, or
+ * 		BASELINE
+ */
+declare function textAlign(horizAlign: string, vertAlign? : string): p5;
+
+/**
+ * Sets/gets the spacing, in pixels, between lines of text. This setting will
+ * be used in all subsequent calls to the text() function.
+ */
+declare function textLeading(): number;
+
+/**
+ * Sets/gets the spacing, in pixels, between lines of text. This setting will
+ * be used in all subsequent calls to the text() function.
+ * 
+ * @param {number} leading the size in pixels for spacing between lines
+ */
+declare function textLeading(leading: number): p5.Renderer;
+
+/**
+ * Sets/gets the current font size. This size will be used in all subsequent
+ * calls to the text() function. Font size is measured in pixels.
+ */
+declare function textSize(): number;
+
+/**
+ * Sets/gets the current font size. This size will be used in all subsequent
+ * calls to the text() function. Font size is measured in pixels.
+ * 
+ * @param {number} theSize the size of the letters in units of pixels
+ */
+declare function textSize(theSize: number): p5;
+
+/**
+ * Sets/gets the style of the text for system fonts to NORMAL, ITALIC, or BOLD.
+ * Note: this may be is overridden by CSS styling. For non-system fonts
+ * (opentype, truetype, etc.) please load styled fonts instead.
+ */
+declare function textStyle(): number;
+
+/**
+ * Sets/gets the style of the text for system fonts to NORMAL, ITALIC, or BOLD.
+ * Note: this may be is overridden by CSS styling. For non-system fonts
+ * (opentype, truetype, etc.) please load styled fonts instead.
+ * 
+ * @param {(string | number)} theStyle styling for text, either NORMAL, ITALIC,
+ * 		or BOLD
+ */
+declare function textStyle(theStyle: string | number): p5;
+
+/**
+ * Calculates and returns the width of any character or text string.
+ * 
+ * @param {string} theText the String of characters to measure
+ */
+declare function textWidth(theText?: string): number;
+
+/**
+ * Returns the ascent of the current font at its current size. The ascent
+ * represents the distance, in pixels, of the tallest character above the
+ * baseline.
+ */
+declare function textAscent(): number;
+
+/**
+ * Returns the descent of the current font at its current size. The descent
+ * represents the distance, in pixels, of the character with the longest
+ * descender below the baseline.
+ */
+declare function textDescent(): number;
+
+/**
+ * Helper function to measure ascent and descent. Intended to be private; do
+ * not invoke.
+ */
+declare function _updateTextMetrics(): p5.Renderer;
+
 //
 // Typography -> Loading & Displaying
 //

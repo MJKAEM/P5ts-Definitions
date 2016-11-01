@@ -180,6 +180,12 @@ declare namespace p5 {
 	class Font {
 	}
 
+	class Renderer {
+	}
+
+	class Renderer2D {
+	}
+
 	class RendererGL {
 	}
 }
