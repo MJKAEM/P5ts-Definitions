@@ -1242,6 +1242,100 @@ declare function model(model: p5.Geometry): void;
 // Shape -> 3D Primitives
 //
 
+/**
+ * Draw a plane with given a width and height
+ * 
+ * @param {number} width width of the plane
+ * @param {number} height height of the plane
+ * @param {number} detailX Optional number of triangle subdivisions in
+ * 		x-dimension
+ * @param {number} detailY Optional number of triangle subdivisions in
+ * 		y-dimension
+ */
+declare function plane(width: number, height: number, detailX?: number,
+	detailY?: number): void;
+
+/**
+ * Draw a box with given width, height and depth
+ * 
+ * @param {number} width width of the box
+ * @param {number} Height height of the box
+ * @param {number} depth depth of the box
+ * @param {number} detailX Optional number of triangle subdivisions in
+ * 		x-dimension
+ * @param {number} detailY Optional number of triangle subdivisions in
+ * 		y-dimension
+ */
+declare function box(width: number, Height: number, depth: number,
+	detailX?: number, detailY?: number): p5;
+
+/**
+ * Draw a sphere with given radius
+ * 
+ * @param {number} radius radius of circle
+ * @param {number} detailX optional: number of segments, the more segments the
+ * 		smoother geometry default is 24
+ * @param {number} detailY optional: number of segments, the more segments the
+ * 		smoother geometry default is 16
+ */
+declare function sphere(radius: number, detailX?: number,
+	detailY?: number): p5;
+
+/**
+ * Draw a cylinder with given radius and height
+ * 
+ * @param {number} radius radius of the surface
+ * @param {number} height height of the cylinder
+ * @param {number} detailX optional: number of segments, the more segments the
+ * 		smoother geometry default is 24
+ * @param {number} detailY optional: number of segments in y-dimension, the
+ * 		more segments the smoother geometry default is 16
+ */
+declare function cylinder(radius: number, height: number, detailX?: number,
+	detailY?: number): p5;
+
+/**
+ * Draw a cone with given radius and height
+ * 
+ * @param {number} radius radius of the bottom surface
+ * @param {number} height height of the cone
+ * @param {number} detailX optional: number of segments, the more segments the
+ * 		smoother geometry default is 24
+ * @param {number} detailY optional: number of segments, the more segments the
+ * 		smoother geometry default is 16
+ */
+declare function cone(radius: number, height: number, detailX: number,
+	detailY: number): p5;
+
+/**
+ * Draw an ellipsoid with given radius
+ * 
+ * @param {number} radiusx xradius of circle
+ * @param {number} radiusy yradius of circle
+ * @param {number} radiusz zradius of circle
+ * @param {number} detailX optional: number of segments, the more segments the
+ * 		smoother geometry default is 24. Avoid detail number above 150, it may
+ * 		crash the browser.
+ * @param {number} detailY optional: number of segments, the more segments the
+ * 		smoother geometry default is 16. Avoid detail number above 150, it may
+ * 		crash the browser.
+ */
+declare function ellipsoid(radiusx: number, radiusy: number, radiusz: number,
+	detailX?: number, detailY?: number): p5;
+
+/**
+ * Draw a torus with given radius and tube radius
+ * 
+ * @param {number} radius radius of the whole ring
+ * @param {number} tubeRadius radius of the tube
+ * @param {number} detailX optional: number of segments in x-dimension, the
+ * 		more segments the smoother geometry default is 24
+ * @param {number} detailY optional: number of segments in y-dimension, the
+ * 		more segments the smoother geometry default is 16
+ */
+declare function torus(radius: number, tubeRadius: number, detailX?: number,
+	detailY?: number): p5;
+
 //
 // Structure
 //
