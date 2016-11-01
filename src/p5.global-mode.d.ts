@@ -1209,6 +1209,35 @@ declare function vertex(x: number, y: number, moveTo?: number): p5;
 // Shape -> 3D Models
 //
 
+/**
+ * Load a 3d model from an OBJ file.
+ * 
+ * One of the limitations of the OBJ format is that it doesn't have a built-in
+ * sense of scale. This means that models exported from different programs
+ * might be very different sizes. If your model isn't displaying, try calling
+ * loadModel() with the normalized parameter set to true. This will resize the
+ * model to a scale appropriate for p5. You can also make additional changes to
+ * the final size of your model with the scale() function.
+ * 
+ * @param {string} path Path of the model to be loaded
+ * @param {boolean} normalize If true, scale the model to a standardized size
+ * 		when loading
+ * @param {(model: p5.Geometry) => void} successCallback Function to be called
+ * 		once the model is loaded. Will be passed the 3D model object.
+ * @param {(response: any) => void} failureCallback called with event error if
+ * 		the image fails to load.
+ */
+declare function loadModel(path: string, normalize?: boolean,
+	successCallback?: (model: p5.Geometry) => void,
+	failureCallback?: (response: any) => void): p5.Geometry;
+
+/**
+ * Render a 3d model to the screen.
+ * 
+ * @param {p5.Geometry} model Loaded 3d model to be rendered
+ */
+declare function model(model: p5.Geometry): void;
+
 //
 // Shape -> 3D Primitives
 //

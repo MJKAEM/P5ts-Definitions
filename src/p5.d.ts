@@ -113,6 +113,9 @@ declare namespace p5 {
 		public static _parseInputs(args): number[];
 	}
 
+	class Geometry {
+	}
+
 	/**
 	 * Base class for all elements added to a sketch, including canvas, graphics buffers, and
 	 * other HTML elements. Methods in blue are included in the core functionality,
