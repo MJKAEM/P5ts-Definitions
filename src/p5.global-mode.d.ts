@@ -2884,6 +2884,49 @@ declare function _isSafari(): boolean;
 // IO -> Time & Date
 //
 
+/**
+ * p5.js communicates with the clock on your computer. The day() function
+ * returns the current day as a value from 1 - 31.
+ */
+declare function day(): number;
+
+/**
+ * p5.js communicates with the clock on your computer. The hour() function
+ * returns the current hour as a value from 0 - 23.
+ */
+declare function hour(): number;
+
+/**
+ * p5.js communicates with the clock on your computer. The minute() function
+ * returns the current minute as a value from 0 - 59.
+ */
+declare function minute(): number;
+
+/**
+ * Returns the number of milliseconds (thousandths of a second) since starting
+ * the program. This information is often used for timing events and animation
+ * sequences.
+ */
+declare function millis(): number;
+
+/**
+ * p5.js communicates with the clock on your computer. The month() function
+ * returns the current month as a value from 1 - 12.
+ */
+declare function month(): number;
+
+/**
+ * p5.js communicates with the clock on your computer. The second() function
+ * returns the current second as a value from 0 - 59.
+ */
+declare function second(): number;
+
+/**
+ * p5.js communicates with the clock on your computer. The year() function
+ * returns the current year as an integer (2014, 2015, 2016, etc).
+ */
+declare function year(): number;
+
 //
 // Math
 //
