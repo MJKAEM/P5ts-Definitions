@@ -161,6 +161,10 @@ declare namespace p5 {
 		public constructor(width:number,height:number,pInst:p5);
 	}
 
+	class PrintWriter {
+		
+	}
+
 	class Table {
 	}
 

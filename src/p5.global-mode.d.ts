@@ -358,6 +358,12 @@ declare var touchIsDown: boolean;
 declare var _hasTouchInteracted: boolean;
 
 //
+// IO -> Output
+//
+
+declare var _pWriters: p5.PrintWriter[];
+
+//
 // Image -> Pixels
 //
 
@@ -2463,15 +2469,416 @@ declare function updatePixels(): void;
  * @param {number} w width of region to update
  * @param {number} h height of region to update
  */
-declare function updatePixels(x:number, y:number, w?:number, h?: number): void;
+declare function updatePixels(x: number, y: number, w?: number,
+	h?: number): void;
 
 //
 // IO -> Input
 //
 
+/**
+ * Loads an opentype font file (.otf, .ttf) from a file or a URL, and returns a
+ * PFont Object. This method is asynchronous, meaning it may not finish before
+ * the next line in your sketch is executed.
+ * 
+ * The path to the font should be relative to the HTML file that links in your
+ * sketch. Loading an from a URL or other remote location may be blocked due to
+ * your browser's built-in security.
+ * 
+ * @param {string} path name of the file or url to load
+ * @param {(font: p5.Font) => void} callback function to be executed after
+ * 		loadFont() completes
+ * @param {(e: Error) => void} errorCallback function to be executed when
+ * 		loadFont() fails
+ */
+declare function loadFont(path: string, callback?: (font: p5.Font) => void,
+	errorCallback?: (e: Error) => void): p5.Font;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function createInput(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function createReader(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function loadBytes(): never;
+
+/**
+ * Loads a JSON file from a file or a URL, and returns an Object or Array. This
+ * method is asynchronous, meaning it may not finish before the next line in
+ * your sketch is executed.
+ * 
+ * @param {string} path name of the file or url to load
+ * @param {(data: any) => void} callback function to be executed after
+ * 		loadJSON() completes, data is passed in as first argument
+ * @param {(resp: any) => void} errorCallback function to be executed if there
+ * 		is an error, response is passed in as first argument
+ * @param {string} datatype "json" or "jsonp"
+ */
+declare function loadJSON(path: string, callback?: (data: any) => void,
+	errorCallback?: (response: any) => void, datatype?: string): any;
+
+/**
+ * Reads the contents of a file and creates a String array of its individual
+ * lines. If the name of the file is used as the parameter, as in the above
+ * example, the file must be located in the sketch directory/folder.
+ * 
+ * Alternatively, the file maybe be loaded from anywhere on the local computer
+ * using an absolute path (something that starts with / on Unix and Linux, or a
+ * drive letter on Windows), or the filename parameter can be a URL for a file
+ * found on a network.
+ * 
+ * This method is asynchronous, meaning it may not finish before the next line
+ * in your sketch is executed.
+ * 
+ * @param {string} filename name of the file or url to load
+ * @param {(data: string[]) => void} callback function to be executed after 
+ * 		loadStrings() completes, Array is passed in as first argument
+ * @param {(response: XMLHttpRequest) => void} errorCallback function to be
+ * 		executed if there is an error, response is passed in as first argument
+ */
+declare function loadStrings(filename: string,
+	callback?: (data: string[]) => void,
+	errorCallback?: (response: XMLHttpRequest) => void): string[];
+
+/**
+ * Reads the contents of a file or URL and creates a p5.Table object with its
+ * values. If a file is specified, it must be located in the sketch's "data"
+ * folder. The filename parameter can also be a URL to a file found online. By
+ * default, the file is assumed to be comma-separated (in CSV format). Table
+ * only looks for a header row if the 'header' option is included.
+ * 
+ * Possible options include:
+ * 
+ * csv - parse the table as comma-separated values
+ * 
+ * tsv - parse the table as tab-separated values
+ * 
+ * header - this table has a header (title) row
+ * 
+ * When passing in multiple options, pass them in as separate parameters,
+ * seperated by commas. For example:
+ * 
+ * loadTable("my_csv_file.csv", "csv", "header")
+ * 
+ * All files loaded and saved use UTF-8 encoding.
+ * 
+ * This method is asynchronous, meaning it may not finish before the next line
+ * in your sketch is executed. Calling loadTable() inside preload() guarantees
+ * to complete the operation before setup() and draw() are called.
+ * 
+ * Outside of preload(), you may supply a callback function to handle the
+ * object:
+ * 
+ * @param {string} filename name of the file or URL to load
+ * @param {...any[]} params "header" "csv" "tsv", or function to be executed
+ * 		after loadTable() completes. On success, the Table object is passed in
+ * 		as the first argument; otherwise, false is passed in.
+ */
+declare function loadTable(filename: string, ...params: any[]): p5.Table;
+
+/**
+ * Reads the contents of a file and creates an XML object with its values. If
+ * the name of the file is used as the parameter, as in the above example, the
+ * file must be located in the sketch directory/folder.
+ * 
+ * Alternatively, the file maybe be loaded from anywhere on the local computer
+ * using an absolute path (something that starts with / on Unix and Linux, or a
+ * drive letter on Windows), or the filename parameter can be a URL for a file
+ * found on a network.
+ * 
+ * This method is asynchronous, meaning it may not finish before the next line
+ * in your sketch is executed. Calling loadXML() inside preload() guarantees to
+ * complete the operation before setup() and draw() are called.
+ * 
+ * Outside of preload(), you may supply a callback function to handle the
+ * object.
+ * 
+ * @param {string} filename name of the file or URL to load
+ * @param {(xml: p5.XML) => void} callback function to be executed after
+ * 		loadXML() completes, XML object is passed in as first argument
+ * @param {(response: any) => void} errorCallback function to be executed if
+ * 		there is an error, response is passed in as first argument
+ */
+declare function loadXML(filename: string,
+	callback?: (xml: p5.XML) => void,
+	errorCallback?: (response: any) => void): p5.XML;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function selectFolder(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function selectInput(): never;
+
+/**
+ * Method for executing an HTTP GET request. If data type is not specified, p5
+ * will try to guess based on the URL, defaulting to text.
+ * 
+ * @param {string} path name of the file or url to load
+ * @param {*} data param data passed sent with request
+ * @param {string} datatype "json", "jsonp", "xml", or "text"
+ * @param {(data: any) => void} callback function to be executed after
+ * 		httpGet() completes, data is passed in as first argument
+ * @param {(response: any) => void} errorCallback function to be executed if
+ * 		there is an error, response is passed in as first argument
+ */
+declare function httpGet(path: string, data?: any, datatype?: string,
+	callback?: (data: any) => void,
+	errorCallback?: (response: any) => void): void;
+
+/**
+ * Method for executing an HTTP POST request. If data type is not specified, p5
+ * will try to guess based on the URL, defaulting to text.
+ * 
+ * @param {string} path name of the file or url to load
+ * @param {*} data param data passed sent with request
+ * @param {string} datatype "json", "jsonp", "xml", or "text"
+ * @param {(data: any) => void} callback function to be executed after
+ * 		httpGet() completes, data is passed in as first argument
+ * @param {(response: any) => void} errorCallback function to be executed if
+ * 		there is an error, response is passed in as first argument
+ */
+declare function httpPost(path: string, data?: any, datatype?: string,
+	callback?: (data: any) => void,
+	errorCallback?: (response: any) => void): void;
+
+/**
+ * Method for executing an HTTP request. If data type is not specified, p5 will
+ * try to guess based on the URL, defaulting to text.
+ * 
+ * @param {*} reqwestObj
+ */
+declare function httpDo(reqwestObj: any): void;
+
+/**
+ * Method for executing an HTTP request. If data type is not specified, p5 will
+ * try to guess based on the URL, defaulting to text.
+ * 
+ * You may also pass a single object specifying all parameters for the request
+ * following the examples inside the reqwest() calls here:
+ * 
+ * https://github.com/ded/reqwest#api
+ * 
+ * @param {string} path name of the file or url to load
+ * @param {string} method either "GET", "POST", or "PUT", defaults to "GET"
+ * @param {*} data param data passed sent with request
+ * @param {string} datatype "json", "jsonp", "xml", or "text"
+ * @param {(data: any) => void} callback function to be executed after
+ * 		httpGet() completes, data is passed in as first argument
+ * @param {(response: any) => void} errorCallback function to be executed if
+ * 		there is an error, response is passed in as first argument
+ */
+declare function httpDo(path: string, method?: string, data?: any,
+	datatype?: string, callback?: (data: any) => void,
+	errorCallback?: (response: any) => void): void;
+
+/**
+ * Checks if we are in preload and returns the last arg which will be the
+ * _decrementPreload function if called from a loadX() function.  Should only
+ * be used in loadX() functions. Intended to be private; do not invoke.
+ * 
+ * @param {...any[]} args
+ */
+declare function _getDecrementPreload(...args: any[]): any;
+
 //
 // IO -> Output
 //
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function beginRaw(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function beginRecord(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function createOutput(): never;
+
+declare function createWriter(name: string, extension: string): p5.PrintWriter;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function endRaw(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function endRecord(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function saveBytes(): never;
+
+/**
+ * Save an image, text, json, csv, wav, or html. Prompts download to the
+ * client's computer. Note that it is not recommended to call save() within
+ * draw if it's looping, as the save() function will open a new save dialog
+ * every frame.
+ * 
+ * The default behavior is to save the canvas as an image. You can optionally
+ * specify a filename.
+ * 
+ * Alternately, the first parameter can be a pointer to a canvas p5.Element, an
+ * Array of Strings, an Array of JSON, a JSON object, a p5.Table, a p5.Image,
+ * or a p5.SoundFile (requires p5.sound). The second parameter is a filename
+ * (including extension). The third parameter is for options specific to this
+ * type of object. This method will save a file that fits the given paramaters.
+ * 
+ * @param {*} objectOrFilename If filename is provided, will save canvas as an
+ * 		image with either png or jpg extension depending on the filename. If
+ * 		object is provided, will save depending on the object and filename.
+ * @param {string} filename If an object is provided as the first parameter,
+ * 		then the second parameter indicates the filename, and should include an
+ * 		appropriate file extension.
+ * @param {(boolean | string)} options Additional options depend on filetype.
+ * 		For example, when saving JSON, true indicates that the output will be
+ * 		optimized for filesize, rather than readability.
+ */
+declare function save(objectOrFilename?: any, filename?: string,
+	options?: boolean | string): void;
+
+/**
+ * Writes the contents of an Array or a JSON object to a .json file. The file
+ * saving process and location of the saved file will vary between web browsers.
+ * 
+ * @param {*} json
+ * @param {string} filename filename for output
+ * @param {boolean} optimize If true, removes line breaks and spaces from the
+ * 		output file to optimize filesize (but not readability).
+ */
+declare function saveJSON(json: any, filename: string,
+	optimize?: boolean): void;
+
+/**
+ * Writes the contents of an Array or a JSON object to a .json file. The file
+ * saving process and location of the saved file will vary between web
+ * browsers. Synonymous to saveJSON.
+ * 
+ * @param {*} json
+ * @param {string} filename filename for output
+ * @param {boolean} optimize If true, removes line breaks and spaces from the
+ * 		output file to optimize filesize (but not readability).
+ */
+declare function saveJSONObject(json: any, filename: string,
+	optimize?: boolean): void;
+
+/**
+ * Writes the contents of an Array or a JSON object to a .json file. The file
+ * saving process and location of the saved file will vary between web
+ * browsers. Synonymous to saveJSON.
+ * 
+ * @param {*} json
+ * @param {string} filename filename for output
+ * @param {boolean} optimize If true, removes line breaks and spaces from the
+ * 		output file to optimize filesize (but not readability).
+ */
+declare function saveJSONArray(json: any, filename: string,
+	optimize?: boolean): void;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function saveBytes(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function saveStream(): never;
+
+/**
+ * Writes an array of Strings to a text file, one line per String. The file
+ * saving process and location of the saved file will vary between web browsers.
+ * 
+ * @param {string[]} list string array to be written
+ * @param {string} filename filename for output
+ * @param {string} extension file extension, defaults to 'txt'
+ */
+declare function saveStrings(list: string[], filename: string,
+	extension?: string): void;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function saveXML(): never;
+
+/**
+ * Not implemented. Currently throws an error.
+ */
+declare function selectOutput(): never;
+
+/**
+ * Writes the contents of a Table object to a file. Defaults to a text file
+ * with comma-separated-values ('csv') but can also use tab separation ('tsv'),
+ * or generate an HTML table ('html'). The file saving process and location of
+ * the saved file will vary between web browsers.
+ * 
+ * @param {p5.Table} Table the Table object to save to a file
+ * @param {string} filename the filename to which the Table should be saved
+ * @param {string} options can be one of "tsv", "csv", or "html"
+ */
+declare function saveTable(Table: p5.Table, filename: string,
+	options?: string): void;
+
+/**
+ * Generate a blob of file data as a url to prepare for download. Accepts an
+ * array of data, a filename, and an extension (optional). This is a private
+ * function because it does not do any formatting, but it is used by
+ * saveStrings, saveJSON, saveTable etc.
+ * 
+ * @param {any[]} dataToDownload
+ * @param {string} filename
+ * @param {string} extension
+ */
+declare function writeFile(dataToDownload: any[], filename: string,
+	extension?: string): void;
+
+/**
+ * Forces download. Accepts a url to filedata/blob, a filename, and an
+ * extension (optional).
+ * 
+ * This is a private function because it does not do any formatting, but it is
+ * used by saveStrings, saveJSON, saveTable etc.
+ * 
+ * @param {string} href i.e. an href generated by createObjectURL
+ * @param {string} filename
+ * @param {string} extension
+ */
+declare function downloadFile(href: string, filename: string,
+	extension: string): void;
+
+/**
+ * Returns a file extension, or another string if the provided parameter has no
+ * extension.
+ * 
+ * @param {string} filename
+ * @param {string} extension
+ */
+declare function _checkFileExtension(filename: string,
+	extension: string): string[];
+
+/**
+ * Returns true if the browser is Safari, false if not. Safari makes trouble
+ * for downloading files.
+ */
+declare function _isSafari(): boolean;
 
 //
 // IO -> Time & Date

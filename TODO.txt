@@ -10,6 +10,7 @@ Test the following functions for implementation errors:
 - scale
 - get
 - updatePixels
+- httpDo
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 
@@ -24,6 +25,7 @@ These functions that must be overloaded produce compiler errors:
 - mouseMoved, mouseDragged, mousePressed, mouseReleased, mouseClicked,
 	mouseWheel
 
+
 The following are missing documentation:
 - Most constants
 - p5.Color class
@@ -32,6 +34,12 @@ The following are missing documentation:
 - turnAxis variable
 - _handleMotion
 - _makeFrame
+- createWriter
+- _getDecrementPreload
+- saveJSON, saveJSONObject, saveJSONArray
+- writeFile
+- downloadFile
+- _checkFileExtension
 
 3D has been temporarily skipped. Please implement.
 
