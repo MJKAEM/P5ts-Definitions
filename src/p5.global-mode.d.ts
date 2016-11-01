@@ -3693,6 +3693,132 @@ declare function textFont(font?: string, size?: number): p5;
 // Data -> Array Functions
 //
 
+/**
+ * Adds a value to the end of an array. Extends the length of the array by one.
+ * Maps to Array.push().
+ * 
+ * @param {any[]} array Array to append
+ * @param {*} value to be added to the Array
+ */
+declare function append(array: any[], value: any): any[];
+
+/**
+ * Copies an array (or part of an array) to another array. The src array is
+ * copied to the dst array, beginning at the position specified by srcPosition
+ * and into the position specified by dstPosition. The number of elements to
+ * copy is determined by length. Note that copying values overwrites existing
+ * values in the destination array. To append values instead of overwriting
+ * them, use concat().
+ * 
+ * The simplified version with only two arguments, arrayCopy(src, dst), copies
+ * an entire array to another of the same size. It is equivalent to arrayCop
+ * (src, 0, dst, 0, src.length).
+ * 
+ * Using this function is far more efficient for copying array data than
+ * iterating through a for() loop and copying each element individually.
+ * 
+ * @param {any[]} src the source Array
+ * @param {any[]} dst the destination Array
+ */
+declare function arrayCopy(src: any[], dst: any[]): void;
+
+/**
+ * Copies an array (or part of an array) to another array. The src array is
+ * copied to the dst array, beginning at the position specified by srcPosition
+ * and into the position specified by dstPosition. The number of elements to
+ * copy is determined by length. Note that copying values overwrites existing
+ * values in the destination array. To append values instead of overwriting
+ * them, use concat().
+ * 
+ * The simplified version with only two arguments, arrayCopy(src, dst), copies
+ * an entire array to another of the same size. It is equivalent to arrayCop
+ * (src, 0, dst, 0, src.length).
+ * 
+ * Using this function is far more efficient for copying array data than
+ * iterating through a for() loop and copying each element individually.
+ * 
+ * @param {any[]} src the source Array
+ * @param {number} srcPosition starting position in the source Array
+ * @param {any[]} dst the destination Array
+ * @param {number} dstPosition starting position in the destination Array
+ * @param {number} length number of Array elements to be copied
+ */
+declare function arrayCopy(src: any[], srcPosition: number, dst: any[],
+	dstPosition?: number, length?: number): void;
+
+/**
+ * Concatenates two arrays, maps to Array.concat(). Does not modify the input
+ * arrays.
+ * 
+ * @param {any[]} a first Array to concatenate
+ * @param {any[]} b second Array to concatenate
+ */
+declare function concat(a: any[], b: any[]): any[];
+
+/**
+ * Reverses the order of an array, maps to Array.reverse()
+ * 
+ * @param {any[]} list Array to reverse
+ */
+declare function reverse(list: any[]): any[];
+
+/**
+ * Decreases an array by one element and returns the shortened array, maps to
+ * Array.pop().
+ * 
+ * @param {any[]} list Array to shorten
+ */
+declare function shorten(list: any[]): any[];
+
+/**
+ * Randomizes the order of the elements of an array. Implements Fisher-Yates
+ * Shuffle Algorithm.
+ * 
+ * @param {any[]} array Array to shuffle
+ * @param {boolean} bool modify passed array
+ */
+declare function shuffle(array: any[], bool?: boolean): any[];
+
+/**
+ * Sorts an array of numbers from smallest to largest, or puts an array of
+ * words in alphabetical order. The original array is not modified; a
+ * re-ordered array is returned. The count parameter states the number of
+ * elements to sort. For example, if there are 12 elements in an array and
+ * count is set to 5, only the first 5 elements in the array will be sorted.
+ * 
+ * @param {any[]} list Array to sort
+ * @param {number} count number of elements to sort, starting from 0
+ */
+declare function sort(list: any[], count?: number): any[];
+
+/**
+ * Inserts a value or an array of values into an existing array. The first
+ * parameter specifies the initial array to be modified, and the second
+ * parameter defines the data to be inserted. The third parameter is an index
+ * value which specifies the array position from which to insert data.
+ * (Remember that array index numbering starts at zero, so the first position
+ * is 0, the second position is 1, and so on.)
+ * 
+ * @param {any[]} list Array to splice into
+ * @param {*} value value to be spliced in
+ * @param {number} position in the array from which to insert data
+ */
+declare function splice(list: any[], value: any, position: number): any[];
+
+/**
+ * Extracts an array of elements from an existing array. The list parameter
+ * defines the array from which the elements will be copied, and the start and
+ * count parameters specify which elements to extract. If no count is given,
+ * elements will be extracted from the start to the end of the array. When
+ * specifying the start, remember that the first array element is 0. This
+ * function does not change the source array.
+ * 
+ * @param {any[]} list Array to extract from
+ * @param {number} start position to begin
+ * @param {number} count number of values to extract
+ */
+declare function subset(list: any[], start: number, count?: number): any[];
+
 //
 // Data -> Conversion
 //

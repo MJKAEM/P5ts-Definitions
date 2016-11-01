@@ -15,6 +15,7 @@ Test the following functions for implementation errors:
 - min, max
 - random
 - text
+- arrayCopy
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 
@@ -44,8 +45,6 @@ The following are missing documentation:
 - writeFile
 - downloadFile
 - _checkFileExtension
-
-3D has been temporarily skipped. Please implement.
 
 The following functions are clean and do not require testing:
 - All structure functions
