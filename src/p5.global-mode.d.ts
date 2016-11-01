@@ -3426,7 +3426,7 @@ declare function textAlign(): {
  * @param {string} vertAlign vertical alignment, either TOP, BOTTOM, CENTER, or
  * 		BASELINE
  */
-declare function textAlign(horizAlign: string, vertAlign? : string): p5;
+declare function textAlign(horizAlign: string, vertAlign?: string): p5;
 
 /**
  * Sets/gets the spacing, in pixels, between lines of text. This setting will
@@ -3503,6 +3503,68 @@ declare function _updateTextMetrics(): p5.Renderer;
 //
 // Typography -> Loading & Displaying
 //
+
+/**
+ * Draws text to the screen. Displays the information specified in the first
+ * parameter on the screen in the position specified by the additional
+ * parameters. A default font will be used unless a font is set with the
+ * textFont() function and a default size will be used unless a font is set
+ * with textSize(). Change the color of the text with the fill() function.
+ * Change the outline of the text with the stroke() and strokeWeight()
+ * functions.
+ * 
+ * The text displays in relation to the textAlign() function, which gives the
+ * option to draw to the left, right, and center of the coordinates.
+ * 
+ * The x2 and y2 parameters define a rectangular area to display within and may
+ * only be used with string data. When these parameters are specified, they are
+ * interpreted based on the current rectMode() setting. Text that does not fit
+ * completely within the rectangle specified will not be drawn to the screen.
+ * 
+ * @param {string} str the alphanumeric symbols to be displayed
+ * @param {number} x x-coordinate of text
+ * @param {number} y y-coordinate of text
+ */
+declare function text(str: string, x: number, y: number): void | p5;
+
+/**
+ * Draws text to the screen. Displays the information specified in the first
+ * parameter on the screen in the position specified by the additional
+ * parameters. A default font will be used unless a font is set with the
+ * textFont() function and a default size will be used unless a font is set
+ * with textSize(). Change the color of the text with the fill() function.
+ * Change the outline of the text with the stroke() and strokeWeight()
+ * functions.
+ * 
+ * The text displays in relation to the textAlign() function, which gives the
+ * option to draw to the left, right, and center of the coordinates.
+ * 
+ * The x2 and y2 parameters define a rectangular area to display within and may
+ * only be used with string data. When these parameters are specified, they are
+ * interpreted based on the current rectMode() setting. Text that does not fit
+ * completely within the rectangle specified will not be drawn to the screen.
+ * 
+ * @param {string} str the alphanumeric symbols to be displayed
+ * @param {number} x x-coordinate of text
+ * @param {number} y y-coordinate of text
+ * @param {number} x2 by default, the width of the text box, see rectMode() for
+ * 		more info
+ * @param {number} y2 by default, the height of the text box, see rectMode()
+ * 		for more info
+ * @returns {(void | p5)}
+ */
+declare function text(str: string, x: number, y: number, x2: number,
+	y2: number): void | p5;
+
+
+/**
+ * Sets the current font that will be drawn with the text() function.
+ * 
+ * @param {string} font a font loaded via loadFont(), or a String representing
+ * 		a web safe font (a font that is generally available across all systems).
+ * @param {number} size size of the font
+ */
+declare function textFont(font?: string, size?: number): p5;
 
 //
 // Data -> Array Functions
