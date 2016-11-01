@@ -390,6 +390,12 @@ declare var _pWriters: p5.PrintWriter[];
  */
 declare var pixels: Uint8ClampedArray;
 
+//
+// Math -> Trigonometry
+//
+
+declare var _angleMode: string;
+
 ///////////////////////////////////////////////////////////////////////////////
 // Constants
 ///////////////////////////////////////////////////////////////////////////////
@@ -3296,6 +3302,99 @@ declare function randomGaussian(mean: number, sd: number): number;
 //
 // Math -> Trigonometry
 //
+
+/**
+ * The inverse of cos(), returns the arc cosine of a value. This function
+ * expects the values in the range of -1 to 1 and values are returned in the
+ * range 0 to PI (3.1415927).
+ * 
+ * @param {number} value the value whose arc cosine is to be returned
+ */
+declare function acos(value: number): number;
+
+/**
+ * The inverse of sin(), returns the arc sine of a value. This function expects
+ * the values in the range of -1 to 1 and values are returned in the range
+ * -PI/2 to PI/2.
+ * 
+ * @param {number} value the value whose arc sine is to be returned
+ */
+declare function asin(value: number): number;
+
+/**
+ * The inverse of tan(), returns the arc tangent of a value. This function
+ * expects the values in the range of -Infinity to Infinity (exclusive) and
+ * values are returned in the range -PI/2 to PI/2.
+ * 
+ * @param {number} value the value whose arc tangent is to be returned
+ */
+declare function atan(value: number): number;
+
+/**
+ * Calculates the angle (in radians) from a specified point to the coordinate
+ * origin as measured from the positive x-axis. Values are returned as a float
+ * in the range from PI to -PI. The atan2() function is most often used for
+ * orienting geometry to the position of the cursor.
+ * 
+ * Note: The y-coordinate of the point is the first parameter, and the
+ * x-coordinate is the second parameter, due the the structure of calculating
+ * the tangent.
+ * 
+ * @param {number} y y-coordinate of the point
+ * @param {number} x x-coordinate of the point
+ */
+declare function atan2(y: number, x: number): number;
+
+/**
+ * Calculates the cosine of an angle. This function takes into account the
+ * current angleMode. Values are returned in the range -1 to 1.
+ * 
+ * @param {number} angle the angle
+ */
+declare function cos(angle: number): number;
+
+/**
+ * Calculates the sine of an angle. This function takes into account the
+ * current angleMode. Values are returned in the range -1 to 1.
+ * 
+ * @param {number} angle the angle
+ */
+declare function sin(angle: number): number;
+
+/**
+ * Calculates the tangent of an angle. This function takes into account the
+ * current angleMode. Values are returned in the range -1 to 1.
+ * 
+ * @param {number} angle the angle
+ */
+declare function tan(angle: number): number;
+
+/**
+ * Converts a radian measurement to its corresponding value in degrees. Radians
+ * and degrees are two ways of measuring the same thing. There are 360 degrees
+ * in a circle and 2*PI radians in a circle.For example,
+ * 90° = PI/2 = 1.5707964.
+ * 
+ * @param {number} radians the radians value to convert to degrees
+ */
+declare function degrees(radians: number): number;
+
+/**
+ * Converts a degree measurement to its corresponding value in radians. Radians
+ * and degrees are two ways of measuring the same thing. There are 360 degrees
+ * in a circle and 2*PI radians in a circle. For example,
+ * 90° = PI/2 = 1.5707964.
+ * 
+ * @param {number} degrees the degree value to convert to radians
+ */
+declare function radians(degrees: number): number;
+
+/**
+ * Sets the current mode of p5 to given mode. Default mode is RADIANS.
+ * 
+ * @param {string} mode either RADIANS or DEGREES
+ */
+declare function angleMode(mode: string): void;
 
 //
 // Typography -> Attributes
