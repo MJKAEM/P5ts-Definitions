@@ -11,6 +11,8 @@ Test the following functions for implementation errors:
 - get
 - updatePixels
 - httpDo
+- dist
+- min, max
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 

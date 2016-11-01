@@ -2947,6 +2947,206 @@ declare function createVector(x: number, y: number, z: number): p5.Vector;
 // Math -> Calculation
 //
 
+/**
+ * Calculates the absolute value (magnitude) of a number. Maps to Math.abs(). The absolute value of a number is always positive.
+ * 
+ * @param {number} n number to compute
+ */
+declare function abs(n: number): number;
+
+/**
+ * Calculates the closest int value that is greater than or equal to the value
+ * of the parameter. Maps to Math.ceil(). For example, ceil(9.03) returns the
+ * value 10.
+ * 
+ * @param {number} n number to round up
+ */
+declare function ceil(n: number): number;
+
+/**
+ * Constrains a value between a minimum and maximum value.
+ * 
+ * @param {number} n number to constrain
+ * @param {number} low minimum limit
+ * @param {number} high maximum limit
+ */
+declare function constrain(n: number, low: number, high: number): number;
+
+/**
+ * Calculates the distance between two points.
+ * 
+ * @param {number} x1 x-coordinate of the first point
+ * @param {number} y1 y-coordinate of the first point
+ * @param {number} x2 x-coordinate of the second point
+ * @param {number} y2 y-coordinate of the second point
+ */
+declare function dist(x1: number, y1: number, x2: number, y2: number): number;
+
+/**
+ * Calculates the distance between two points.
+ * 
+ * @param {number} x1 x-coordinate of the first point
+ * @param {number} y1 y-coordinate of the first point
+ * @param {number} z1 z-coordinate of the first point
+ * @param {number} x2 x-coordinate of the second point
+ * @param {number} y2 y-coordinate of the second point
+ * @param {number} z2 z-coordinate of the second point
+ */
+declare function dist(x1: number, y1: number, z1: number, x2: number,
+	y2: number, z2: number): number;
+
+/**
+ * Returns Euler's number e (2.71828...) raised to the power of the n
+ * parameter. Maps to Math.exp().
+ * 
+ * @param {number} n exponent to raise
+ */
+declare function exp(n: number): number;
+
+/**
+ * Calculates the closest int value that is less than or equal to the value of
+ * the parameter. Maps to Math.floor().
+ * 
+ * @param {number} n number to round down
+ */
+declare function floor(n: number): number;
+
+/**
+ * Calculates a number between two numbers at a specific increment. The amt
+ * parameter is the amount to interpolate between the two values where 0.0
+ * equal to the first point, 0.1 is very near the first point, 0.5 is half-way
+ * in between, etc. The lerp function is convenient for creating motion along a
+ * straight path and for drawing dotted lines.
+ * 
+ * @param {number} start first value
+ * @param {number} stop second value
+ * @param {number} amt number between 0.0 and 1.0
+ */
+declare function lerp(start: number, stop: number, amt: number): number;
+
+/**
+ * Calculates the natural logarithm (the base-e logarithm) of a number. This
+ * function expects the n parameter to be a value greater than 0.0. Maps to
+ * Math.log().
+ * 
+ * @param {number} n number greater than 0
+ */
+declare function log(n: number): number;
+
+/**
+ * Calculates the magnitude (or length) of a vector. A vector is a direction in
+ * space commonly used in computer graphics and linear algebra. Because it has
+ * no "start" position, the magnitude of a vector can be thought of as the
+ * distance from the coordinate 0,0 to its x,y value. Therefore, mag() is a
+ * shortcut for writing dist(0, 0, x, y).
+ * 
+ * @param {number} a first value
+ * @param {number} b second value
+ */
+declare function mag(a: number, b: number): number;
+
+/**
+ * Re-maps a number from one range to another.
+ * 
+ * In the first example above, the number 25 is converted from a value in the
+ * range of 0 to 100 into a value that ranges from the left edge of the
+ * window (0) to the right edge (width).
+ * 
+ * @param {number} value the incoming value to be converted
+ * @param {number} start1 lower bound of the value's current range
+ * @param {number} stop1 upper bound of the value's current range
+ * @param {number} start2 lower bound of the value's target range
+ * @param {number} stop2 upper bound of the value's target range
+ */
+declare function map(value: number, start1: number, stop1: number,
+	start2: number, stop2: number): number;
+
+/**
+ * Determines the largest value in a sequence of numbers, and then returns that
+ * value. max() accepts any number of Number parameters, or an Array of any
+ * length.
+ * 
+ * @param {...number[]} n0 Numbers to compare
+ */
+declare function max(...n0: number[]): number;
+
+/**
+ * Determines the largest value in a sequence of numbers, and then returns that
+ * value. max() accepts any number of Number parameters, or an Array of any
+ * length.
+ * 
+ * @param {number[]} n0 Numbers to compare
+ */
+declare function max(n0: number[]): number;
+
+/**
+ * Determines the smallest value in a sequence of numbers, and then returns
+ * that value. min() accepts any number of Number parameters, or an Array of
+ * any length.
+ * 
+ * @param {...number[]} n0 Numbers to compare
+ */
+declare function min(...n0: number[]): number;
+
+/**
+ * Determines the smallest value in a sequence of numbers, and then returns
+ * that value. min() accepts any number of Number parameters, or an Array of
+ * any length.
+ * 
+ * @param {number[]} n0 Numbers to compare
+ */
+declare function min(n0: number[]): number;
+
+/**
+ * Normalizes a number from another range into a value between 0 and 1.
+ * Identical to map(value, low, high, 0, 1). Numbers outside of the range are
+ * not clamped to 0 and 1, because out-of-range values are often intentional
+ * and useful.
+ * 
+ * @param {number} value incoming value to be normalized
+ * @param {number} start lower bound of the value's current range
+ * @param {number} stop upper bound of the value's current range
+ */
+declare function norm(value: number, start: number, stop: number): number;
+
+/**
+ * Facilitates exponential expressions. The pow() function is an efficient way
+ * of multiplying numbers by themselves (or their reciprocals) in large
+ * quantities. For example, pow(3, 5) is equivalent to the expression 33333 and
+ * pow(3, -5) is equivalent to 1 / 33333. Maps to Math.pow().
+ * 
+ * @param {number} n base of the exponential expression
+ * @param {number} e power by which to raise the base
+ */
+declare function pow(n: number, e: number): number;
+
+/**
+ * Calculates the integer closest to the n parameter. For example, round(133.8)
+ * returns the value 134. Maps to Math.round().
+ * 
+ * @param {number} n number to round
+ */
+declare function round(n: number): number;
+
+/**
+ * Squares a number (multiplies a number by itself). The result is always a
+ * positive number, as multiplying two negative numbers always yields a
+ * positive result. For example, -1 * -1 = 1.
+ * 
+ * @param {number} n number to square
+ */
+declare function sq(n: number): number;
+
+/**
+ * Calculates the square root of a number. The square root of a number is
+ * always positive, even though there may be a valid negative root. The square
+ * root s of number a is such that s*s = a. It is the opposite of squaring.
+ * Maps to Math.sqrt().
+ * 
+ * @param {number} n non-negative number to square root
+ */
+declare function sqrt(n: number): number;
+
 //
 // Math -> Noise
 //
