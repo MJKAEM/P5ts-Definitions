@@ -3823,6 +3823,106 @@ declare function subset(list: any[], start: number, count?: number): any[];
 // Data -> Conversion
 //
 
+/**
+ * Converts a string to its floating point representation. The contents of a
+ * string must resemble a number, or NaN (not a number) will be returned. For
+ * example, float("1234.56") evaluates to 1234.56, but float("giraffe") will
+ * return NaN.
+ * 
+ * @param {(string | string[])} str float string to parse
+ */
+declare function float(str: string | string[]): number | number[];
+
+/**
+ * Converts a string to its floating point representation. The contents of a
+ * string must resemble a number, or NaN (not a number) will be returned. For
+ * example, float("1234.56") evaluates to 1234.56, but float("giraffe") will
+ * return NaN.
+ * 
+ * @param {(string | string[])} str float string to parse
+ */
+declare function float(...str: string[]): number[];
+
+/**
+ * Converts a boolean, string, or float to its integer representation. When an
+ * array of values is passed in, then an int array of the same length is
+ * returned.
+ * 
+ * @param {(string | number | boolean | any[])} n
+ */
+declare function int(n: string | number | boolean | any[]): number | number[];
+
+/**
+ * Converts a boolean, string or number to its string representation. When an
+ * array of values is passed in, then an array of strings of the same length is
+ * returned.
+ * 
+ * @param {(string | number | boolean | any[])} n value to parse
+ */
+declare function str(n: string | number | boolean | any[]): string | string[];
+
+/**
+ * Converts a number or string to its boolean representation. For a number, any
+ * non-zero value (positive or negative) evaluates to true, while zero
+ * evaluates to false. For a string, the value "true" evaluates to true, while
+ * any other value evaluates to false. When an array of number or string values
+ * is passed in, then a array of booleans of the same length is returned.
+ * 
+ * @param {(string | number | boolean | any[])} n value to parse
+ */
+declare function boolean(
+	n: string | number | boolean | any[]): boolean | boolean[];
+
+/**
+ * Converts a number, string or boolean to its byte representation. A byte can
+ * be only a whole number between -128 and 127, so when a value outside of this
+ * range is converted, it wraps around to the corresponding byte
+ * representation. When an array of number, string or boolean values is passed
+ * in, then an array of bytes the same length is returned.
+ * 
+ * @param {(string | number | boolean | any[])} n value to parse
+ */
+declare function byte(n: string | number | boolean | any[]): number | number[];
+
+/**
+ * Converts a number or string to its corresponding single-character string
+ * representation. If a string parameter is provided, it is first parsed as an
+ * integer and then translated into a single-character string. When an array of
+ * number or string values is passed in, then an array of single-character
+ * strings of the same length is returned.
+ * 
+ * @param {(string | number | boolean | any[])} n value to parse
+ */
+declare function char(n: string | number | any[]): string | string[];
+
+/**
+ * Converts a single-character string to its corresponding integer
+ * representation. When an array of single-character string values is passed
+ * in, then an array of integers of the same length is returned.
+ * 
+ * @param {(string | string[])} n value to parse
+ */
+declare function unchar(n: string | string[]): number | number[];
+
+/**
+ * Converts a number to a string in its equivalent hexadecimal notation. If a
+ * second parameter is passed, it is used to set the number of characters to
+ * generate in the hexadecimal notation. When an array is passed in, an array
+ * of strings in hexadecimal notation of the same length is returned.
+ * 
+ * @param {(number | number[])} n value to parse
+ */
+declare function hex(n: number | number[]): string | string[];
+
+/**
+ * Converts a string representation of a hexadecimal number to its equivalent
+ * integer value. When an array of strings in hexadecimal notation is passed
+ * in, an array of integers of the same length is returned.
+ * 
+ * @param {(string | string[])} n value to parse
+ */
+declare function unhex(n: string | string[]): number | number[];
+
 //
 // Data -> String Functions
 //
