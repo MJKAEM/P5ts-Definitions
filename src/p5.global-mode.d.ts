@@ -4192,7 +4192,7 @@ declare function split(value: string, delim: string): string[];
  * @param {string} delim list of individual Strings that will be used as
  * 		separators
  */
-declare function splitTokens(value: string,delim?: string): string[];
+declare function splitTokens(value: string, delim?: string): string[];
 
 /**
  * Removes whitespace characters from the beginning and end of a String. In
@@ -4215,6 +4215,40 @@ declare function trim(str: string[]): string[];
 //
 // Lights, Camera -> Camera
 //
+
+/**
+ * Sets camera position
+ * 
+ * @param {number} x camera position value on x axis
+ * @param {number} y camera position value on y axis
+ * @param {number} z camera position value on z axis
+ */
+declare function camera(x: number, y: number, z: number): void;
+
+/**
+ * Sets perspective camera
+ * 
+ * @param {number} fovy camera frustum vertical field of view, from bottom to
+ * 		top of view, in degrees
+ * @param {number} aspect camera frustum aspect ratio
+ * @param {number} near frustum near plane length
+ * @param {number} far frustum far plane length
+ */
+declare function perspective(fovy: number, aspect: number, near: number,
+	far: number): void;
+
+/**
+ * Setup ortho camera
+ * 
+ * @param {number} left camera frustum left plane
+ * @param {number} right camera frustum right plane
+ * @param {number} bottom camera frustum bottom plane
+ * @param {number} top camera frustum top plane
+ * @param {number} near camera frustum near plane
+ * @param {number} far camera frustum far plane
+ */
+declare function ortho(left: number, right: number, bottom: number,
+	top: number, near: number, far: number): void;
 
 //
 // Lights, Camera -> Lights
