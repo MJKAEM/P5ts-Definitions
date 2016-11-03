@@ -93,9 +93,6 @@ declare namespace p5 {
 	class Vector {
 	}
 
-	class Font {
-	}
-
 	class Renderer {
 	}
 
