@@ -191,5 +191,8 @@ declare namespace p5 {
 
 	class RendererGL {
 	}
+
+	class MediaElement {
+	}
 }
 

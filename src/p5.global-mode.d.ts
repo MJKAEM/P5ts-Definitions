@@ -4471,3 +4471,58 @@ declare function pointLight(v1: string | number[] | p5.Color,
 //
 // Lights, Camera -> Material
 //
+
+/**
+ * Normal material for geometry.
+ */
+declare function normalMaterial(): p5;
+
+/**
+ * Texture for geometry.
+ * 
+ * @param {(p5.Image | p5.MediaElement | p5.Graphics)} tex 2-dimensional
+ * 		graphics to render as texture
+ */
+declare function texture(tex: p5.Image | p5.MediaElement | p5.Graphics): p5;
+
+/**
+ * Ambient material for geometry with a given color.
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ */
+declare function ambientMaterial(v1: number, v2: number, v3: number,
+	a?: number): p5;
+
+/**
+ * Ambient material for geometry with a given color.
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1 gray value, or color
+ * 		Array, or CSS color string
+ * @param {number} a opacity
+ */
+declare function ambientMaterial(v1: string | number | number[] | p5.Color,
+	a?: number): p5;
+
+/**
+ * Specular material for geometry with a given color.
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ */
+declare function specularMaterial(v1: number, v2: number, v3: number,
+	a?: number): p5;
+
+/**
+ * Specular material for geometry with a given color.
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1 gray value, or color
+ * 		Array, or CSS color string
+ * @param {number} a opacity
+ */
+declare function specularMaterial(v1: string | number | number[] | p5.Color,
+	a?: number): p5;
