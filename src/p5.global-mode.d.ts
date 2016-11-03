@@ -4254,6 +4254,220 @@ declare function ortho(left: number, right: number, bottom: number,
 // Lights, Camera -> Lights
 //
 
+/**
+ * Creates an ambient light with a color
+ * 
+ * @param {number} v1 red or hue value (depending on the current
+ * 		color mode)
+ * @param {number} v2 optional: green or saturation value
+ * @param {number} v3 optional: blue or brightness value
+ * @param {number} a optional: opacity
+ */
+declare function ambientLight(v1: number, v2: number, v3: number,
+	a?: number): p5;
+
+/**
+ * Creates an ambient light with a color
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1 gray value, or color
+ * 		Array, or CSS color string
+ * @param {number} a optional: opacity
+ */
+declare function ambientLight(v1: string | number | number[] | p5.Color,
+	a?: number): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function directionalLight(v1: number, v2: number, v3: number,
+	a: number, x: number, y: number, z: number): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function directionalLight(v1: number, v2: number, v3: number,
+	x: number, y: number, z: number): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} a opacity
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function directionalLight(v1: number | string | number[] | p5.Color,
+	a: number, x: number, y: number, z: number): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function directionalLight(v1: number | string | number[] | p5.Color,
+	x: number, y: number, z: number): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function directionalLight(v1: number, v2: number, v3: number,
+	a: number, x: p5.Vector): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function directionalLight(v1: number, v2: number, v3: number,
+	x: p5.Vector): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} a opacity
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function directionalLight(v1: string | number[] | p5.Color, a: number,
+	x: p5.Vector): p5;
+
+/**
+ * Creates a directional light with a color and a direction
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function directionalLight(v1: string | number[] | p5.Color,
+	x: p5.Vector): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function pointLight(v1: number, v2: number, v3: number,
+	a: number, x: number, y: number, z: number): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function pointLight(v1: number, v2: number, v3: number,
+	x: number, y: number, z: number): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} a opacity
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function pointLight(v1: number | string | number[] | p5.Color,
+	a: number, x: number, y: number, z: number): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} x x axis direction
+ * @param {number} y y axis direction
+ * @param {number} z z axis direction
+ */
+declare function pointLight(v1: number | string | number[] | p5.Color,
+	x: number, y: number, z: number): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {number} a opacity
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function pointLight(v1: number, v2: number, v3: number,
+	a: number, x: p5.Vector): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {number} v1 red or hue value (depending on the current color mode)
+ * @param {number} v2 green or saturation value
+ * @param {number} v3 blue or brightness value
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function pointLight(v1: number, v2: number, v3: number,
+	x: p5.Vector): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {number} a opacity
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function pointLight(v1: string | number[] | p5.Color, a: number,
+	x: p5.Vector): p5;
+
+/**
+ * Creates a point light with a color and a light position
+ * 
+ * @param {(string | number[] | p5.Color)} v1 gray value, or color Array, or
+ * 		CSS color string
+ * @param {p5.Vector} x p5.Vector
+ */
+declare function pointLight(v1: string | number[] | p5.Color,
+	x: p5.Vector): p5;
+
 //
 // Lights, Camera -> Material
 //
