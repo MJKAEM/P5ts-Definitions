@@ -1134,6 +1134,200 @@ declare function strokeWeight(weight: number): p5;
 // Shape -> Curves
 //
 
+/**
+ * Draws a cubic Bezier curve on the screen. These curves are defined by a
+ * series of anchor and control points. The first two parameters specify the
+ * first anchor point and the last two parameters specify the other anchor
+ * point, which become the first and last points on the curve. The middle
+ * parameters specify the two control points which define the shape of the
+ * curve. Approximately speaking, control points "pull" the curve towards them.
+ * 
+ * Bezier curves were developed by French automotive engineer Pierre Bezier,
+ * and are commonly used in computer graphics to define gently sloping curves.
+ * See also curve().
+ * 
+ * @param {number} x1 x-coordinate for the first anchor point
+ * @param {number} y1 y-coordinate for the first anchor point
+ * @param {number} x2 x-coordinate for the first control point
+ * @param {number} y2 y-coordinate for the first control point
+ * @param {number} x3 x-coordinate for the second control point
+ * @param {number} y3 y-coordinate for the second control point
+ * @param {number} x4 x-coordinate for the second anchor point
+ * @param {number} y4 y-coordinate for the second anchor point
+ */
+declare function bezier(x1: number, y1: number, x2: number, y2: number,
+	x3: number, y3: number, x4: number, y4: number);
+
+/**
+ * Draws a cubic Bezier curve on the screen. These curves are defined by a
+ * series of anchor and control points. The first two parameters specify the
+ * first anchor point and the last two parameters specify the other anchor
+ * point, which become the first and last points on the curve. The middle
+ * parameters specify the two control points which define the shape of the
+ * curve. Approximately speaking, control points "pull" the curve towards them.
+ * 
+ * Bezier curves were developed by French automotive engineer Pierre Bezier,
+ * and are commonly used in computer graphics to define gently sloping curves.
+ * See also curve().
+ * 
+ * @param {number} x1 x-coordinate for the first anchor point
+ * @param {number} y1 y-coordinate for the first anchor point
+ * @param {number} z1 z-coordinate for the first anchor point
+ * @param {number} x2 x-coordinate for the first control point
+ * @param {number} y2 y-coordinate for the first control point
+ * @param {number} z2 z-coordinate for the first control point
+ * @param {number} x3 x-coordinate for the second control point
+ * @param {number} y3 y-coordinate for the second control point
+ * @param {number} z3 z-coordinate for the second control point
+ * @param {number} x4 x-coordinate for the second anchor point
+ * @param {number} y4 y-coordinate for the second anchor point
+ * @param {number} z4 z-coordinate for the second anchor point
+ */
+declare function bezier(x1: number, y1: number, z1: number, x2: number,
+	y2: number, z2: number, x3: number, y3: number, z3: number, x4: number,
+	y4: number, z4: number): p5;
+
+/**
+ * Sets the resolution at which Beziers display.
+ *
+ * The default value is 20.
+ * 
+ * @param {number} detail resolution of the curves
+ */
+declare function bezierDetail(detail: number): p5;
+
+/**
+ * Evaluates the Bezier at position t for points a, b, c, d. The parameters a
+ * and d are the first and last points on the curve, and b and c are the
+ * control points. The final parameter t varies between 0 and 1. This can be
+ * done once with the x coordinates and a second time with the y coordinates to
+ * get the location of a bezier curve at t.
+ * 
+ * @param {number} a coordinate of first point on the curve
+ * @param {number} b coordinate of first control point
+ * @param {number} c coordinate of second control point
+ * @param {number} d coordinate of second point on the curve
+ * @param {number} t value between 0 and 1
+ */
+declare function bezierPoint(a: number, b: number, c: number, d: number,
+	t: number): number;
+
+/**
+ * Evaluates the tangent to the Bezier at position t for points a, b, c, d. The
+ * parameters a and d are the first and last points on the curve, and b and c
+ * are the control points. The final parameter t varies between 0 and 1.
+ * 
+ * @param {number} a coordinate of first point on the curve
+ * @param {number} b coordinate of first control point
+ * @param {number} c coordinate of second control point
+ * @param {number} d coordinate of second point on the curve
+ * @param {number} t value between 0 and 1
+ */
+declare function bezierTangent(a: number, b: number, c: number, d: number,
+	t: number): number;
+
+/**
+ * Draws a curved line on the screen between two points, given as the middle
+ * four parameters. The first two parameters are a control point, as if the
+ * curve came from this point even though it's not drawn. The last two
+ * parameters similarly describe the other control point.
+ * 
+ * Longer curves can be created by putting a series of curve() functions
+ * together or using curveVertex(). An additional function called
+ * curveTightness() provides control for the visual quality of the curve. The
+ * curve() function is an implementation of Catmull-Rom splines.
+ * 
+ * @param {number} x1 x-coordinate for the beginning control point
+ * @param {number} y1 y-coordinate for the beginning control point
+ * @param {number} x2 x-coordinate for the first point
+ * @param {number} y2 y-coordinate for the first point
+ * @param {number} x3 x-coordinate for the second point
+ * @param {number} y3 y-coordinate for the second point
+ * @param {number} x4 x-coordinate for the ending control point
+ * @param {number} y4 y-coordinate for the ending control point
+ */
+declare function curve(x1: number, y1: number, x2: number, y2: number,
+	x3: number, y3: number, x4: number, y4: number): p5;
+
+/**
+ * Draws a curved line on the screen between two points, given as the middle
+ * four parameters. The first two parameters are a control point, as if the
+ * curve came from this point even though it's not drawn. The last two
+ * parameters similarly describe the other control point.
+ * 
+ * Longer curves can be created by putting a series of curve() functions
+ * together or using curveVertex(). An additional function called
+ * curveTightness() provides control for the visual quality of the curve. The
+ * curve() function is an implementation of Catmull-Rom splines.
+ * 
+ * @param {number} x1 x-coordinate for the beginning control point
+ * @param {number} y1 y-coordinate for the beginning control point
+ * @param {number} z1 z-coordinate for the beginning control point
+ * @param {number} x2 x-coordinate for the first point
+ * @param {number} y2 y-coordinate for the first point
+ * @param {number} z2 z-coordinate for the first point
+ * @param {number} x3 x-coordinate for the second point
+ * @param {number} y3 y-coordinate for the second point
+ * @param {number} z3 z-coordinate for the second point
+ * @param {number} x4 x-coordinate for the ending control point
+ * @param {number} y4 y-coordinate for the ending control point
+ * @param {number} z4 z-coordinate for the ending control point
+ */
+declare function curve(x1: number, y1: number, z1: number, x2: number,
+	y2: number, z2: number, x3: number, y3: number, z3: number, x4: number,
+	y4: number, z4: number): p5;
+
+/**
+ * Sets the resolution at which curves display.
+ *
+ * The default value is 20.
+ * 
+ * @param {number} detail resolution of the curves
+ */
+declare function curveDetail(detail: number): p5;
+
+/**
+ * Modifies the quality of forms created with curve() and curveVertex(). The
+ * parameter tightness determines how the curve fits to the vertex points. The
+ * value 0.0 is the default value for tightness (this value defines the curves
+ * to be Catmull-Rom splines) and the value 1.0 connects all the points with
+ * straight lines. Values within the range -5.0 and 5.0 will deform the curves
+ * but will leave them recognizable and as values increase in magnitude, they
+ * will continue to deform.
+ * 
+ * @param {number} amount amount of deformation from the original vertices
+ */
+declare function curveTightness(amount: number): void;
+
+/**
+ * Evaluates the curve at position t for points a, b, c, d. The parameter t
+ * varies between 0 and 1, a and d are points on the curve, and b and c are the
+ * control points. This can be done once with the x coordinates and a second
+ * time with the y coordinates to get the location of a curve at t.
+ * 
+ * @param {number} a coordinate of first point on the curve
+ * @param {number} b coordinate of first control point
+ * @param {number} c coordinate of second control point
+ * @param {number} d coordinate of second point on the curve
+ * @param {number} t value between 0 and 1
+ */
+declare function curvePoint(a: number, b: number, c: number, d: number,
+	t: number): number;
+
+/**
+ * Evaluates the tangent to the curve at position t for points a, b, c, d. The
+ * parameter t varies between 0 and 1, a and d are points on the curve, and b
+ * and c are the control points.
+ * 
+ * @param {number} a coordinate of first point on the curve
+ * @param {number} b coordinate of first control point
+ * @param {number} c coordinate of second control point
+ * @param {number} d coordinate of second point on the curve
+ * @param {number} t value between 0 and 1
+ */
+declare function curveTangent(a: number, b: number, c: number, d: number,
+	t: number): number;
+
 //
 // Shape -> Vertex
 //
