@@ -63,6 +63,10 @@ declare var width: number;
  */
 declare var height: number;
 
+declare var _frameRate: number;
+declare var _lastFrameTime: number;
+declare var _targetFrameRate: number;
+
 //
 // Events -> Acceleration
 //
@@ -1367,7 +1371,7 @@ declare function beginContour(): p5;
  * @param {(number | string)} kind either POINTS, LINES, TRIANGLES,
  * 		TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, or QUAD_STRIP
  */
-declare function beginShape(kind?: number | string);
+declare function beginShape(kind?: number | string): p5;
 
 /**
  * Specifies vertex coordinates for Bezier curves. Each call to bezierVertex()
@@ -1428,9 +1432,9 @@ declare function endContour(): p5;
  * buffer. The constant CLOSE as the value for the MODE parameter to close the
  * shape (to connect the beginning and the end).
  * 
- * @param {*} mode use CLOSE to close the shape
+ * @param {string} mode use CLOSE to close the shape
  */
-declare function endShape(mode?: any): p5;
+declare function endShape(mode?: string): p5;
 
 /**
  * Specifies vertex coordinates for quadratic Bezier curves. Each call to
@@ -1457,9 +1461,9 @@ declare function quadraticVertex(cx: number, cy: number, x3: number,
  * 
  * @param {number} x x-coordinate of the vertex
  * @param {number} y y-coordinate of the vertex
- * @param {number} moveTo
+ * @param {number} z z-coordinate of the vertex
  */
-declare function vertex(x: number, y: number, moveTo?: number): p5;
+declare function vertex(x: number, y: number, z?: number): p5;
 
 //
 // Shape -> 3D Models
@@ -1515,14 +1519,14 @@ declare function plane(width: number, height: number, detailX?: number,
  * Draw a box with given width, height and depth
  * 
  * @param {number} width width of the box
- * @param {number} Height height of the box
+ * @param {number} height height of the box
  * @param {number} depth depth of the box
  * @param {number} detailX Optional number of triangle subdivisions in
  * 		x-dimension
  * @param {number} detailY Optional number of triangle subdivisions in
  * 		y-dimension
  */
-declare function box(width: number, Height: number, depth: number,
+declare function box(width: number, height: number, depth: number,
 	detailX?: number, detailY?: number): p5;
 
 /**
@@ -1603,7 +1607,7 @@ declare function torus(radius: number, tubeRadius: number, detailX?: number,
  * load calls should be inside preload (loadImage, loadJSON, loadFont,
  * loadStrings, etc).
  */
-declare function preload(): void;
+// declare function preload(): void;
 
 /**
  * The setup() function is called once when the program starts. It's used to
@@ -1612,7 +1616,7 @@ declare function preload(): void;
  * There can only be one setup() function for each program and it shouldn't be
  * called again after its initial execution. 
  */
-declare function setup(): void;
+// declare function setup(): void;
 
 /**
  * Called directly after setup(), the draw() function continuously executes the
@@ -1641,7 +1645,7 @@ declare function setup(): void;
  * On the other hand, styling applied (ex: fill, stroke, etc) will remain in
  * effect.
  */
-declare function draw(): void;
+// declare function draw(): void;
 
 /**
  * Removes the entire p5 sketch. This will remove the canvas and any elements
@@ -1651,6 +1655,11 @@ declare function draw(): void;
  * erase it.
  */
 declare function remove(): void;
+
+/**
+ * Throws an error with the message: 'exit() not implemented, see remove()' 
+ */
+declare function exit(): never;
 
 /**
  * Stops p5.js from continuously executing the code within draw(). If loop() is
@@ -1712,6 +1721,16 @@ declare function push(): void;
 declare function pop(): void;
 
 /**
+ * Throws an error with the message: 'pushStyle() not used, see push()'
+ */
+declare function pushStyle(): never;
+
+/**
+ * Throws an error with the message: 'popStyle() not used, see pop()'
+ */
+declare function popStyle(): never;
+
+/**
  * Executes the code within draw() one time. This functions allows the program
  * to update the display window only when necessary, for example when an event
  * registered by mousePressed() or keyPressed() occurs.
@@ -1730,6 +1749,14 @@ declare function pop(): void;
  */
 declare function redraw(n?: number): void;
 
+/**
+ * Throws an error with the message: 'size() is not a valid p5 function, to set
+ * the size of the drawing canvas, please use createCanvas() instead'
+ * 
+ * @param {...any[]} args placeholder handler for arguments
+ */
+declare function size(...args: any[]): never;
+
 //
 // Environment
 //
@@ -1747,8 +1774,10 @@ declare function redraw(n?: number): void;
  * 
  * @param {*} content Any combination of Number, String, Object, Boolean, Array
  * 		to print
+ * @param {...any[]} optionalParameters any parameter to be used, similar to
+ * 		console.log
  */
-declare function print(content: any): void;
+declare function print(content?: any, ...optionalParameters: any[]): void;
 
 /**
  * Sets the cursor to a predefined symbol or an image, or makes it visible if
@@ -1781,7 +1810,7 @@ declare function cursor(type: number, x?: number, y?: number): void;
  * 
  * @param {number} fps Number of frames to be displayed every second
  */
-declare function frameRate(fps: number): number | p5;
+declare function frameRate(fps?: number): number | p5;
 
 /**
  * Returns the current framerate.
@@ -1862,6 +1891,15 @@ declare function getURLPath(): string[];
  */
 declare function getURLParams(): any;
 
+/**
+ * Event handler called once every time the browser window is resized. This is
+ * a good place to resize the canvas or do any other adjustments to accommodate
+ * the new window size.
+ * 
+ * @param {*} e
+ */
+declare function _onresize(e: any): void;
+
 //
 // Rendering
 //
@@ -1881,7 +1919,8 @@ declare function getURLParams(): any;
  * @param {number} h height of the canvas
  * @param {string} renderer P2D or WEBGL
  */
-declare function createCanvas(w: number, h: number, renderer?: string): any;
+declare function createCanvas(w: number, h: number,
+	renderer?: string): p5.Renderer;
 
 /**
  * Resizes the canvas to given width and height. The canvas will be cleared and
@@ -1909,8 +1948,8 @@ declare function noCanvas(): void;
  * @param {number} h height of the offscreen graphics buffer
  * @param {string} renderer P2D or WEBGL undefined defaults to P2D
  */
-declare function createGraphics(w: number, h: number, renderer?: string):
-	p5.Graphics;
+declare function createGraphics(w: number, h: number,
+	renderer?: string): p5.Graphics;
 
 /**
  * Blends the pixels in the display window according to the defined mode. There
@@ -1980,7 +2019,7 @@ declare function popMatrix(): never;
 /**
  * Not implemented. Currently throws an error.
  */
-declare function printMatrix();
+declare function printMatrix(): never;
 
 /**
  * Throws an error with the message: 'pushMatrix() not used, see push()'
@@ -2010,9 +2049,9 @@ declare function resetMatrix(): p5;
  * 
  * @param {number} angle the angle of rotation, specified in radians or
  * 		degrees, depending on current angleMode
- * @param {(p5.Vector | number[])} axis axis to rotate around
+ * @param {(number[] | p5.Vector)} axis axis to rotate around
  */
-declare function rotate(angle: number, axis?: p5.Vector | number[]): p5;
+declare function rotate(angle: number, axis?: number[] | p5.Vector): p5;
 
 /**
  * Rotates around X axis.
@@ -2049,9 +2088,9 @@ declare function rotateZ(rad: number): p5;
  * Using this function with the z parameter is only available in WEBGL mode.
  * This function can be further controlled with push() and pop().
  * 
- * @param {(number | p5.Vector | number[])} s percent to scale the object
+ * @param {(number | number[] | p5.Vector)} s percent to scale the object
  */
-declare function scale(s: number | p5.Vector | number[]): p5;
+declare function scale(s: number | number[] | p5.Vector): p5;
 
 /**
  * Increases or decreases the size of a shape by expanding and contracting
@@ -2071,7 +2110,7 @@ declare function scale(s: number | p5.Vector | number[]): p5;
  * @param {number} y percent to scale the object in the y-axis
  * @param {number} z percent to scale the object in the z-axis (webgl only)
  */
-declare function scale(x: number, y: number, z: number): p5;
+declare function scale(x: number, y: number, z?: number): p5;
 
 /**
  * Shears a shape around the x-axis the amount specified by the angle
@@ -2156,7 +2195,7 @@ declare function setShakeThreshold(value: number): void;
  * the threshold value along X, Y or Z axis. The default threshold is set to
  * 0.5.
  */
-declare function deviceMoved(): void;
+// declare function deviceMoved(): void;
 
 /**
  * The deviceTurned() function is called when the device rotates by more than
@@ -2166,14 +2205,14 @@ declare function deviceMoved(): void;
  * variable. The deviceTurned() method can be locked to trigger on any axis: X,
  * Y or Z by comparing the turnAxis variable to 'X', 'Y' or 'Z'.
  */
-declare function deviceTurned(): void;
+// declare function deviceTurned(): void;
 
 /**
  * The deviceShaken() function is called when the device total acceleration
  * changes of accelerationX and accelerationY values is more than the threshold
  * value. The default threshold is set to 30.
  */
-declare function deviceShaken(): void;
+// declare function deviceShaken(): void;
 
 /**
  * Updates the pAcceleration values. Intended to be private; do not invoke.
@@ -2227,7 +2266,7 @@ declare function _handleMotion(): void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function keyPressed(): boolean | void;
+// declare function keyPressed(): boolean | void;
 
 /**
  * The keyReleased() function is called once every time a key is released. See
@@ -2237,7 +2276,7 @@ declare function keyPressed(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function keyReleased(): boolean | void;
+// declare function keyReleased(): boolean | void;
 
 /**
  * The keyTyped() function is called once every time a key is pressed, but
@@ -2252,7 +2291,7 @@ declare function keyReleased(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function keyTyped(): boolean | void;
+// declare function keyTyped(): boolean | void;
 
 /**
  * The keyIsDown() function checks if the key is currently down, i.e. pressed.
@@ -2304,7 +2343,7 @@ declare function _onblur(e): void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function mouseMoved(): boolean | void;
+// declare function mouseMoved(): boolean | void;
 
 /**
  * The mouseDragged() function is called once every time the mouse moves and a
@@ -2315,7 +2354,7 @@ declare function mouseMoved(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function mouseDragged(): boolean | void;
+// declare function mouseDragged(): boolean | void;
 
 /**
  * The mousePressed() function is called once after every time a mouse button
@@ -2328,7 +2367,7 @@ declare function mouseDragged(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function mousePressed(): boolean | void;
+// declare function mousePressed(): boolean | void;
 
 /**
  * The mouseReleased() function is called every time a mouse button is
@@ -2339,7 +2378,7 @@ declare function mousePressed(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function mouseReleased(): boolean | void;
+// declare function mouseReleased(): boolean | void;
 
 /**
  * The mouseClicked() function is called once after a mouse button has been
@@ -2349,7 +2388,7 @@ declare function mouseReleased(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function mouseClicked(): boolean | void;
+// declare function mouseClicked(): boolean | void;
 
 /**
  * The function mouseWheel() is executed every time a vertical mouse wheel
@@ -2367,7 +2406,7 @@ declare function mouseClicked(): boolean | void;
  * Due to the current support of the "wheel" event on Safari, the function may
  * only work as expected if "return false" is included while using Safari.
  */
-declare function mouseWheel(): boolean | void;
+// declare function mouseWheel(): boolean | void;
 
 /**
  * Updates the values of 'mouse' and 'winMouse'. Also initializes
@@ -2441,7 +2480,7 @@ declare function _onwheel(e): void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function touchStarted(): boolean | void;
+// declare function touchStarted(): boolean | void;
 
 /**
  * The touchMoved() function is called every time a touch move is registered.
@@ -2452,7 +2491,7 @@ declare function touchStarted(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function touchMoved(): boolean | void;
+// declare function touchMoved(): boolean | void;
 
 /**
  * The touchEnded() function is called every time a touch ends. If no
@@ -2463,7 +2502,7 @@ declare function touchMoved(): boolean | void;
  * events. To prevent any default behavior for this event, add "return false"
  * to the end of the method.
  */
-declare function touchEnded(): boolean | void;
+// declare function touchEnded(): boolean | void;
 
 /**
  * Updates the values of 'touch' and 'winTouch'. Also initializes
@@ -2525,12 +2564,23 @@ declare function createImage(width: number, height: number): p5.Image;
  * browsers will either save the file immediately, or prompt the user with a
  * dialogue window.
  * 
+ * @param {string} filename the name of the output file
+ * @param {string} extension 'jpg' or 'png'
+ */
+declare function saveCanvas(filename: string, extension?: string): void;
+
+/**
+ * Save the current canvas as an image. In Safari, this will open the image in
+ * the window and the user must provide their own filename on save-as. Other
+ * browsers will either save the file immediately, or prompt the user with a
+ * dialogue window.
+ * 
  * @param {*} canvas a variable representing a specific html5 canvas
  * @param {string} filename the name of the output file
  * @param {string} extension 'jpg' or 'png'
  */
-declare function saveCanvas(canvas: any, filename: string,
-	extension: string): void;
+declare function saveCanvas(canvas: any, filename?: string,
+	extension?: string): void;
 
 /**
  * Capture a sequence of frames that can be used to create a movie. Accepts a
@@ -2597,14 +2647,14 @@ declare function _makeFrame(filename: string, extension: string,
  * your browser's built-in security.
  * 
  * @param {string} path Path of the image to be loaded
- * @param {(img: p5.Image) => any} successCallback Function to be called once
+ * @param {(img: p5.Image) => void} successCallback Function to be called once
  * 		the image is loaded. Will be passed the p5.Image.
- * @param {(e: Event) => any} failureCallback called with event error if the
+ * @param {(e: any) => any} failureCallback called with event error if the
  * 		image fails to load.
  */
 declare function loadImage(path: string,
-	successCallback?: (img: p5.Image) => any,
-	failureCallback?: (e: Event) => any): p5.Image;
+	successCallback?: (img: p5.Image) => void,
+	failureCallback?: (e: any) => any): p5.Image;
 
 /**
  * Draw an image to the main canvas of the p5js sketch
@@ -2628,8 +2678,32 @@ declare function loadImage(path: string,
  * 		canvas. This allows scaling of the drawn image.
  */
 declare function image(img: p5.Image, sx?: number, sy?: number,
-	sWidth?: number, sHeight?: number, dx?: number, dy?: number,
-	dWidth?: number, dHeight?: number): void;
+	sWidth?: number, sHeight?: number): void;
+
+/**
+ * Draw an image to the main canvas of the p5js sketch
+ * 
+ * @param {p5.Image} img the image to display
+ * @param {number} sx The X coordinate of the top left corner of the
+ * 		sub-rectangle of the source image to draw into the destination canvas.
+ * @param {number} sy The Y coordinate of the top left corner of the
+ * 		sub-rectangle of the source image to draw into the destination canvas.
+ * @param {number} sWidth The width of the sub-rectangle of the source image to
+ * 		draw into the destination canvas.
+ * @param {number} sHeight The height of the sub-rectangle of the source image
+ * 		to draw into the destination context.
+ * @param {number} dx The X coordinate in the destination canvas at which to
+ * 		place the top-left corner of the source image.
+ * @param {number} dy The Y coordinate in the destination canvas at which to
+ * 		place the top-left corner of the source image.
+ * @param {number} dWidth The width to draw the image in the destination
+ * 		canvas. This allows scaling of the drawn image.
+ * @param {number} dHeight The height to draw the image in the destination
+ * 		canvas. This allows scaling of the drawn image.
+ */
+declare function image(img: p5.Image, sx: number, sy: number, sWidth: number,
+	sHeight: number, dx: number, dy: number, dWidth: number,
+	dHeight: number): void;
 
 /**
  * Sets the fill value for displaying images. Images can be tinted to specified
@@ -2643,15 +2717,36 @@ declare function image(img: p5.Image, sx?: number, sy?: number,
  * The value for the gray parameter must be less than or equal to the current
  * maximum value as specified by colorMode(). The default maximum value is 255.
  * 
- * @param {(number | number[])} v1 gray value, red or hue value (depending on
- * 		the current color mode), or color Array
+ * @param {number} v1 red or hue value (depending on the current color mode)
  * @param {number} v2 green or saturation value (depending on the current color
  * 		mode)
  * @param {number} v3 blue or brightness value (depending on the current color
  * 		mode)
  * @param {number} a opacity of the background
  */
-declare function tint(v1: number | number[], v2?: number, v3?: number,
+declare function tint(v1: number, v2: number, v3: number, a?: number): void;
+
+/**
+ * Sets the fill value for displaying images. Images can be tinted to specified
+ * colors or made transparent by including an alpha value.
+ * 
+ * To apply transparency to an image without affecting its color, use white as
+ * the tint color and specify an alpha value. For instance, tint(255, 128) will
+ * make an image 50% transparent (assuming the default alpha range of 0-255,
+ * which can be changed with colorMode()).
+ * 
+ * The value for the gray parameter must be less than or equal to the current
+ * maximum value as specified by colorMode(). The default maximum value is 255.
+ * 
+ * @param {(string | number | number[] | p5.Color)} v1 gray value, or color
+ * 		Array
+ * @param {number} v2 green or saturation value (depending on the current color
+ * 		mode)
+ * @param {number} v3 blue or brightness value (depending on the current color
+ * 		mode)
+ * @param {number} a opacity of the background
+ */
+declare function tint(v1: string | number | number[] | p5.Color,
 	a?: number): void;
 
 /**
@@ -3326,7 +3421,7 @@ declare function year(): number;
  * @param {number} y y component of the vector
  * @param {number} z z component of the vector
  */
-declare function createVector(x: number, y: number, z: number): p5.Vector;
+declare function createVector(x?: number, y?: number, z?: number): p5.Vector;
 
 //
 // Math -> Calculation
@@ -3570,7 +3665,7 @@ declare function sqrt(n: number): number;
  * @param {number} y y-coordinate in noise space
  * @param {number} z z-coordinate in noise space
  */
-declare function noise(x: number, y: number, z: number): number;
+declare function noise(x: number, y?: number, z?: number): number;
 
 /**
  * Adjusts the character and level of detail produced by the Perlin noise
@@ -4104,7 +4199,7 @@ declare function float(str: string[]): number[];
  * array of values is passed in, then an int array of the same length is
  * returned.
  * 
- * @param {(string | number | boolean | any[])} n
+ * @param {(string | number | boolean)} n
  */
 declare function int(n: number | boolean): number;
 
