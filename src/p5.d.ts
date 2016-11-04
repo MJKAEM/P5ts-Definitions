@@ -89,10 +89,7 @@ declare namespace p5 {
 
 	class XML {
 	}
-
-	class Vector {
-	}
-
+	
 	class Renderer {
 	}
 
