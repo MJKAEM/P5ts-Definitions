@@ -2794,6 +2794,27 @@ declare function _getTintedImageCanvas(img: p5.Image): HTMLCanvasElement;
  * MULTIPLY| EXCLUSION | SCREEN | REPLACE | OVERLAY | HARD_LIGHT | SOFT_LIGHT |
  * DODGE | BURN | ADD | NORMAL
  * 
+ * @param {number} sx X coordinate of the source's upper left corner
+ * @param {number} sy Y coordinate of the source's upper left corner
+ * @param {number} sw source image width
+ * @param {number} sh source image height
+ * @param {number} dx X coordinate of the destination's upper left corner
+ * @param {number} dy Y coordinate of the destination's upper left corner
+ * @param {number} dw destination image width
+ * @param {number} dh destination image height
+ * @param {string} blendMode the blend mode
+ */
+declare function blend(sx: number, sy: number, sw: number, sh: number,
+	dx: number, dy: number, dw: number, dh: number, blendMode: string): void;
+
+/**
+ * Copies a region of pixels from one image to another, using a specified blend
+ * mode to do the operation.
+ * 
+ * Available blend modes are: BLEND | DARKEST | LIGHTEST | DIFFERENCE |
+ * MULTIPLY| EXCLUSION | SCREEN | REPLACE | OVERLAY | HARD_LIGHT | SOFT_LIGHT |
+ * DODGE | BURN | ADD | NORMAL
+ * 
  * @param {p5.Image} srcImage source image
  * @param {number} sx X coordinate of the source's upper left corner
  * @param {number} sy Y coordinate of the source's upper left corner
@@ -2808,6 +2829,25 @@ declare function _getTintedImageCanvas(img: p5.Image): HTMLCanvasElement;
 declare function blend(srcImage: p5.Image, sx: number, sy: number, sw: number,
 	sh: number, dx: number, dy: number, dw: number, dh: number,
 	blendMode: string): void;
+
+/**
+ * Copies a region of the canvas to another region of the canvas and copies a
+ * region of pixels from an image used as the srcImg parameter into the canvas
+ * srcImage is specified this is used as the source. If the source and
+ * destination regions aren't the same size, it will automatically resize
+ * source pixels to fit the specified target region.
+ * 
+ * @param {number} sx X coordinate of the source's upper left corner
+ * @param {number} sy Y coordinate of the source's upper left corner
+ * @param {number} sw source image width
+ * @param {number} sh source image height
+ * @param {number} dx X coordinate of the destination's upper left corner
+ * @param {number} dy Y coordinate of the destination's upper left corner
+ * @param {number} dw destination image width
+ * @param {number} dh destination image height
+ */
+declare function copy(sx: number, sy: number, sw: number, sh: number,
+	dx: number, dy: number, dw: number, dh: number): void;
 
 /**
  * Copies a region of the canvas to another region of the canvas and copies a
@@ -3341,8 +3381,8 @@ declare function writeFile(dataToDownload: any[], filename: string,
  * @param {string} filename
  * @param {string} extension
  */
-declare function downloadFile(href: string, filename: string,
-	extension: string): void;
+declare function downloadFile(href: string, filename?: string,
+	extension?: string): void;
 
 /**
  * Returns a file extension, or another string if the provided parameter has no
