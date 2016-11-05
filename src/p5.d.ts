@@ -26,8 +26,6 @@ declare class p5 {
 }
 
 declare namespace p5 {
-	class Geometry {
-	}
 
 	/**
 	 * Base class for all elements added to a sketch, including canvas, graphics buffers, and
