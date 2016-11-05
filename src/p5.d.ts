@@ -27,52 +27,7 @@ declare class p5 {
 
 declare namespace p5 {
 
-	/**
-	 * Base class for all elements added to a sketch, including canvas, graphics buffers, and
-	 * other HTML elements. Methods in blue are included in the core functionality,
-	 * methods in brown are added with the p5.dom library. It is not called directly, but
-	 * p5.Element objects are created by calling createCanvas, createGraphics, or in the
-	 * p5.dom library, createDiv, createImg, createInput, etc.
-	 */
-	class Element {
-		
-
-		/**
-		 * Creates an instance of Element.
-		 * 
-		 * @param {string} elt DOM node that is wrapped
-		 * @param {p5} pInst Pointer to p5 instance
-		 */
-		constructor(elt: string, pInst?: p5);
-	}
-
 	class Graphics {
-	}
-
-	/**
-	 * A p5.Image is a canvas backed representation of an image.
-	 * 
-	 * p5 can display .gif, .jpg and .png images. Images may be displayed in 2D
-	 * and 3D space. Before an image is used, it must be loaded with the
-	 * loadImage() function. The p5.Image class contains fields for the width
-	 * and height of the image, as well as an array called pixels[] that
-	 * contains the values for every pixel in the image.
-	 * 
-	 * The methods described below allow easy access to the image's pixels and
-	 * alpha channel and simplify the process of compositing.
-	 * 
-	 * Before using the pixels[] array, be sure to use the loadPixels() method
-	 * on the image to make sure that the pixel data is properly loaded.
-	 */
-	class Image {
-		/**
-		 * Creates an instance of Image.
-		 * 
-		 * @param {number} width Image width
-		 * @param {number} height Image height
-		 * @param {p5} pInst An instance of a p5 sketch.
-		 */
-		public constructor(width:number,height:number,pInst:p5);
 	}
 
 	class PrintWriter {
