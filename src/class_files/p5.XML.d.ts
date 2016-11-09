@@ -139,8 +139,6 @@ declare namespace p5 {
 		 * defaultValue is returned if specified, otherwise null is returned.
 		 * 
 		 * @param {string} defaultValue value returned if no content is found
-		 * 
-		 * @memberOf XML
 		 */
 		public getContent(defaultValue?: string): string;
 
@@ -150,5 +148,26 @@ declare namespace p5 {
 		 * @param {string} text the new content
 		 */
 		public setContent(text: string): void;
+
+		/**
+		 * This method is called while the parsing of XML (when loadXML() is
+		 * called). The difference between this method and the setContent()
+		 * method defined later is that this one is used to set the content
+		 * when the node in question has more nodes under it and so on and not
+		 * directly text content. While in the other one is used when the node
+		 * in question directly has text inside it.
+		 * 
+		 * @param {string} content
+		 */
+		public _setCont(content: string): void;
+
+		/**
+		 * This method is called while the parsing of XML (when loadXML() is
+		 * called). The XML node is passed and its attributes are stored in the
+		 * p5.XML's attribute Object.
+		 * 
+		 * @param {p5.XML} node
+		 */
+		public _setAttributes(node: p5.XML): void;
 	}
 }
