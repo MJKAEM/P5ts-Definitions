@@ -33,9 +33,6 @@ declare namespace p5 {
 	class PrintWriter {
 		
 	}
-
-	class Table {
-	}
 	
 	class Renderer {
 	}
