@@ -36,9 +36,6 @@ declare namespace p5 {
 
 	class Table {
 	}
-
-	class TableRow {
-	}
 	
 	class Renderer {
 	}
