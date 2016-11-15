@@ -27,9 +27,6 @@ declare class p5 {
 
 declare namespace p5 {
 
-	class Graphics {
-	}
-
 	class PrintWriter {
 		
 	}
