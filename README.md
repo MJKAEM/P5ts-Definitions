@@ -10,3 +10,11 @@ There will always be an instance file and a global mode file. The global mode re
 ## Documentation
 
 All variables and methods are documented using JSDoc. The p5.js reference can be found [here](http://p5js.org/reference/).
+
+## How to use
+
+Clone/download the repository and store the files somewhere in your project.
+
+Reference the declaration files by using either triple-slash reference or making it part of your active project via a project JSON file.
+
+Compile the TypeScript files into JavaScript, and include the output files in your HTML page.
