@@ -232,6 +232,6 @@ declare namespace p5 {
 
 		public _setProperty(prop: string, value: any): void;
 
-		private attachListener(ev: string, fxn: Function, ctx: this);
+		private attachListener(ev: string, fxn: Function, ctx: this): void;
 	}
 }

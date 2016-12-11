@@ -19,9 +19,6 @@ Test the following functions for implementation errors:
 - p5.Color._parseInputs + p5.Color.constructor
 - p5.Geometry
 
-Currently halted in progress:
-- p5.Element
-
 These functions that must be overloaded produce compiler errors:
 - preload
 - setup
