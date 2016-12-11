@@ -62,7 +62,8 @@ declare namespace p5 {
 		public loadPixels(): void;
 
 		/**
-		 * Loads the pixels data for this image into the [pixels] attribute.
+		 * Updates the backing canvas for this image with the contents of the
+		 * [pixels] array.
 		 * 
 		 * @param {number} x x-offset of the target update area for the 
 		 * 		underlying canvas
@@ -73,7 +74,7 @@ declare namespace p5 {
 		 * @param {number} h height of the target update area for the underlying
 		 * 		canvas
 		 */
-		public loadPixels(x: number, y: number, w: number, h: number): void;
+		public updatePixels(x: number, y: number, w: number, h: number): void;
 
 		/**
 		 * Get a region of pixels from an image.

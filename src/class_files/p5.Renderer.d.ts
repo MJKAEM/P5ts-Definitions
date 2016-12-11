@@ -40,7 +40,7 @@ declare namespace p5 {
 		 * @param {p5} pInst pointer to p5 instance
 		 * @param {boolean} isMainCanvas we're using it as main canvas
 		 */
-		public constructor(elt: Node, pInst?: p5, isMainCanvas?: boolean);
+		public constructor(elt: Node, pInst: p5, isMainCanvas?: boolean);
 
 		/**
 		 * Resize our canvas element.
@@ -50,14 +50,14 @@ declare namespace p5 {
 		 */
 		public resize(w: number, h: number): void;
 		public textLeading(): number;
-		public textLeading(l: number): p5.Renderer;
+		public textLeading(l: number): this;
 		public textSize(): number;
-		public textSize(s: number): p5.Renderer;
+		public textSize(s: number): this;
 		public textStyle(): string;
-		public textStyle(s: string): p5.Renderer;
-		public textAscent(): number | p5.Renderer;
-		public textDescent(): number | p5.Renderer;
-		public _applyDefaults(): p5.Renderer;
+		public textStyle(s: string): this;
+		public textAscent(): number;
+		public textDescent(): number;
+		public _applyDefaults(): void | this;
 		/**
 		 * Helper fxn to check font type (system or otf)
 		 */
