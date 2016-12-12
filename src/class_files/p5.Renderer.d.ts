@@ -6,7 +6,7 @@ declare namespace p5 {
 	 */
 	class Renderer extends p5.Element {
 
-		public canvas: Node;
+		public canvas: HTMLCanvasElement;
 		public _isMainCanvas: boolean;
 		public _styles: any[];
 		public _textSize: number;
@@ -36,7 +36,7 @@ declare namespace p5 {
 		/**
 		 * Creates an instance of Renderer.
 		 * 
-		 * @param {Node} elt DOM node that is wrapped
+		 * @param {HTMLCanvasElement} elt DOM node that is wrapped
 		 * @param {p5} pInst pointer to p5 instance
 		 * @param {boolean} isMainCanvas we're using it as main canvas
 		 */

@@ -29,9 +29,6 @@ declare namespace p5 {
 
 	class PrintWriter {
 	}
-	
-	class Renderer2D {
-	}
 
 	class RendererGL {
 	}
