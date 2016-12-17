@@ -7,7 +7,7 @@ def main():
     inputdir = "src"
     classfilesdir = inputdir + "/class_files"
 
-    with open("full.d.ts", 'w') as outputfile:
+    with open("p5.complete.d.ts", 'w') as outputfile:
         printtooutput(inputdir + "/p5.d.ts", outputfile)
         printtooutput(inputdir + "/p5.global-mode.d.ts", outputfile)
         for filename in os.listdir(classfilesdir):
