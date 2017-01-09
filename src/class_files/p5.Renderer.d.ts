@@ -4,7 +4,7 @@ declare namespace p5 {
 	 * implementation for p5.js "core". To be used as the superclass for
 	 * Renderer2D and Renderer3D classes, respecitvely.
 	 */
-	class Renderer extends p5.Element {
+	export class Renderer extends p5.Element {
 
 		public canvas: HTMLCanvasElement;
 		public _isMainCanvas: boolean;
@@ -40,7 +40,7 @@ declare namespace p5 {
 		 * @param {p5} pInst pointer to p5 instance
 		 * @param {boolean} isMainCanvas we're using it as main canvas
 		 */
-		public constructor(elt: Node, pInst: p5, isMainCanvas?: boolean);
+		public constructor(elt: HTMLCanvasElement, pInst: p5, isMainCanvas?: boolean);
 
 		/**
 		 * Resize our canvas element.

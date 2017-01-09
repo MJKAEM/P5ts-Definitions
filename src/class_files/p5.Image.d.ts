@@ -14,7 +14,7 @@ declare namespace p5 {
 	 * Before using the pixels[] array, be sure to use the loadPixels() method
 	 * on the image to make sure that the pixel data is properly loaded.
 	 */
-	class Image {
+	export class Image {
 
 		/**
 		 * Image width.

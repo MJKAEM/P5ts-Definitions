@@ -20,7 +20,7 @@ declare namespace p5 {
 	 * "vector" math, which is made easy by the methods inside the p5.Vector
 	 * class.
 	 */
-	class Vector {
+	export class Vector {
 
 		public p5: p5;
 

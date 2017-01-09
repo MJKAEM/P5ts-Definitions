@@ -2,7 +2,7 @@ declare namespace p5 {
 	/**
 	 * Base class for font handling
 	 */
-	class Font {
+	export class Font {
 		public parent: p5;
 		public cache: any;
 

@@ -1,5 +1,5 @@
 declare namespace p5 {
-	class Geometry {
+	export class Geometry {
 		public vertices: p5.Vector[];
 		public vertexNormals: p5.Vector[];
 		public faces: number[][];

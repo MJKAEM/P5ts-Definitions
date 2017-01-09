@@ -4,7 +4,7 @@ declare namespace p5 {
 	 * XML is a representation of an XML object, able to parse XML code. Use
 	 * loadXML() to load external XML files and create XML objects.
 	 */
-	class XML {
+	export class XML {
 		public name: string;
 		public attributes: any;
 		public children: p5.XML[];

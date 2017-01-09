@@ -13,7 +13,7 @@ declare namespace p5 {
 	 * representations as they are calculated. This is done to prevent repeating a
 	 * conversion that has already been performed.
 	 */
-	class Color {
+	export class Color {
 		public mode: string;
 		public maxes: {
 			hsb: number[],

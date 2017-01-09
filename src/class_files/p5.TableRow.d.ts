@@ -6,7 +6,7 @@ declare namespace p5 {
 	 * A Table Row contains both an ordered array, and an unordered JSON
 	 * object.
 	 */
-	class TableRow {
+	export class TableRow {
 
 		public arr: string[];
 		public obj: any;

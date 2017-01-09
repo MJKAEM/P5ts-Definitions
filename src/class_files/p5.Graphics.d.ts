@@ -6,7 +6,7 @@ declare namespace p5 {
 	 * pixels. The fields and methods for this class are extensive, but mirror
 	 * the normal drawing API for p5.
 	 */
-	class Graphics extends p5.Element {
+	export class Graphics extends p5.Element {
 		public _styles: any[];
 		public _pixelDensity: number;
 		public _renderer: p5.Renderer;

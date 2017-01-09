@@ -4,7 +4,7 @@ declare namespace p5 {
 	 * traditional spreadsheet. Tables can be generated from scratch,
 	 * dynamically, or using data from an existing file.
 	 */
-	class Table {
+	export class Table {
 		public columns: any[];
 		public rows: p5.TableRow[];
 

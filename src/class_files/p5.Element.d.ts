@@ -7,7 +7,7 @@ declare namespace p5 {
 	 * by calling createCanvas, createGraphics, or in the p5.dom library,
 	 * createDiv, createImg, createInput, etc.
 	 */
-	class Element {
+	export class Element {
 
 		/**
 		 * Underlying HTML element. All normal HTML methods can be called on

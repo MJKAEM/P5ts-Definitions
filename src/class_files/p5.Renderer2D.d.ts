@@ -2,7 +2,7 @@ declare namespace p5 {
 	/**
 	 * The 2D graphics canvas renderer class.
 	 */
-	class Renderer2D extends Renderer {
+	export class Renderer2D extends Renderer {
 		public drawingContext: CanvasRenderingContext2D;
 
 		public constructor(elt: HTMLCanvasElement, pInst: p5, isMainCanvas?: boolean);
