@@ -26,11 +26,7 @@ declare class p5 {
 }
 
 declare namespace p5 {
-
 	class PrintWriter {
-	}
-
-	class RendererGL {
 	}
 
 	class MediaElement {
